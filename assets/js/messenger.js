@@ -6,3 +6,4 @@ window.addEventListener('scroll', () => {
         messengerIcon.style.opacity = '1';
     }
 });
+// Xử lý click vào icon messenger

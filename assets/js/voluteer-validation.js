@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		const errors = [];
 
 		clearErrors();
-
 		if (!fullName.value.trim()) {
 			showError(fullName, "Vui lòng nhập họ và tên.");
 			errors.push("• Vui lòng nhập họ và tên");
