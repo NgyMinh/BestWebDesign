@@ -139,4 +139,27 @@
 			sidebar.classList.remove("show");
 		}
 	});
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const checkoutBtn = document.querySelector(".checkout-btn");
+
+		if (checkoutBtn) {
+			checkoutBtn.addEventListener("click", () => {
+				if (cartItems.length === 0) {
+					alert("Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi thanh toán.");
+				} else {
+					alert("🎉 Cảm ơn bạn đã thanh toán! Đơn hàng của bạn đang được xử lý.");
+
+					// Xoá giỏ hàng
+					cartItems = [];
+					localStorage.removeItem("cartItems");
+					updateCartCount();
+					updateCartSidebar();
+
+					// Ẩn giỏ hàng
+					document.getElementById("cart-sidebar").classList.remove("show");
+				}
+			});
+		}
+	});
 })();
