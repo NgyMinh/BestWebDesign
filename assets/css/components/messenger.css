@@ -1,0 +1,39 @@
+/* Messenger Icon */
+.messenger-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #0084ff; /* Màu xanh của Messenger */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.messenger-icon i {
+    color: white;
+    font-size: 30px;
+}
+
+.messenger-icon:hover {
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
+    background-color: #006aff; /* Đậm màu hơn khi hover */
+}
+
+.messenger-icon:active {
+    transform: scale(0.95); /* Thu nhỏ nhẹ khi nhấn */
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.messenger-icon {
+    animation: bounce 2s infinite;
+}
