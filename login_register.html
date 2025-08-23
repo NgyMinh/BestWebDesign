@@ -1,55 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<link rel="stylesheet" href="assets/css/ui/login_register.css" />
-		<!-- <link rel="stylesheet" href="assets/css/ui/common.css" /> -->
-		<!-- Nhúng font chữ -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bree+Serif&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Quicksand:wght@300..700&display=swap"
+<html lang="vi">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Đăng nhập / Đăng ký</title>
+
+	<link rel="stylesheet" href="assets/css/ui/login_register.css" />
+	<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&display=swap"
 			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-	</head>
-	<body>
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<title>Slide Navbar</title>
-				<link rel="stylesheet" type="text/css" href="slide navbar style.css" />
-				<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet" />
-			</head>
-			<body>
-				<div class="main">
-					<input type="checkbox" id="chk" aria-hidden="true" />
+	/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+<div class="main">
+	<input type="checkbox" id="chk" aria-hidden="true" />
 
-					<div class="signup">
-						<form>
-							<label for="chk" aria-hidden="true">Đăng ký</label>
-							<input type="text" name="txt" placeholder="Tên đăng nhập" required="" />
-							<input type="email" name="email" placeholder="Email" required="" />
-							<input type="password" name="pswd" placeholder="Mật khẩu" required="" />
-							<button>Đăng ký</button>
-						</form>
-					</div>
+	<div class="signup">
+		<form id="register-form">
+			<label for="chk" aria-hidden="true">Đăng ký</label>
+			<input type="text" id="register-username" placeholder="Tên đăng nhập" required />
+			<input type="email" id="register-email" placeholder="Email" required />
+			<input type="password" id="register-password" placeholder="Mật khẩu" required />
+			<button type="submit">Đăng ký</button>
+		</form>
+	</div>
 
-					<div class="login">
-						<form>
-							<label for="chk" aria-hidden="true">Đăng nhập</label>
-							<input type="email" name="email" placeholder="Email" required="" />
-							<input type="password" name="pswd" placeholder="Mật khẩu" required="" />
-							<button>Đăng nhập</button>
-						</form>
-					</div>
-				</div>
-			</body>
-		</html>
+	<div class="login">
+		<form id="login-form">
+			<label for="chk" aria-hidden="true">Đăng nhập</label>
+			<input type="email" id="login-email" placeholder="Email" required />
+			<input type="password" id="login-password" placeholder="Mật khẩu" required />
+			<button type="submit">Đăng nhập</button>
+		</form>
+	</div>
+</div>
 
-		<!-- <script src="assets/js/login_register.js"></script> -->
-		<script src="assets/js/login_register.js"></script>
-	</body>
+<script src="auth.js"></script>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		// Xử lý form đăng nhập
+		const loginForm = document.getElementById("login-form");
+		if (loginForm) {
+			loginForm.addEventListener("submit", async (e) => {
+				e.preventDefault();
+				const email = document.getElementById("login-email").value;
+				const password = document.getElementById("login-password").value;
+
+				// Gọi hàm login từ file auth.js, hàm này sẽ lưu dữ liệu vào localStorage
+				const result = await login(email, password);
+
+				if (result.success) {
+					alert("Đăng nhập thành công!");
+					// Chuyển hướng về trang chủ
+					window.location.href = "index.html";
+				} else {
+					alert(result.message || "Đăng nhập thất bại!");
+				}
+			});
+		}
+
+		// Xử lý form đăng ký
+		const registerForm = document.getElementById("register-form");
+		if (registerForm) {
+			registerForm.addEventListener("submit", async (e) => {
+				e.preventDefault();
+				const username = document.getElementById("register-username").value;
+				const email = document.getElementById("register-email").value;
+				const password = document.getElementById("register-password").value;
+
+				// Gọi hàm register từ file auth.js
+				const result = await register(email, password, username);
+
+				if (result.success) {
+					alert("Đăng ký thành công! Vui lòng chuyển qua tab đăng nhập.");
+					// Tự động chuyển người dùng sang form đăng nhập sau khi đăng ký thành công
+					document.getElementById('chk').checked = false;
+				} else {
+					alert(result.message || "Đăng ký thất bại!");
+				}
+			});
+		}
+	});
+</script>
+
+</body>
 </html>

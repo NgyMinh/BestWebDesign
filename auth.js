@@ -1,129 +1,139 @@
-// auth.js - Fixed version
-const API_URL = "http://localhost:3000/api/auth"; // backend server
+// Fixed auth.js - Final Version
+const API_URL = "http://localhost:3000/api/auth";
 
-// Đăng ký
-async function register(email, password, username) {
-    try {
-        const res = await fetch(`${API_URL}/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password, username }),
-            credentials: "include"
-        });
-        return await res.json();
-    } catch (err) {
-        console.error("Register error:", err);
-        return { message: "Lỗi kết nối server" };
-    }
-}
-
-// Đăng nhập
+// Unified login function
 async function login(email, password) {
     try {
-        const res = await fetch(`${API_URL}/login`, {
+        const response = await fetch(`${API_URL}/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
             credentials: "include"
         });
-        return await res.json();
-    } catch (err) {
-        console.error("Login error:", err);
-        return { message: "Lỗi kết nối server" };
-    }
-}
 
-// Lấy thông tin user hiện tại
-async function getCurrentUser() {
-    try {
-        const res = await fetch(`${API_URL}/me`, {
-            method: "GET",
-            credentials: "include"
-        });
-        return await res.json();
-    } catch (err) {
-        console.error("Get user error:", err);
-        return null;
-    }
-}
+        const data = await response.json();
 
-// Kiểm tra user khi load trang - Fixed function name
-async function checkUser() {
-    try {
-        console.log("🔍 Checking user authentication...");
-        const res = await fetch(`${API_URL}/me`, {
-            method: "GET",
-            credentials: "include"
-        });
+        // === SỬA LỖI TẠI ĐÂY ===
+        // Logic mới: Chỉ cần kiểm tra server trả về "OK" (200), không cần kiểm tra data.token nữa.
+        // Vì token đã được server gửi về dưới dạng HttpOnly cookie.
+        if (response.ok) {
+            // Lấy thông tin user từ `data.user` hoặc trực tiếp từ `data`
+            const userFromServer = data.user || data;
 
-        console.log("📡 Response status:", res.status);
-        const data = await res.json();
-        console.log("📦 Response data:", data);
+            const userData = {
+                // Cung cấp giá trị mặc định nếu server không trả về username
+                username: userFromServer.username || email.split('@')[0],
+                email: userFromServer.email || email,
+                loginTime: new Date().toISOString()
+                // Chúng ta không lưu token vào localStorage nữa vì nó đã được trình duyệt quản lý an toàn.
+            };
 
-        const authLinks = document.getElementById("auth-links");
-        const userInfo = document.getElementById("user-info");
-        const usernameElement = document.getElementById("username");
-
-        if (!authLinks || !userInfo || !usernameElement) {
-            console.error("❌ Required DOM elements not found");
-            return;
-        }
-
-        if (res.ok && data.user) {
-            console.log("✅ User authenticated:", data.user.username);
-            authLinks.style.display = "none";
-            userInfo.style.display = "block";
-            usernameElement.textContent = data.user.username;
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+            return { success: true, user: userData };
         } else {
-            console.log("🚫 User not authenticated");
-            authLinks.style.display = "block";
-            userInfo.style.display = "none";
+            return { success: false, message: data.message || "Đăng nhập thất bại" };
         }
-    } catch (err) {
-        console.error("❌ Auth check failed:", err);
-        // Show login links on error
-        const authLinks = document.getElementById("auth-links");
-        const userInfo = document.getElementById("user-info");
-        if (authLinks && userInfo) {
-            authLinks.style.display = "block";
-            userInfo.style.display = "none";
-        }
+    } catch (error) {
+        console.error("Login error:", error);
+        return { success: false, message: "Lỗi kết nối server" };
     }
 }
 
-// Đăng xuất
-async function logout() {
+// Register function
+async function register(email, password, username) {
     try {
-        console.log("🚪 Logging out...");
-        await fetch(`${API_URL}/logout`, {
+        const response = await fetch(`${API_URL}/register`, {
             method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password, username }),
             credentials: "include"
         });
-        console.log("✅ Logout successful");
-        location.reload();
-    } catch (err) {
-        console.error("❌ Logout error:", err);
-        // Force reload anyway
-        location.reload();
+        const data = await response.json();
+        if (response.ok) {
+            return { success: true, ...data };
+        } else {
+            return { success: false, message: data.message || "Đăng ký thất bại" };
+        }
+    } catch (error) {
+        console.error("Register error:", error);
+        return { success: false, message: "Lỗi kết nối server" };
     }
 }
 
-// Export functions for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { register, login, getCurrentUser, checkUser, logout };
-} else {
-    // Browser environment - attach to window
-    window.authFunctions = { register, login, getCurrentUser, checkUser, logout };
+// Check user authentication status
+function checkUser() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        try {
+            const userData = JSON.parse(currentUser);
+            updateUIForLoggedInUser(userData);
+        } catch (error) {
+            console.error("Error parsing user data:", error);
+            logout();
+        }
+    } else {
+        updateUIForLoggedOutUser();
+    }
 }
 
-// Auto-check authentication when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("🚀 DOM loaded, starting auth check...");
-    checkUser();
+// Update UI when user is logged in
+function updateUIForLoggedInUser(userData) {
+    const authLinks = document.getElementById('auth-links');
+    const userInfo = document.getElementById('user-info');
+    const usernameElement = document.getElementById('username');
 
-    // Add logout event listener
+    if (authLinks) authLinks.style.display = 'none';
+    if (userInfo && usernameElement) {
+        usernameElement.textContent = userData.username;
+        userInfo.style.display = 'block';
+    }
+}
+
+// Update UI when user is logged out
+function updateUIForLoggedOutUser() {
+    const authLinks = document.getElementById('auth-links');
+    const userInfo = document.getElementById('user-info');
+
+    if (authLinks) authLinks.style.display = 'block';
+    if (userInfo) userInfo.style.display = 'none';
+}
+
+// Logout function
+function logout() {
+    localStorage.removeItem('currentUser');
+    if (!window.location.pathname.includes('login_register.html')) {
+        window.location.reload();
+    } else {
+        updateUIForLoggedOutUser();
+    }
+}
+
+// Setup logout button event listener
+function setupLogoutButton() {
     const logoutBtn = document.getElementById("logout-btn");
     if (logoutBtn) {
-        logoutBtn.addEventListener("click", logout);
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            logout();
+        });
     }
-});
+}
+
+// Initialize authentication on page load
+function initAuth() {
+    checkUser();
+    setupLogoutButton();
+}
+
+// Make functions globally available and auto-initialize
+if (typeof window !== 'undefined') {
+    window.login = login;
+    window.register = register;
+    window.logout = logout;
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAuth);
+    } else {
+        initAuth();
+    }
+}
