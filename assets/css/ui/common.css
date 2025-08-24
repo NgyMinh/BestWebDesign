@@ -34,8 +34,8 @@
 	position: fixed;
 	inset: 0;
 	background: white;
-	display: none; 
-	flex-direction: column; 
+	display: none;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
@@ -568,257 +568,153 @@ body::selection {
 	animation-delay: 1s;
 }
 
-/* Cart CSS with stronger specificity and debug */
+/* Số đếm giỏ hàng */
+.cart-count {
+	position: absolute;
+	top: -10px;
+	left: 70%; /* Căn giữa theo chiều ngang */
+	background: red;
+	color: white;
+	border-radius: 50%;
+	padding: 3px 3px; /* Tăng padding để số trông rõ hơn */
+	font-size: 13px; /* Tăng kích thước chữ */
+	min-width: 20px; /* Đảm bảo vòng tròn đủ lớn */
+	text-align: center;
+	line-height: 1; /* Căn chỉnh text trong vòng tròn */
+}
+
+/* Popup giỏ hàng */
 .cart-sidebar {
-	position: fixed !important;
-	top: 0 !important;
-	right: -400px !important; /* Force hidden by default */
-	width: 400px !important;
-	height: 100vh !important;
-	background: white !important;
-	box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1) !important;
-	z-index: 1000 !important;
-	transition: right 0.3s ease !important;
-	overflow-y: auto !important;
-	transform: translateX(0) !important; /* Prevent any transform conflicts */
+	position: fixed;
+	top: 0; /* Bắt đầu từ đỉnh */
+	right: 0; /* Đặt ở bên phải */
+	width: 350px; /* Chiều rộng linh hoạt */
+	height: 100vh; /* Chiều cao toàn màn hình */
+	background: white;
+	border-left: 1px solid #ddd;
+	box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+	z-index: 1000; /* Đảm bảo nằm trên các phần tử khác */
+	padding: 20px;
+	font-family: "Be Vietnam Pro", sans-serif;
+	transform: translateX(100%); /* Ban đầu ẩn ngoài lề phải */
+	transition: transform 0.5s ease-in-out; /* Hiệu ứng trượt */
+	overflow-y: auto; /* Thêm cuộn nếu nội dung vượt quá */
+	box-sizing: border-box;
 }
 
-/* Only show when explicitly has .show class */
 .cart-sidebar.show {
-	right: 0 !important;
-}
-
-.cart-overlay {
-	position: fixed !important;
-	top: 0 !important;
-	left: 0 !important;
-	width: 100vw !important;
-	height: 100vh !important;
-	background: rgba(0, 0, 0, 0.5) !important;
-	z-index: 999 !important;
-	display: none !important; /* Force hidden by default */
-	opacity: 0 !important;
-	visibility: hidden !important;
-}
-
-/* Only show overlay when cart is active */
-.cart-overlay.active {
-	display: block !important;
-	opacity: 1 !important;
-	visibility: visible !important;
-}
-
-/* Prevent any bootstrap or other framework conflicts */
-.cart-sidebar:not(.show) {
-	right: -400px !important;
-	visibility: hidden !important;
+	transform: translateX(0); /* Trượt vào khi hiển thị */
 }
 
 .cart-sidebar-header {
-	padding: 20px;
-	border-bottom: 1px solid #eee;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: white;
-	position: relative;
-	z-index: 1001;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
 }
 
 .cart-sidebar-header h4 {
-	margin: 0;
-	color: #333;
-	font-size: 18px;
+	color: var(--color-tertiary);
+	font-family: Quicksand;
+	font-weight: 700;
 }
 
 .close-btn {
-	background: none !important;
-	border: none !important;
-	font-size: 24px !important;
-	cursor: pointer !important;
-	color: #666 !important;
-	width: 30px !important;
-	height: 30px !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	border-radius: 50%;
-	transition: background-color 0.2s ease;
+	background: none;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+	color: #333;
 }
 
 .close-btn:hover {
-	color: #000 !important;
-	background-color: #f5f5f5 !important;
+	color: #e74c3c;
 }
 
 .cart-items {
-	list-style: none !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	max-height: calc(100vh - 200px) !important;
-	overflow-y: auto !important;
+	list-style: none;
+	padding: 0;
+	max-height: calc(100vh - 150px);
+	overflow-y: auto;
 }
 
-.cart-item {
-	padding: 15px 20px;
+.cart-items li {
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
 	border-bottom: 1px solid #eee;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: white;
 }
 
-.cart-item-info {
-	display: flex;
-	align-items: center;
-	flex: 1;
-}
-
-.cart-item-img {
-	width: 50px;
-	height: 50px;
+.cart-items li img {
+	width: 40px;
+	height: 40px;
 	object-fit: cover;
-	border-radius: 5px;
-	margin-right: 15px;
+	margin-right: 10px;
+	border-radius: 3px;
 }
 
-.cart-item-details h5 {
-	margin: 0 0 5px 0;
-	font-size: 14px;
-	color: #333;
-	font-weight: 600;
+.cart-items li .item-details {
+	flex-grow: 1;
 }
 
-.cart-item-details p {
+.cart-items li .item-details p {
 	margin: 0;
-	font-size: 12px;
-	color: #666;
+	font-size: 14px;
 }
 
-.remove-btn {
-	background: #ff4757 !important;
-	color: white !important;
-	border: none !important;
-	border-radius: 50% !important;
-	width: 25px !important;
-	height: 25px !important;
-	cursor: pointer !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	font-size: 16px !important;
+.cart-items li .item-price {
 	font-weight: bold;
-	transition: background-color 0.2s ease;
-}
-
-.remove-btn:hover {
-	background: #ff3742 !important;
+	color: #e74c3c;
 }
 
 .cart-total {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	padding: 20px;
-	background: white;
+	margin-top: 15px;
+	padding-top: 10px;
 	border-top: 1px solid #eee;
-	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+	text-align: right;
 }
 
 .cart-total p {
-	margin: 0 0 15px 0;
-	font-weight: bold;
+	margin: 0;
 	font-size: 16px;
-	color: #333;
 }
 
 .checkout-btn {
-	width: 100% !important;
-	background: #007bff !important;
-	color: white !important;
-	border: none !important;
-	padding: 12px !important;
-	border-radius: 5px !important;
-	cursor: pointer !important;
-	font-size: 16px !important;
-	font-weight: 600;
-	transition: background-color 0.2s ease;
+	background: #e74c3c;
+	color: white;
+	border: none;
+	padding: 5px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
 }
 
 .checkout-btn:hover {
-	background: #0056b3 !important;
+	background: #c0392b;
 }
 
-.empty-cart {
-	padding: 40px 20px;
-	text-align: center;
-	color: #666;
-	font-style: italic;
+/* Thêm overlay khi sidebar mở */
+.cart-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 999;
 }
 
-.cart-count {
-	position: absolute !important;
-	top: -8px !important;
-	right: -8px !important;
-	background: #ff4757 !important;
-	color: white !important;
-	border-radius: 50% !important;
-	width: 18px !important;
-	height: 18px !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	font-size: 12px !important;
-	font-weight: bold !important;
-	z-index: 1002;
+.cart-sidebar.show + .cart-overlay {
+	display: block;
 }
 
-/* Cart icon styling */
-.cart {
-	position: relative !important;
-}
-
+.search a,
 .cart a {
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	color: #333 !important;
-	text-decoration: none !important;
-	padding: 8px;
-	border-radius: 50%;
-	transition: background-color 0.2s ease;
-}
-
-.cart a:hover {
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
-.cart box-icon {
-	font-size: 24px !important;
-}
-
-/* Debug styles - remove after fixing */
-.cart-sidebar[style*="display: block"],
-.cart-sidebar[style*="right: 0"] {
-	right: -400px !important;
-}
-
-/* Force hide any conflicting styles */
-.cart-sidebar:not(.show)[style] {
-	right: -400px !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-	.cart-sidebar {
-		width: 100vw !important;
-		right: -100vw !important;
-	}
-
-	.cart-sidebar.show {
-		right: 0 !important;
-	}
+	height: 24px;
+	display: block;
 }
 
 .slash {
@@ -1262,23 +1158,24 @@ span.address {
 	visibility: visible;
 }
 
-/* Form Control Đăng ký / Đăng nhập */
+/* Form Control và Đăng ký / Đăng nhập */
 .form-control,
 .form-select {
 	margin-bottom: 16px;
 	border: 2px solid #ddd;
-	border-radius: 55px !important;
+	border-radius: 8px !important;
 	padding-left: 60px;
 	font-size: 1em;
 	font-family: "Poppins", sans-serif;
 	color: #333;
 	height: 45px;
 	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	font-family: Quicksand;
 }
 
 .form-control::placeholder,
 .form-select {
-	color: #777;
+	color: #444;
 	font-style: italic;
 	font-weight: 500;
 }

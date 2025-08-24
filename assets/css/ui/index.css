@@ -168,7 +168,6 @@
 	margin-bottom: 20px !important;
 }
 
-
 .welcome-section .common-img {
 	border-radius: 20px;
 }
@@ -350,10 +349,6 @@
 
 .impact-card:hover::before {
 	width: 100%;
-}
-
-.impact-card:last-child {
-	margin: 0;
 }
 
 .impact-card-1 {
@@ -552,10 +547,10 @@
 	transition: 0.3s;
 }
 
-.img-fluid:hover {
+/* .img-fluid:hover {
 	transform: scale(1.05);
 	transition: transform 0.3s ease;
-}
+} */
 
 /* Testimonials Section */
 .testimonials-section {
@@ -600,9 +595,9 @@
 	color: var(--color-primary-2) !important;
 }
 
-.row {
+/* .row {
 	align-items: center;
-}
+} */
 
 .testimonials-container {
 	display: grid;
@@ -864,37 +859,4 @@
 		height: 400px;
 		width: 400px;
 	}
-}
-
-/*css login-register*/
-.auth-section {
-	display: flex;
-	align-items: center;
-}
-
-.user-info {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.welcome-text {
-	color: #1c2a52;
-	font-weight: 500;
-	font-size: 14px;
-}
-
-.logout-btn {
-	background: #ff6b6b;
-	color: white;
-	border: none;
-	padding: 6px 12px;
-	border-radius: 5px;
-	font-size: 12px;
-	cursor: pointer;
-	transition: background 0.3s ease;
-}
-
-.logout-btn:hover {
-	background: #ff5252;
 }

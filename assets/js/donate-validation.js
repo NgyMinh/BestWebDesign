@@ -88,76 +88,76 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	// Step 1 validation
-	function validateStep1() {
-		const errors = [];
+	// function validateStep1() {
+	// 	const errors = [];
 
-		if (!countrySelect || !countrySelect.value) {
-			errors.push("• Vui lòng chọn quốc gia");
-		}
+	// 	if (!countrySelect || !countrySelect.value) {
+	// 		errors.push("• Vui lòng chọn quốc gia");
+	// 	}
 
-		if (!projectSelect || !projectSelect.value) {
-			errors.push("• Vui lòng chọn dự án đóng góp");
-		}
+	// 	if (!projectSelect || !projectSelect.value) {
+	// 		errors.push("• Vui lòng chọn dự án đóng góp");
+	// 	}
 
-		const isCustomAmount = document.getElementById("customAmountInput")?.style.display !== "none";
-		const amountInput = isCustomAmount ? document.querySelector("#customAmountInput input") : donationAmountInput;
+	// 	const isCustomAmount = document.getElementById("customAmountInput")?.style.display !== "none";
+	// 	const amountInput = isCustomAmount ? document.querySelector("#customAmountInput input") : donationAmountInput;
 
-		if (!amountInput || !amountInput.value || !isValidAmount(amountInput.value)) {
-			errors.push("• Vui lòng nhập số tiền hợp lệ (lớn hơn 1.000 VND)");
-		}
+	// 	if (!amountInput || !amountInput.value || !isValidAmount(amountInput.value)) {
+	// 		errors.push("• Vui lòng nhập số tiền hợp lệ (lớn hơn 1.000 VND)");
+	// 	}
 
-		if (errors.length > 0) {
-			showAlert("Vui lòng kiểm tra lại thông tin:<br>" + errors.join("<br>"));
-			return false;
-		}
+	// 	if (errors.length > 0) {
+	// 		showAlert("Vui lòng kiểm tra lại thông tin:<br>" + errors.join("<br>"));
+	// 		return false;
+	// 	}
 
-		return true;
-	}
+	// 	return true;
+	// }
 
 	// Step 2 validation
-	function validateStep2() {
-		const errors = [];
+	// function validateStep2() {
+	// 	const errors = [];
 
-		if (!nameInput?.value.trim()) {
-			errors.push("• Vui lòng nhập họ và tên");
-		}
+	// 	if (!nameInput?.value.trim()) {
+	// 		errors.push("• Vui lòng nhập họ và tên");
+	// 	}
 
-		if (!phoneInput?.value.trim() || !isValidPhone(phoneInput.value)) {
-			errors.push("• Số điện thoại phải có đúng 10 chữ số (ví dụ: 0123456789)");
-		}
+	// 	if (!phoneInput?.value.trim() || !isValidPhone(phoneInput.value)) {
+	// 		errors.push("• Số điện thoại phải có đúng 10 chữ số (ví dụ: 0123456789)");
+	// 	}
 
-		if (!addressInput?.value.trim()) {
-			errors.push("• Vui lòng nhập địa chỉ liên hệ");
-		}
+	// 	if (!addressInput?.value.trim()) {
+	// 		errors.push("• Vui lòng nhập địa chỉ liên hệ");
+	// 	}
 
-		if (errors.length > 0) {
-			showAlert("Vui lòng kiểm tra lại thông tin:<br>" + errors.join("<br>"));
-			return false;
-		}
+	// 	if (errors.length > 0) {
+	// 		showAlert("Vui lòng kiểm tra lại thông tin:<br>" + errors.join("<br>"));
+	// 		return false;
+	// 	}
 
-		return true;
-	}
+	// 	return true;
+	// }
 
 	// Step 3 validation
-	function validateStep3() {
-		const errors = [];
+	// function validateStep3() {
+	// 	const errors = [];
 
-		const selected = Array.from(paymentOptions).some((el) => el.classList.contains("active"));
-		if (!selected) {
-			errors.push("• Vui lòng chọn một phương thức thanh toán");
-		}
+	// 	const selected = Array.from(paymentOptions).some((el) => el.classList.contains("active"));
+	// 	if (!selected) {
+	// 		errors.push("• Vui lòng chọn một phương thức thanh toán");
+	// 	}
 
-		if (!termsCheckbox?.checked) {
-			errors.push("• Vui lòng đọc và đồng ý với các điều khoản");
-		}
+	// 	if (!termsCheckbox?.checked) {
+	// 		errors.push("• Vui lòng đọc và đồng ý với các điều khoản");
+	// 	}
 
-		if (errors.length > 0) {
-			showAlert("Vui lòng kiểm tra lại thông tin:<br>" + errors.join("<br>"));
-			return false;
-		}
+	// 	if (errors.length > 0) {
+	// 		showAlert("Vui lòng kiểm tra lại thông tin:<br>" + errors.join("<br>"));
+	// 		return false;
+	// 	}
 
-		return true;
-	}
+	// 	return true;
+	// }
 
 	// Step Navigation
 	function goToStep(stepNumber) {
