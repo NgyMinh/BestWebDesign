@@ -998,6 +998,86 @@ body::selection {
 	}
 }
 
+/* Hoạt ảnh slide khi hiện ra */
+@keyframes slideBottom {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Language Switcher */
+.language-switcher {
+	display: flex;
+	align-items: center;
+	gap: 0;
+}
+
+.lang-btn {
+	box-sizing: border-box;
+	height: 26px; /* cố định chiều cao */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 10px; /* giữ padding ngang */
+	min-width: 32px;
+	border-radius: 10px;
+	border: 2px solid #00c6ff;
+	background: transparent;
+	color: #00c6ff;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 600;
+	transition: background 0.25s ease, border-color 0.25s ease;
+	margin-left: -8px; /* lồng nhẹ */
+	z-index: 1;
+}
+
+/* nút đầu không bị lồng ra ngoài */
+.language-switcher .lang-btn:first-child {
+	margin-left: 0;
+}
+
+/* hover nhẹ (không dịch lên) */
+.lang-btn:hover {
+	border-color: #00c6ff;
+	/* color: #00c6ff */
+}
+
+/* trạng thái active: có nền, màu chữ, nổi lên */
+.language-switcher .lang-btn.active {
+	background: #00c6ff !important;
+	color: #fff;
+	border-color: #00c6ff;
+	z-index: 2;
+}
+
+.header.scrolled .lang-btn {
+	color: var(--color-secondary);
+	border-color: var(--color-secondary);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	filter: brightness(1.1);
+}
+
+.header.scrolled .lang-btn:hover {
+	border-color: var(--color-secondary);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	filter: brightness(1.1);
+}
+
+.header.scrolled .language-switcher .lang-btn.active {
+	background: var(--color-secondary) !important;
+	color: #fff;
+	border-color: var(--color-secondary);
+	z-index: 2;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	filter: brightness(1.1);
+}
+
 /* Footer Section */
 .footer-section {
 	padding: 100px 0 25px 0;
