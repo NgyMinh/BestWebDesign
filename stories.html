@@ -182,27 +182,35 @@
 						</a>
 					</div>
 
-					<div class="register-login">
-						<a class="register" href="login_register.html">Đăng ký</a>
-						<span class="slash">/</span>
-						<a class="login" href="login_register.html">Đăng nhập</a>
-					</div>
-				</div>
+					<div class="auth-section">
+						<!-- Links cho user chưa đăng nhập -->
+						<div id="auth-links" class="register-login" style="display: block;">
+							<a class="register" href="login_register.html">Đăng ký</a>
+							<span class="slash">/</span>
+							<a class="login" href="login_register.html">Đăng nhập</a>
+						</div>
 
-				<!-- Giỏ hàng của bạn -->
-				<div id="cart-sidebar" class="cart-sidebar">
-					<div class="cart-sidebar-header">
-						<h4>Giỏ hàng của bạn</h4>
-						<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></button>
+						<!-- Thông tin user đã đăng nhập -->
+						<div id="user-info" class="user-info" style="display: none;">
+							<span class="welcome-text">Xin chào, <strong id="username"></strong>!</span>
+							<button class="logout-btn" id="logout-btn">Đăng xuất</button>
+						</div>
 					</div>
-					<ul id="cart-items" class="cart-items"></ul>
-					<div class="cart-total">
-						<p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
-						<button class="checkout-btn">Thanh toán</button>
-					</div>
-				</div>
 
-				<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+					<!-- Giỏ hàng -->
+					<div id="cart-sidebar" class="cart-sidebar">
+						<div class="cart-sidebar-header">
+							<h4>Giỏ hàng của bạn</h4>
+							<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')">×</button>
+						</div>
+						<ul id="cart-items" class="cart-items"></ul>
+						<div class="cart-total">
+							<p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
+							<button class="checkout-btn">Thanh toán</button>
+						</div>
+					</div>
+					<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+				</div>
 			</header>
 
 			<!-- Content -->
@@ -325,6 +333,16 @@
 		<script src="../assets/js/messenger.js"></script>
 		<script src="../assets/js/hero.js"></script>
 		<script src="../assets/js/cart.js"></script>
+		<script src="../assets/js/search.js"></script>
+		<script src="assets/js/featured-stories.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<!-- link Modal -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="../assets/js/modal.js"></script>
+		<!-- Gọi script -->
+		<script src="auth.js"></script>
 
 		<!-- Messenger Icon -->
 		<a href="https://m.me/ErasmusFade" target="_blank" class="messenger-icon">

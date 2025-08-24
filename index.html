@@ -58,10 +58,9 @@
 					<a href=""><img class="logo" src="../assets/img/logo.png" alt="Logo" /></a>
 				</div>
 
-				<!-- Navbar điều hướng -->
 				<nav class="navbar">
 					<div class="nav-item dropdown">
-						<a style="--i: 1" class="nav-link active" href="index.html">
+						<a style="--i: 1" class="nav-link active" href="index.html" data-lang-key="nav_home">
 							Trang chủ
 							<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
 								 stroke="#1c2a52" stroke-width="3"
@@ -79,7 +78,7 @@
 					</div>
 
 					<div class="nav-item dropdown">
-						<a style="--i: 2" class="nav-link" href="about.html">
+						<a style="--i: 2" class="nav-link" href="about.html" data-lang-key="nav_about">
 							Về chúng tôi
 							<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
 								 stroke="#1c2a52" stroke-width="3"
@@ -97,7 +96,7 @@
 					</div>
 
 					<div class="nav-item dropdown">
-						<a style="--i: 3" class="nav-link" href="volunteer.html">
+						<a style="--i: 3" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer">
 							Tình nguyện
 							<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
 								 stroke="#1c2a52" stroke-width="3"
@@ -117,7 +116,7 @@
 					</div>
 
 					<div class="nav-item dropdown">
-						<a style="--i: 4" class="nav-link" href="donate.html">
+						<a style="--i: 4" class="nav-link" href="donate.html" data-lang-key="nav_donate">
 							Quyên góp
 							<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
 								 stroke="#1c2a52" stroke-width="3"
@@ -133,7 +132,7 @@
 						</div>
 					</div>
 
-					<a style="--i: 5" class="nav-link" href="stories.html">Câu chuyện</a>
+					<a style="--i: 5" class="nav-link" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
 				</nav>
 
 				<div class="right-header">
@@ -152,22 +151,27 @@
 						</a>
 					</div>
 
+					<div class="language-switcher">
+						<button id="lang-vi" class="lang-btn active">VN</button>
+						<button id="lang-en" class="lang-btn">EN</button>
+					</div>
+
 					<div class="auth-section">
-						<!-- Links cho user chưa đăng nhập -->
 						<div id="auth-links" class="register-login" style="display: block;">
-							<a class="register" href="login_register.html">Đăng ký</a>
+							<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
 							<span class="slash">/</span>
-							<a class="login" href="login_register.html">Đăng nhập</a>
+							<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
 						</div>
 
-						<!-- Thông tin user đã đăng nhập -->
 						<div id="user-info" class="user-info" style="display: none;">
-							<span class="welcome-text">Xin chào, <strong id="username"></strong>!</span>
-							<button class="logout-btn" id="logout-btn">Đăng xuất</button>
+        <span class="welcome-text">
+            <span data-lang-key="auth_greeting">Xin chào,</span>
+            <strong id="username"></strong>!
+        </span>
+							<button class="logout-btn" id="logout-btn" data-lang-key="auth_logout">Đăng xuất</button>
 						</div>
 					</div>
 
-					<!-- Giỏ hàng -->
 					<div id="cart-sidebar" class="cart-sidebar">
 						<div class="cart-sidebar-header">
 							<h4>Giỏ hàng của bạn</h4>
@@ -186,13 +190,13 @@
 			<!-- Content -->
 			<section class="home">
 				<div class="home-content">
-					<h1>Chung tay vì trẻ em vùng cao.</h1>
-					<h3>Hành động ngay!</h3>
-					<p>
+					<h1 data-lang-key="hero_title">Chung tay vì trẻ em vùng cao.</h1>
+					<h3 data-lang-key="hero_subtitle">Hành động ngay!</h3>
+					<p data-lang-key="hero_description">
 						Chung tay xây dựng tương lai tươi sáng cho trẻ em vùng cao – nơi điều kiện học tập còn thiếu thốn nhưng ước mơ luôn cháy bỏng. Mỗi đóng góp là bước đệm đưa các em đến gần tri
 						thức, cơ hội và hy vọng
 					</p>
-					<a href="#shop" class="hero-btn btn-animation">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+					<a href="#shop" class="hero-btn btn-animation" data-lang-key="hero_button">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
 				</div>
 			</section>
 
@@ -204,25 +208,22 @@
 				</div>
 			</section>
 		</div>
-
 		<!-- Welcome Section -->
 		<section class="welcome-section margin-section" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="0">
 			<div class="container common-container">
 				<div class="row g-5">
-					<!-- Cột text -->
 					<div class="col-12 col-md-6">
 						<div class="text-md-start">
-							<h3 class="common-caption welcome-caption">Đồng hành cùng Quỹ từ thiện MVP</h3>
-							<h2 class="common-heading welcome-heading">MVP – Mang tri thức đi khắp mọi miền</h2>
-							<p class="common-content welcome-content">
+							<h3 class="common-caption welcome-caption" data-lang-key="welcome_caption">Đồng hành cùng Quỹ từ thiện MVP</h3>
+							<h2 class="common-heading welcome-heading" data-lang-key="welcome_heading">MVP – Mang tri thức đi khắp mọi miền</h2>
+							<p class="common-content welcome-content" data-lang-key="welcome_content">
 								MVP là tổ chức từ thiện phi lợi nhuận, cam kết mang giáo dục và hy vọng đến trẻ em vùng cao. Với sự hỗ trợ của cộng đồng, chúng tôi đã giúp hơn
 								<b>1,000 trẻ em</b> được đến trường và xây dựng tương lai tươi sáng hơn.
 							</p>
-							<a href="./about.html" class="common-btn btn btn-primary"> <i class="fa-solid fa-heart-pulse mx-1"></i> Tìm hiểu thêm </a>
+							<a href="./about.html" class="common-btn btn btn-primary" data-lang-key="welcome_button"> <i class="fa-solid fa-heart-pulse mx-1"></i> Tìm hiểu thêm </a>
 						</div>
 					</div>
 
-					<!-- Cột hình ảnh -->
 					<div class="col-12 col-md-6 mt-3 mt-md-0">
 						<img src="../assets/img/welcome-section.webp" class="common-img img-fluid" alt="từ thiện vùng cao" />
 					</div>
@@ -233,15 +234,14 @@
 		<!-- Featured Stories Section -->
 		<section class="featured-stories-section margin-section px-md-0 px-3" data-aos="fade-up">
 			<div class="container common-container">
-				<!-- Tiêu đề -->
 				<div class="section-header d-flex justify-content-between align-items-center">
-					<h2 class="fs-stories-heading common-heading">CÂU CHUYỆN <span class="strong-heading">NỔI BẬT</span></h2>
-					<a href="#" class="view-all">Xem tất cả →</a>
+					<h2 class="fs-stories-heading common-heading">
+						<span data-lang-key="stories_heading">CÂU CHUYỆN</span> <span class="strong-heading" data-lang-key="stories_heading_strong">NỔI BẬT</span>
+					</h2>
+					<a href="#" class="view-all" data-lang-key="stories_view_all">Xem tất cả →</a>
 				</div>
-				<!-- Slider -->
 				<div class="swiper featured-stories-slider">
 					<div class="swiper-wrapper">
-						<!-- Card 1 -->
 						<div class="swiper-slide">
 							<div class="fs-card">
 								<div class="fs-img">
@@ -249,15 +249,14 @@
 									<div class="fs-progress-overlay"><span>60%</span></div>
 								</div>
 								<div class="fs-info">
-									<h5 class="fs-title">Tủ sách nhỏ cho điểm trường lẻ</h5>
-									<p class="fs-meta">2.8N lượt ủng hộ - Còn lại 12 ngày</p>
+									<h5 class="fs-title" data-lang-key="story1_title">Tủ sách nhỏ cho điểm trường lẻ</h5>
+									<p class="fs-meta" data-lang-key="story1_meta">2.8N lượt ủng hộ - Còn lại 12 ngày</p>
 									<div class="fs-progress"><div class="progress-bar" style="width: 60%"></div></div>
 									<p class="fs-raised">540.000.000 ₫</p>
 								</div>
 							</div>
 						</div>
 
-						<!-- Card 2 -->
 						<div class="swiper-slide">
 							<div class="fs-card">
 								<div class="fs-img">
@@ -265,15 +264,14 @@
 									<div class="fs-progress-overlay"><span>85%</span></div>
 								</div>
 								<div class="fs-info">
-									<h5 class="fs-title">Quyên góp sách vở cho trẻ em nghèo</h5>
-									<p class="fs-meta">5.2N lượt ủng hộ - Còn lại 40 ngày</p>
+									<h5 class="fs-title" data-lang-key="story2_title">Quyên góp sách vở cho trẻ em nghèo</h5>
+									<p class="fs-meta" data-lang-key="story2_meta">5.2N lượt ủng hộ - Còn lại 40 ngày</p>
 									<div class="fs-progress"><div class="progress-bar" style="width: 85%"></div></div>
 									<p class="fs-raised">556.900.000 ₫</p>
 								</div>
 							</div>
 						</div>
 
-						<!-- Card 3 -->
 						<div class="swiper-slide">
 							<div class="fs-card">
 								<div class="fs-img">
@@ -281,8 +279,8 @@
 									<div class="fs-progress-overlay"><span>40%</span></div>
 								</div>
 								<div class="fs-info">
-									<h5 class="fs-title">Khóa học kỹ năng sống cho trẻ em</h5>
-									<p class="fs-meta">2.4N lượt ủng hộ - Còn lại 15 ngày</p>
+									<h5 class="fs-title" data-lang-key="story3_title">Khóa học kỹ năng sống cho trẻ em</h5>
+									<p class="fs-meta" data-lang-key="story3_meta">2.4N lượt ủng hộ - Còn lại 15 ngày</p>
 									<div class="fs-progress"><div class="progress-bar" style="width: 40%"></div></div>
 									<p class="fs-raised">380.550.500 ₫</p>
 								</div>
@@ -396,29 +394,26 @@
 		<section id="conso" class="impact-section margin-section px-md-0 px-5" data-aos="zoom-in">
 			<div class="container common-container">
 				<div class="row g-5">
-					<h2 class="common-heading text-center impact-heading">Những con số biết nói</h2>
-					<h3 class="common-intro">
+					<h2 class="common-heading text-center impact-heading" data-lang-key="impact_heading">Những con số biết nói</h2>
+					<h3 class="common-intro" data-lang-key="impact_intro">
 						Mỗi con số là một câu chuyện – về những nụ cười, hành trình và niềm tin. Đây là những gì chúng tôi đã cùng cộng đồng tạo nên trong suốt hành trình mang tri thức và hy vọng đến
 						với trẻ em vùng khó khăn
 					</h3>
 
-					<!-- Card 1 -->
 					<div class="col-12 col-md-4 impact-card impact-card-1 mb-4">
 						<img src="../assets/img/impact-1.png" alt="Trẻ em học tập" class="impact-icon" />
 						<h2 class="impact-title" data-target="1000">1000+</h2>
-						<p class="common-content">Trẻ em được hỗ trợ học bổng và có điều kiện đến trường</p>
+						<p class="common-content" data-lang-key="impact1_desc">Trẻ em được hỗ trợ học bổng và có điều kiện đến trường</p>
 					</div>
-					<!-- Card 2 -->
 					<div class="col-12 col-md-4 impact-card impact-card-2 mb-4">
 						<img src="../assets/img/impact-2.png" alt="Tham gia tình nguyện" class="impact-icon" />
 						<h2 class="impact-title" data-target="500">500+</h2>
-						<p class="common-content">Tình nguyện viên tích cực tham gia các dự án cộng đồng</p>
+						<p class="common-content" data-lang-key="impact2_desc">Tình nguyện viên tích cực tham gia các dự án cộng đồng</p>
 					</div>
-					<!-- Card 3 -->
 					<div class="col-12 col-md-4 impact-card impact-card-3 mb-4">
 						<img src="../assets/img/impact-3.png" alt="Xây trường cho trẻ em vùng cao" class="impact-icon" />
 						<h2 class="impact-title" data-target="10">10+</h2>
-						<p class="common-content">Ngôi trường khang trang được xây dựng tại vùng cao</p>
+						<p class="common-content" data-lang-key="impact3_desc">Ngôi trường khang trang được xây dựng tại vùng cao</p>
 					</div>
 				</div>
 			</div>
@@ -924,6 +919,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="../assets/js/modal.js"></script>
+		<script src="../assets/js/languages.js"></script>
+		<script src="../assets/js/language-switcher.js"></script>
 		<!-- Gọi script -->
 		<script src="auth.js"></script>
 	</body>
