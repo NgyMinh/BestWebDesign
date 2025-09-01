@@ -1,41 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function () {
-// 	const container = document.getElementById("story-container");
-
-// 	// Tạo các section từ sharedData
-// 	if (window.sharedData) {
-// 		window.sharedData.forEach((story) => {
-// 			const titleId = story.title
-// 				.toLowerCase()
-// 				.replace(/[^\w\s]/g, "")
-// 				.replace(/\s+/g, "-");
-
-// 			const section = document.createElement("section");
-// 			section.id = titleId;
-// 			section.classList.add("story");
-
-// 			const title = document.createElement("h2");
-// 			title.textContent = story.title;
-
-// 			const img = document.createElement("img");
-// 			img.src = story.image;
-// 			img.alt = story.title;
-
-// 			const content = document.createElement("p");
-// 			content.textContent = story.content;
-
-// 			section.appendChild(title);
-// 			section.appendChild(img);
-// 			section.appendChild(content);
-
-// 			container.appendChild(section);
-// 		});
-// 	}
-
-// 	console.log("stories.js loaded");
-
-// 	waitForData(showStories);
-// });
-
 // Đợi sharedData load
 function waitForData(callback) {
 	if (window.sharedData) {
@@ -163,7 +125,7 @@ function showStories() {
 					displayStories(displayedCount, remaining);
 					overlay.style.display = "none";
 					loadMoreBtn.disabled = false;
-				}, 4500);
+				}, 2000);
 			});
 		}
 
@@ -181,6 +143,48 @@ function showStories() {
 		if (target) target.scrollIntoView({ behavior: "smooth" });
 	}
 }
+
+// Cuộn xuống
+(function () {
+	const hint = document.getElementById("scroll-hint");
+	if (!hint) return;
+
+	const THRESHOLD = 120; 
+	const SHOW_DURATION = 5000; // ms hiển thị (6s)
+	let lastY = window.scrollY || 0;
+	let shown = false;
+	let timeoutId = null;
+
+	function showOnce() {
+		if (shown) return;
+		shown = true;
+		hint.classList.add("show");
+		// ẩn sau SHOW_DURATION
+		timeoutId = setTimeout(() => {
+			hint.classList.remove("show");
+		}, SHOW_DURATION);
+	}
+
+	window.addEventListener(
+		"scroll",
+		() => {
+			const y = window.scrollY || 0;
+			const isScrollingDown = y > lastY;
+			// Nếu đang kéo xuống, vượt ngưỡng và chưa show => show
+			if (!shown && isScrollingDown && y > THRESHOLD) {
+				showOnce();
+			}
+			lastY = y;
+		},
+		{ passive: true }
+	);
+
+	// Nếu muốn: người dùng click/touch cũng có thể trigger (bỏ nếu không cần)
+	hint.addEventListener("click", () => {
+		hint.classList.remove("show");
+		clearTimeout(timeoutId);
+	});
+})();
 
 // Toggle Xem thêm / Xem ít
 document.addEventListener("click", function (e) {

@@ -3,16 +3,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Qũy từ thiện MVP - Quyên góp</title>
+		<title>Quỹ Hy Vọng Việt MVP - Quyên góp</title>
 		<!-- Favicon -->
 		<link rel="icon" type="image/x-icon" href="../assets/img/logo.png" />
 		<!-- Nhúng font chữ -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap"
 			rel="stylesheet"
 		/>
+
 		<!-- Nhúng font awesome -->
 		<link
 			rel="stylesheet"
@@ -21,6 +22,8 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+		<!-- Nhúng QR code momo -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 		<!-- Hiệu ứng -->
 		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -31,11 +34,14 @@
 		<!-- Link Bootstrap-->
 		<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
 		<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 		<!-- Link tới Modal -->
 		<link rel="stylesheet" href="../html/modal/modals.html" />
 		<!-- Link Char -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 		<!-- Link CSS -->
+		<!-- Select2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../assets/css/ui/common.css" />
 		<link rel="stylesheet" href="../assets/css/ui/index.css" />
 		<link rel="stylesheet" href="../assets/css/ui/donate.css" />
@@ -45,6 +51,14 @@
 		<link rel="stylesheet" href="../assets/css/ui/stories.css" />
 	</head>
 	<body>
+		<button id="scrollTopBtn">
+			<i class="fas fa-arrow-up"></i>
+		</button>
+
+		<button id="hideHeaderBtn">
+			<i id="iconHeader" class="fas fa-eye"></i>
+		</button>
+
 		<!-- Hero -->
 		<div class="hero-section">
 			<img class="hero-background" src="../assets/img/anh-quyen-gop.webp" alt="" />
@@ -218,6 +232,9 @@
 			</section>
 		</div>
 
+		<!-- Container cho alert -->
+		<div id="alert-container"></div>
+
 		<!-- Donate -->
 		<section id="donate" class="donate-section">
 			<div class="donate-container" data-aos="fade-right">
@@ -268,28 +285,20 @@
 							<div id="step1" class="hidden">
 								<form>
 									<div class="row">
+										<label class="form-label">NHẬP THÔNG TIN QUYÊN GÓP</label><br />
 										<div class="col-12">
-											<input type="text" class="form-control input-with-icon donate-input-with-icon-6" placeholder="Số điện thoại" />
+											<input type="text" id="donor-name" class="form-control input-with-icon donate-input-with-icon-6" placeholder="Nhập họ và tên" />
 										</div>
 										<div class="col-12">
-											<input type="text" class="form-control input-with-icon donate-input-with-icon-5" placeholder="Email" />
+											<input type="text" id="donor-email" class="form-control input-with-icon donate-input-with-icon-5" placeholder="Nhập e-mail" />
 										</div>
-										<div class="col-12">
-											<select required class="form-select input-with-icon donate-input-with-icon-2">
-												<option value="" selected disabled hidden>Dự án đóng góp</option>
-												<option value="HocBongTreEmVungCao">Học bổng cho trẻ em vùng cao</option>
-												<option value="LopHocDienBien">Mang lớp học đến vùng cao Điện Biên</option>
-												<option value="MuaHeTinhNguyen">Mùa hè ý nghĩa cùng lớp học tình nguyện</option>
-												<option value="QuyenGopSachVo">Quyên góp sách vở cho trẻ em nghèo</option>
-												<option value="KhoaHocKyNangSong">Khóa học kỹ năng sống cho trẻ em</option>
-												<option value="HoTroDinhDuong">Hỗ trợ dinh dưỡng cho trẻ em vùng cao</option>
-												<option value="ThuVienCaoBang">Xây dựng thư viện cộng đồng tại Cao Bằng</option>
-												<option value="AoAmMuaDong">Hỗ trợ áo ấm mùa đông cho trẻ em</option>
-												<option value="TraiHeKyNang">Trại hè kỹ năng cho trẻ em miền núi</option>
+										<div class="col-12 select-wrapper">
+											<select required id="donation-project" class="form-select input-with-icon donate-input-with-icon-2">
+												<option value="" selected disabled hidden>Chọn 1 dự án muốn quyên góp (*)</option>
 											</select>
 										</div>
 										<div id="donate-buttons" class="col-12">
-											<label class="form-label">CHỌN SỐ TIỀN BẠN MUỐN QUYÊN GÓP:</label><br />
+											<label class="form-label">CHỌN SỐ TIỀN (*) (Đơn vị: VNĐ)</label><br />
 											<div class="button-container">
 												<button type="button" class="donate-btn-money">100.000</button>
 												<button type="button" class="donate-btn-money">200.000</button>
@@ -298,18 +307,28 @@
 												<button type="button" class="donate-btn-money">2.000.000</button>
 												<button type="button" class="donate-btn-money">3.000.000</button>
 												<button type="button" class="donate-btn-money">5.000.000</button>
-												<button type="button" class="donate-btn-money" id="customAmountBtn">CON SỐ KHÁC</button>
+												<button type="button" class="donate-btn-money" id="customAmountBtn">Chọn số tiền khác</button>
 											</div>
 										</div>
+
 										<!-- Ô nhập ẩn ban đầu -->
 										<div id="customAmountInput" style="display: none" class="mt-2">
-											<input type="text" id="donationAmount" class="form-control" placeholder="Nhập số tiền bạn mong muốn" />
+											<input type="text" id="donationAmount" class="form-control input-with-icon donate-input-with-icon-3" placeholder="Nhập số tiền bạn muốn quyên góp" />
+										</div>
+										<!-- Lưu ý -->
+										<div class="note-method-info">
+											<p class="note-heading"><strong>Lưu ý:</strong></p>
+											<ul class="note-list">
+												<li>Ô “Họ và Tên” và “Email” không bắt buộc. Tuy nhiên, nếu điền, hệ thống sẽ ghi nhận chính xác và gửi bản xác nhận đến email của bạn</li>
+												<li>Vui lòng nhập chính xác để nhận được bản xác nhận đầy đủ</li>
+											</ul>
 										</div>
 									</div>
 
 									<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
-										<button type="button" class="common-btn btn-back">Trở Lại</button>
-										<button type="button" class="common-btn btn-next">Tiếp Tục</button>
+										<button type="button" class="hero-btn btn-back">Quay Về</button>
+										<button type="button" class="hero-btn btn-reset">Xóa Tất Cả</button>
+										<button type="button" class="hero-btn btn-next">Tiếp Tục</button>
 									</div>
 								</form>
 							</div>
@@ -318,56 +337,142 @@
 							<div id="step2" class="hidden">
 								<form>
 									<div class="row">
-										<!-- THÔNG TIN ĐƠN HÀNG -->
-										<div id="order-summary" class="order-summary" style="display: none">
-											<div class="order-head">
-												<span class="order-title">Thông tin đơn hàng</span>
-												<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
-											</div>
-
-											<div class="order-body">
-												<p><strong>Đơn vị chấp nhận thanh toán</strong><br />QUY TU THIEN MVP</p>
-												<p><strong>Mã đơn hàng</strong><br />Ung ho 1273121931</p>
-												<p>
-													<strong>Số tiền thanh toán</strong><br />
-													<span id="order-amount" class="order-amount">1,000 VNĐ</span> <strong>VNĐ</strong>
-												</p>
-											</div>
-										</div>
-
-										<label class="form-label">PHƯƠNG THỨC THANH TOÁN</label>
+										<label class="form-label">VUI LÒNG CHỌN 1 PHƯƠNG THỨC THANH TOÁN</label>
 										<div id="payment-methods">
-											<div class="payment-option">Quyên Góp Qua Mã QR<span>📱</span></div>
-											<div class="payment-option">Thẻ Tín Dụng / Ghi Nợ <span>💳</span></div>
-											<div class="payment-option">Thẻ ATM / Tài Khoản Ngân Hàng <span>🏦</span></div>
-											<div class="payment-option">Thanh Toán Bằng Tiền Mặt<span>🇻🇳</span></div>
-										</div>
+											<div class="payment-option">
+												Thanh Toán Bằng Mã VietQR
+												<img src="assets/img/qr-option.png" alt="QR" />
+											</div>
+											<div class="payment-option">
+												Thanh Toán Bằng Thẻ Tín Dụng / Ghi Nợ
+												<div class="icons">
+													<img src="assets/img/the-tin-dung-option1.png" alt="Card" />
+													<img src="assets/img/the-tin-dung-option2.png" alt="Card" />
 
-										<!-- PHƯƠNG THỨC: QR -->
-										<!-- QR Code -->
-										<div id="qr-info" class="qr-card" style="display: none">
-											<p class="qr-heading">Quyên góp qua mã QR</p>
-											<img id="qr-code" src="" alt="QR Code" style="width: 100%" />
-											<div id="bank-info">
-												<p>Chủ tài khoản: NGUYỄN HỮU MINH</p>
-												<p>Số tài khoản: 1039764872</p>
-												<p>Ngân hàng: Vietcombank</p>
-												<p>Nội dung: UngHoTreEm</p>
+													<img src="assets/img/the-tin-dung-option4.png" alt="Card" />
+													<img src="assets/img/the-tin-dung-option5.png" alt="Card" />
+												</div>
+											</div>
+											<div class="payment-option">
+												Thanh Toán Bằng Ví Điện Tử
+												<div class="icons">
+													<img src="assets/img/momo-option.jpg" alt="Wallet" />
+													<img src="assets/img/zalopay-option.png" alt="Wallet" />
+												</div>
+											</div>
+											<div class="payment-option">
+												Thanh Toán Bằng Thẻ ATM / Tài Khoản Ngân Hàng
+												<img src="assets/img/atm-option.webp" alt="Bank" />
 											</div>
 										</div>
 
-										<!-- Nút xem hướng dẫn -->
-										<button id="open-guide" class="btn-guide" type="button">Xem hướng dẫn</button>
+										<!-- PHƯƠNG THỨC 1:  QR Code -->
+										<div class="order-wrapper">
+											<div class="row justify-content-between g-3">
+												<!-- Cột trái: QR -->
+												<div class="col-md-6 p-0">
+													<div id="qr-info" class="qr-card" style="display: none">
+														<p class="qr-heading">Quyên góp qua mã VietQR</p>
+														<div class="qr-scan-frame">
+															<img id="qr-code" src="" alt="QR Code" />
+															<div class="corner top-left"></div>
+															<div class="corner top-right"></div>
+															<div class="corner bottom-left"></div>
+															<div class="corner bottom-right"></div>
+														</div>
+														<div id="bank-info">
+															<p>Chủ tài khoản: <strong>NGUYỄN HỮU MINH</strong></p>
+															<p>Số tài khoản: <strong>1039764872</strong></p>
+															<p>Ngân hàng: <strong>Vietcombank</strong></p>
+															<p>Nội dung chuyển khoản: <strong>UngHoTreEm</strong></p>
+														</div>
+													</div>
+													<!-- <button id="open-guide" class="btn-guide" type="button">Xem hướng dẫn</button> -->
+												</div>
+
+												<!-- Cột phải: Thông tin đơn hàng QR CODE -->
+												<div class="col-md-6 p-0">
+													<div id="order-summary" class="order-summary" style="display: none">
+														<div class="order-head">
+															<span class="order-title">Thông tin đơn hàng</span>
+															<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+														</div>
+														<div class="order-body">
+															<p>
+																<strong class="order-body-heading">Đơn vị chấp nhận thanh toán:</strong><br />
+																<span class="order-body-content">QUỸ TỪ THIỆN MVP</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Số tiền thanh toán bằng số:</strong><br />
+																<span id="order-amount" class="order-amount order-body-content">1,000 VNĐ</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Số tiền thanh toán bằng chữ:</strong><br />
+																<span id="order-amount-words" class="order-amount order-body-content">Một nghìn đồng</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Phương thức thanh toán:</strong><br />
+																<span class="order-body-content">Quét mã QR </span>
+															</p>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!-- PHẦN LƯU Ý -->
+											<div class="note-method-qr">
+												<p class="note-heading"><strong>Lưu ý khi QUÉT MÃ QR:</strong></p>
+												<ul class="note-list">
+													<li>Vui lòng quét đúng mã QR được cung cấp để đảm bảo chuyển khoản tới đúng tài khoản người nhận</li>
+													<li>
+														Hệ thống có thể tự động kiểm tra nội dung chuyển khoản. Do đó, bạn cần giữ nguyên nội dung chuyển khoản được hiển thị, không thêm, bớt hoặc
+														chỉnh sửa ký tự nào
+													</li>
+													<li>Vui lòng chuyển đúng số tiền như đã hiển thị trong phần thanh toán. Việc chuyển sai số tiền có thể khiến hệ thống không ghi nhận giao dịch.</li>
+													<li>
+														Nếu bạn sử dụng ứng dụng ngân hàng có hỗ trợ mã QR, hãy đảm bảo rằng thông tin tài khoản và nội dung được hiển thị đúng trước khi xác nhận
+														chuyển khoản
+													</li>
+													<li>
+														Trong trường hợp gặp lỗi khi quét mã, không thấy thông tin hoặc đã chuyển khoản nhưng không nhận được xác nhận, vui lòng liên hệ ngay với bộ
+														phận hỗ trợ để được kiểm tra và xử lý kịp thời
+													</li>
+												</ul>
+											</div>
+										</div>
 
 										<!-- PHƯƠNG THỨC: THẺ TÍN DỤNG/GHI NỢ -->
-
-										<div id="credit-card-form" class="mt-4" style="display: none">
+										<div id="credit-card-form" style="display: none">
+											<div id="order-summary-card" class="order-summary m-auto" style="display: none">
+												<div class="order-head">
+													<span class="order-title">Thông tin đơn hàng</span>
+													<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+												</div>
+												<div class="order-body">
+													<p>
+														<strong class="order-body-heading">Đơn vị chấp nhận thanh toán:</strong><br />
+														<span class="order-body-content">QUỸ TỪ THIỆN MVP</span>
+													</p>
+													<p>
+														<strong class="order-body-heading">Số tiền thanh toán bằng số:</strong><br />
+														<span id="order-amount" class="order-amount order-body-content">1,000 VNĐ</span>
+													</p>
+													<p>
+														<strong class="order-body-heading">Số tiền thanh toán bằng chữ:</strong><br />
+														<span id="order-amount-words" class="order-amount order-body-content">Một nghìn đồng</span>
+													</p>
+													<p>
+														<strong class="order-body-heading">Phương thức thanh toán:</strong><br />
+														<span class="order-body-content">Thẻ tín dụng / ghi nợ</span>
+													</p>
+												</div>
+											</div>
 											<div class="row">
 												<!-- Cột trái: Form -->
 												<div class="col-md-8">
 													<fieldset>
-														<legend>Thông tin thẻ tín dụng</legend>
-														<label
+														<legend class="legend-heading">Thông tin thẻ tín dụng</legend>
+														<label class="label-tooltip"
 															>Số thẻ (*)
 															<img
 																src="assets/img/question.png"
@@ -384,7 +489,7 @@
 
 														<input type="text" id="card-number" class="form-control" required />
 
-														<label class="mt-3"
+														<label class="mt-3 label-tooltip"
 															>Tháng/Năm hết hạn (*)
 															<img
 																src="assets/img/question.png"
@@ -400,7 +505,7 @@
 														</label>
 														<input type="text" id="card-expiry" class="form-control" required />
 
-														<label class="mt-3"
+														<label class="mt-3 label-tooltip"
 															>CSC (*)
 															<img
 																src="assets/img/question.png"
@@ -425,7 +530,7 @@
 														<div class="form-check mt-3">
 															<input class="form-check-input" type="checkbox" id="agree-credit" />
 															<label class="form-check-label" for="agree-credit">
-																Tôi đã đọc, hiểu rõ và đồng ý với <a href="#">Chính sách bảo vệ và xử lý dữ liệu cá nhân</a> của OnePay
+																Tôi đã đọc, hiểu rõ và đồng ý với <a href="#"> Chính sách bảo vệ và xử lý dữ liệu cá nhân</a>
 															</label>
 														</div>
 													</fieldset>
@@ -453,6 +558,246 @@
 											</div>
 										</div>
 
+										<!-- PHƯƠNG THỨC: VÍ ĐIỆN TỬ -->
+										<div class="wallets-tabs-container">
+											<div class="wallet-tabs">
+												<button class="wallet-tab-btn active" data-tab="momo">MOMO</button>
+												<button class="wallet-tab-btn" data-tab="zalopay">ZALOPAY</button>
+											</div>
+										</div>
+
+										<!-- MOMO -->
+										<div id="momo-info" class="order-wrapper" style="display: none">
+											<div class="row justify-content-between g-3">
+												<!-- Cột trái: QR MoMo -->
+												<div class="col-md-6 p-0">
+													<div class="qr-card qr-momo">
+														<p class="qr-heading">Quyên góp qua Ví MoMo</p>
+														<div class="qr-scan-frame">
+															<img src="assets/img/qr-momo.png" alt="QR MoMo" style="width: 100%" />
+															<div class="corner top-left"></div>
+															<div class="corner top-right"></div>
+															<div class="corner bottom-left"></div>
+															<div class="corner bottom-right"></div>
+														</div>
+														<div id="momo-bank-info">
+															<p>Tên chủ ví: <strong>NGUYỄN HỮU MINH</strong></p>
+															<p>Số điện thoại: <strong>0818259227</strong></p>
+															<p>Nội dung: <strong>UngHoTreEm - MoMo</strong></p>
+														</div>
+														<!-- <p style="color: gray; font-size: 14px; margin-top: 10px">👉 Quét mã bằng app MoMo, sau đó nhập số tiền bạn muốn ủng hộ.</p> -->
+													</div>
+												</div>
+
+												<!-- Cột phải: Thông tin đơn hàng momo -->
+												<div class="col-md-6">
+													<div id="order-summary-momo" class="order-summary">
+														<div class="order-head">
+															<span class="order-title">Thông tin đơn hàng</span>
+															<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+														</div>
+														<div class="order-body">
+															<p>
+																<strong class="order-body-heading">Đơn vị chấp nhận thanh toán:</strong><br />
+																<span class="order-body-content">QUỸ TỪ THIỆN MVP</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Số tiền thanh toán bằng số:</strong><br />
+																<span id="order-amount-momo" class="order-body-content">1,000 VNĐ</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Số tiền thanh toán bằng chữ:</strong><br />
+																<span id="order-amount-words-momo" class="order-body-content">Một nghìn đồng</span>
+															</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- PHẦN LƯU Ý -->
+											<div class="note-method-qr">
+												<p class="note-heading"><strong>Lưu ý khi sử dụng MOMO:</strong></p>
+												<ul class="note-list">
+													<li>Chỉ sử dụng app MoMo để quét mã QR bên trái</li>
+													<li>Vui lòng giữ nguyên nội dung chuyển khoản được cung cấp: UngHoTreEm-MoMo</li>
+													<li>Không thêm, bớt hoặc thay đổi ký tự trong nội dung chuyển khoản</li>
+													<li>Chuyển đúng số tiền hiển thị để hệ thống ghi nhận giao dịch thành công</li>
+													<li>Nếu có lỗi hoặc không xác nhận được giao dịch, liên hệ bộ phận hỗ trợ để kiểm tra</li>
+												</ul>
+											</div>
+										</div>
+
+										<!-- ZALO PAY -->
+										<div id="zalopay-info" class="order-wrapper" style="display: none">
+											<div class="row justify-content g-3">
+												<!-- Cột trái: QR ZaloPay -->
+												<div class="col-md-6 p-0">
+													<div class="qr-card qr-zalo">
+														<p class="qr-heading">Quyên góp qua ZaloPay</p>
+														<div class="qr-scan-frame">
+															<img src="assets/img/qr-zalopay.jpg" alt="QR ZaloPay" style="width: 100%" />
+															<div class="corner top-left"></div>
+															<div class="corner top-right"></div>
+															<div class="corner bottom-left"></div>
+															<div class="corner bottom-right"></div>
+														</div>
+														<div id="zalopay-bank-info">
+															<p>Nội dung: <strong>UngHoTreEm-ZaloPay</strong></p>
+														</div>
+													</div>
+												</div>
+
+												<!-- Cột phải: Thông tin đơn hàng zalopay -->
+												<div class="col-md-6">
+													<div id="order-summary-zalo" class="order-summary">
+														<div class="order-head">
+															<span class="order-title">Thông tin đơn hàng</span>
+															<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+														</div>
+														<div class="order-body">
+															<p>
+																<strong class="order-body-heading">Đơn vị chấp nhận thanh toán:</strong><br />
+																<span class="order-body-content">QUỸ TỪ THIỆN MVP</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Số tiền thanh toán bằng số:</strong><br />
+																<span id="order-amount-zalo" class="order-amount order-body-content">1,000 VNĐ</span>
+															</p>
+															<p>
+																<strong class="order-body-heading">Số tiền thanh toán bằng chữ:</strong><br />
+																<span id="order-amount-words-zalo" class="order-amount order-body-content">Một nghìn đồng</span>
+															</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- PHẦN LƯU Ý -->
+											<div class="note-method-qr">
+												<p class="note-heading"><strong>Lưu ý khi sử dụng ZALOPAY:</strong></p>
+												<ul class="note-list">
+													<li>Chỉ sử dụng app ZaloPay để quét mã QR bên trái</li>
+													<li>Vui lòng giữ nguyên nội dung chuyển khoản: <em>UngHoTreEm-ZaloPay</em></li>
+													<li>Không thay đổi nội dung hoặc số tiền để tránh lỗi ghi nhận giao dịch</li>
+													<li>Trước khi chuyển, hãy kiểm tra kỹ thông tin tài khoản hiện ra sau khi quét mã</li>
+													<li>Nếu giao dịch không được ghi nhận sau vài phút, vui lòng liên hệ bộ phận hỗ trợ</li>
+												</ul>
+											</div>
+										</div>
+
+										<!-- PHƯƠNG THỨC: THẺ ATM/TÀI KHOẢN NGÂN HÀNG -->
+										<!-- Chọn ngân hàng -->
+										<div id="atm-bank-list" class="bank-list" style="display: none">
+											<p class="qr-heading text-center">Vui lòng chọn 1 ngân hàng để quyên góp</p>
+											<div class="banks-grid">
+												<div class="bank-item">
+													<img src="assets/img/vietcombank.jpg" alt="Vietcombank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/agribank_1.jpg" alt="Agribank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/bidv_1.jpg" alt="BIDV" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/bao-viet-bank.jpg" alt="BAOVIET Bank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/ocb.jpg" alt="OCB" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/techcombank.jpg" alt="Techcombank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/viettel-money.jpg" alt="Viettel Money" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/viet-a-bank.jpg" alt="VietABank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/viet-tin-bank.jpg" alt="VietTinBank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/sacombank.jpg" alt="Sacombank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/nam-a-bank.jpg" alt="NamABank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/vnpt-monety.png" alt="VNPT Money" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/vietbank.jpg" alt="VietBank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/eximbank.jpg" alt="Eximbank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/tpbank.jpg" alt="TPBank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/vib.jpg" alt="VIB" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/lpbank.jpg" alt="LPBank" />
+												</div>
+												<div class="bank-item">
+													<img src="assets/img/msb.jpg" alt="MSB" />
+												</div>
+											</div>
+										</div>
+
+										<div id="order-summary-atm" class="order-summary">
+											<div class="order-head">
+												<span class="order-title">Thông tin đơn hàng</span>
+												<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+											</div>
+											<div class="order-body">
+												<p>
+													<strong class="order-body-heading">Đơn vị chấp nhận thanh toán:</strong><br />
+													<span class="order-body-content">QUỸ TỪ THIỆN MVP</span>
+												</p>
+												<p>
+													<strong class="order-body-heading">Số tiền thanh toán bằng số:</strong><br />
+													<span id="order-amount" class="order-amount order-body-content">1,000 VNĐ</span>
+												</p>
+												<p>
+													<strong class="order-body-heading">Số tiền thanh toán bằng chữ:</strong><br />
+													<span id="order-amount-words" class="order-amount order-body-content">Một nghìn đồng</span>
+												</p>
+											</div>
+										</div>
+
+										<!-- Form thanh toán qua ATM -->
+										<div id="atm-payment-form" style="display: none">
+											<!-- Header logo ngân hàng -->
+											<div class="atm-header d-flex align-items-center">
+												<p id="bank-atm-title" class="">Bạn đang thanh toán qua ngân hàng ...</p>
+												<img id="bank-logo" src="" alt="Bank Logo" class="bank-logo" />
+											</div>
+
+											<fieldset>
+												<legend class="legend-heading text-center">Thông tin thẻ ATM</legend>
+
+												<label class="">Số thẻ (*)</label>
+												<input type="text" class="form-control" required />
+
+												<label class="mt-3">Tháng/Năm phát hành (*)</label>
+												<input type="text" class="form-control" required />
+
+												<label class="mt-3">Tên chủ thẻ(*)</label>
+												<input type="text" class="form-control" required />
+
+												<div class="form-check mt-3">
+													<input class="form-check-input" type="checkbox" id="agree-atm" />
+													<label class="form-check-label" for="agree-atm">
+														Tôi đã đọc, hiểu rõ và đồng ý với
+														<a href="#">Chính sách bảo vệ và xử lý dữ liệu cá nhân</a>
+													</label>
+												</div>
+
+												<div class="alert alert-info mt-2"><strong>Điều kiện thanh toán:</strong> Đăng ký dịch vụ Internet Banking/SMS OTP cho thẻ của bạn.</div>
+											</fieldset>
+										</div>
+
 										<!-- Bên dưới k liên quan đến phương thức -->
 										<!-- <div class="form-check mt-3">
 											<input class="form-check-input" type="checkbox" id="agree1" />
@@ -465,37 +810,249 @@
 										</div> -->
 									</div>
 
-									<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
-										<button type="button" class="common-btn btn-back">Trở Lại</button>
-										<button type="button" class="common-btn btn-next">Xác nhận quyên góp</button>
+									<div style="display: flex; justify-content: center; margin-top: 50px; gap: 10px">
+										<button type="button" class="hero-btn btn-back">Quay Về</button>
+										<button type="button" class="hero-btn btn-next">Xác Nhận Quyên Góp</button>
 									</div>
 								</form>
 							</div>
 
 							<!-- Step 3 -->
 							<div id="step3" class="hidden">
-								<form>
-									<div class="row">
-										<h3 class="step4-heading text-center">Cảm ơn bạn đã ủng hộ ❤️</h3>
-										<p class="text-center">
-											Chúng tôi chân thành cảm ơn sự đóng góp của bạn. Vui lòng kiểm tra email để nhận Biên nhận đóng góp chính thức. Nếu có câu hỏi hoặc thắc mắc, xin đừng ngần
-											ngại liên hệ với chúng tôi, bạn nhé.
-										</p>
-										<p class="text-center">Hãy kiểm tra email hoặc tin nhắn để nhận xác nhận.</p>
+								<section class="transaction-status">
+									<div class="icon"><i class="fas fa-check"></i></div>
+									<h2>QUYÊN GÓP THÀNH CÔNG</h2>
+
+									<div class="info">
+										<p><strong>Người quyên góp:</strong> <span class="transaction-content" id="cf-name">Ẩn danh</span></p>
+										<p><strong>Email:</strong> <span class="transaction-content" id="cf-email">Không có</span></p>
+										<p><strong>Quyên góp vào dự án:</strong> <span class="transaction-content" id="cf-project">---</span></p>
+										<p><strong>Số tiền quyên góp:</strong> <span class="transaction-content" id="cf-amount">0 VNĐ</span></p>
+										<p><strong>Mã quyên góp:</strong> <span class="transaction-content" id="cf-code">---</span></p>
+										<p><strong>Phương thức quyên góp:</strong> <span class="transaction-content" id="cf-method">---</span></p>
+										<p><strong>Tổ chức thụ hưởng:</strong> <span class="transaction-content">Quỹ Hy Vọng Việt MVP</span></p>
+										<p><strong>Thời gian quyên góp:</strong> <span id="cf-date" class="transaction-content">--/--/---- --:--:--</span></p>
 									</div>
 
-									<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
-										<button type="button" class="common-btn btn-back">Trở Lại</button>
-										<button type="button" class="common-btn btn-next">Hoàn Tất</button>
-									</div>
-								</form>
+									<div class="thanks">Cảm ơn bạn đã đồng hành cùng chúng tôi ❤️</div>
+									<div class="note">Biên nhận đã gửi qua email. Mọi thắc mắc vui lòng liên hệ hỗ trợ với chúng tôi</div>
+								</section>
+								<!-- Nút bấm -->
+								<div style="display: flex; justify-content: center; margin-top: 50px; gap: 10px">
+									<button type="button" class="hero-btn btn-back">Quay Về</button> <button type="button" class="hero-btn btn-next">Về Trang Chủ</button>
+									<button id="btnExportPdf" class="hero-btn">Xuất Bản Chứng Nhận</button>
+								</div>
 							</div>
 						</div>
 
 						<!-- Blockchain -->
 						<div id="donate-blockchain" class="donate-tab-content hidden">
-							<p>Quyên góp bằng Blockchain</p>
-							<p>Đang phát triển...</p>
+							<!-- Stepper giống truyền thống -->
+							<div class="step">
+								<div class="sub-step">
+									<div class="circle" id="bc-circle1">1</div>
+									<div class="label" id="bc-label1">THÔNG TIN</div>
+								</div>
+								<div class="line" id="bc-line1"></div>
+								<div class="sub-step">
+									<div class="circle" id="bc-circle2">2</div>
+									<div class="label" id="bc-label2">QUÉT MÃ QR</div>
+								</div>
+								<div class="line" id="bc-line2"></div>
+								<div class="sub-step">
+									<div class="circle" id="bc-circle3">3</div>
+									<div class="label" id="bc-label3">XÁC NHẬN</div>
+								</div>
+							</div>
+
+							<!-- Bước 1: Quyên góp -->
+							<div id="bc-step1" class="tab-content">
+								<label class="form-label">NHẬP THÔNG TIN QUYÊN GÓP</label><br />
+								<div class="col-12">
+									<input type="text" id="bc-donor-name" class="form-control input-with-icon donate-input-with-icon-6" placeholder="Nhập họ và tên" />
+								</div>
+								<div class="col-12">
+									<input type="email" id="bc-donor-email" class="form-control input-with-icon donate-input-with-icon-5" placeholder="Nhập e-mail" />
+								</div>
+								<div class="col-12 select-wrapper">
+									<select required id="bc-donation-project" class="form-select input-with-icon donate-input-with-icon-2">
+										<option value="" selected disabled hidden>Chọn 1 dự án muốn quyên góp (*)</option>
+									</select>
+								</div>
+
+								<!-- Tiêu đề chung -->
+								<div class="col-12">
+									<label class="form-label">CHỌN TIỀN ĐIỆN TỬ VÀ QUY ĐỔI (*)</label>
+								</div>
+
+								<div class="row gx-3">
+									<!-- Bên trái: Nhập token -->
+									<div class="col-md-6">
+										<!-- Nhập số lượng -->
+										<input
+											type="text"
+											id="token-amount"
+											class="placeholder-bold form-control input-with-icon donate-input-with-icon-2"
+											placeholder="0.0000"
+											min="0.0000"
+											step="0.0001"
+											title="Nhập số lượng tiền điện tử, cho phép nhập số thập phân tối đa 4 chữ số"
+										/>
+
+										<!-- Dropdown token -->
+										<div class="select-wrapper">
+											<select id="crypto-token" required class="placeholder-bold form-select input-with-icon donate-input-with-icon-2">
+												<option disabled selected></option>
+											</select>
+										</div>
+									</div>
+
+									<!-- Bên phải: Số tiền quy đổi -->
+									<div class="col-md-6 mt-md-0 ps-3">
+										<!-- Hiển thị số tiền quy đổi -->
+										<input
+											type="text"
+											id="converted-amount-display"
+											class="placeholder-bold form-control input-with-icon donate-input-with-icon-2"
+											placeholder="0.00"
+											title="Kết quả quy đổi hiển thị cả số và đơn vị tiền tệ"
+											readonly
+										/>
+
+										<!-- Dropdown chọn đơn vị -->
+										<div class="select-wrapper">
+											<select id="currency-unit" class="placeholder-bold form-select input-with-icon donate-input-with-icon-2">
+												<option value="" selected disabled hidden>Chọn đơn vị để xem kết quả</option>
+												<option value="VND">VNĐ</option>
+												<option value="USD">USD</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<!-- Tiền quy đổi -->
+								<div id="token-equivalent-text">Số tiền quy đổi: 0.0000 ETH ≈ 0 VNĐ</div>
+
+								<div class="col-12">
+									<button id="create-wallet-btn" class="hero-btn">Tạo Ví Mới</button>
+								</div>
+								<div class="col-12">
+									<p>Lưu ý:</p>
+									<ul>
+										<li>Đảm bảo ví có đủ token (ETH cho gas fee) nếu đã kết nối.</li>
+										<li>Giá quy đổi dựa trên tỷ giá thị trường hiện tại.</li>
+									</ul>
+								</div>
+								<div class="col-12" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px">
+									<button class="hero-btn bc-btn-back">Quay Về</button>
+									<button class="hero-btn bc-btn-next">Tiếp Tục</button>
+								</div>
+							</div>
+
+							<!-- Bước 2: Quét mã QR -->
+							<div id="bc-step2" class="hidden">
+								<div class="row justify-content-between g-3">
+									<!-- Cột trái: QR -->
+									<div class="col-md-6 p-0">
+										<div class="qr-card">
+											<p class="qr-heading">Quét mã QR để quyên góp</p>
+											<div class="qr-scan-frame">
+												<img id="qr-code-blockchain" src="assets/img/qr-blockchain.png" alt="QR Code" />
+												<div class="corner top-left"></div>
+												<div class="corner top-right"></div>
+												<div class="corner bottom-left"></div>
+												<div class="corner bottom-right"></div>
+											</div>
+											<div id="bank-info">
+												<p>Địa chỉ ví: <strong>0xYourCharityWalletAddressHere</strong></p>
+											</div>
+										</div>
+									</div>
+
+									<!-- Cột phải: Thông tin (nếu cần, nhưng theo yêu cầu chỉ QR + địa chỉ + lưu ý) -->
+									<div class="col-md-6 p-0">
+										<!-- Có thể để trống hoặc thêm mô tả -->
+									</div>
+								</div>
+
+								<!-- Lưu ý -->
+								<div class="note-method-qr mt-3">
+									<p class="note-heading"><strong>Lưu ý:</strong></p>
+									<ul class="note-list">
+										<li>Vui lòng quét đúng mã QR để đảm bảo chuyển khoản tới đúng địa chỉ ví.</li>
+										<li>Giao dịch on-chain không thể đảo ngược, kiểm tra kỹ địa chỉ trước khi gửi.</li>
+										<li>Chuyển đúng số lượng token như đã chọn ở bước trước.</li>
+										<li>Sử dụng ví tương thích như MetaMask để quét và gửi.</li>
+										<li>Nếu gặp lỗi, liên hệ hỗ trợ để kiểm tra giao dịch.</li>
+									</ul>
+								</div>
+
+								<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
+									<button type="button" class="hero-btn bc-btn-back">Quay Về</button>
+									<button type="button" class="hero-btn bc-btn-next">Tiếp Tục</button>
+								</div>
+							</div>
+
+							<!-- Bước 3: Xác nhận -->
+							<div id="bc-step3" class="hidden">
+								<section class="transaction-status">
+									<div class="icon"><i class="fas fa-check"></i></div>
+									<h2>QUYÊN GÓP THÀNH CÔNG</h2>
+									<div class="info">
+										<p><strong>Loại token:</strong> <span class="transaction-content" id="bc-cf-token">ETH</span></p>
+										<p><strong>Số lượng:</strong> <span class="transaction-content" id="bc-cf-amount">0</span></p>
+										<p><strong>Số tiền quy đổi:</strong> <span class="transaction-content" id="bc-cf-converted">0 USD</span></p>
+										<p><strong>Địa chỉ ví:</strong> <span class="transaction-content" id="bc-cf-address">0xYourCharityWalletAddressHere</span></p>
+										<p><strong>Transaction ID:</strong> <span class="transaction-content" id="bc-cf-txid">---</span></p>
+										<p><strong>Thời gian:</strong> <span id="bc-cf-date" class="transaction-content">02:05 PM +07, 31/08/2025</span></p>
+									</div>
+									<div class="thanks">Cảm ơn bạn đã đồng hành cùng chúng tôi ❤️</div>
+									<div class="note">Theo dõi giao dịch tại: <a href="https://etherscan.io/">Etherscan</a>. Mọi thắc mắc vui lòng liên hệ hỗ trợ.</div>
+								</section>
+								<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
+									<button type="button" class="hero-btn bc-btn-back">Quay Về</button>
+									<button type="button" class="hero-btn bc-btn-next">Về Trang Chủ</button>
+								</div>
+							</div>
+
+							<!-- Bảng thông tin giá Token -->
+							<div id="token-price-board" style="margin-top: 60px; margin-left: -96px; margin-right: -96px">
+								<div class="header-row">
+									<h3 class="board-title common-heading">Bảng thông tin tiền điện tử</h3>
+									<!-- controls nằm bên phải tiêu đề -->
+									<div id="controls" class="controls">
+										<label class="ctrl-item"> <input type="checkbox" id="toggle30d" /> 30 ngày </label>
+										<input class="ctrl-item" type="text" id="searchToken" placeholder="Tìm kiếm..." />
+										<select class="ctrl-item" id="sortPrice">
+											<option value="">Sắp xếp</option>
+											<option value="asc">Tăng dần</option>
+											<option value="desc">Giảm dần</option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Loading -->
+								<div id="loading" style="text-align: center; padding: 20px; font-weight: 500">Đang tải dữ liệu, chờ chút nhé...</div>
+								<table id="market-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: center; border-collapse: collapse; display: none">
+									<thead>
+										<tr style="background: #f4f4f4">
+											<th title="Số thứ tự">#</th>
+											<th title="Tên tiền điện tử">Tiền điện tử</th>
+											<th></th>
+											<th title="Giá hiện tại theo tiền USD">Giá ($)</th>
+											<th title="Giá hiện tại theo tiền VNĐ">Giá (VNĐ)</th>
+											<th title=" Biến động giá trong 1 giờ qua">1 giờ</th>
+											<th title=" Biến động giá trong 24 giờ qua">24 giờ</th>
+											<th title=" Biến động giá trong 7 ngày qua">7 ngày</th>
+											<th class="col-30d" style="display: none" title=" Biến động giá trong 30 ngày qua">30 ngày</th>
+											<th title="Biểu đồ thể hiện xu hướng tăng/giảm giá tiền điện tử trong 7 ngày qua">Biểu đồ 7 ngày</th>
+										</tr>
+									</thead>
+									<tbody id="market-body"></tbody>
+								</table>
+								<!-- Phân trang -->
+								<div id="pagination" style="text-align: center; margin-top: 20px"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -590,6 +1147,13 @@
 		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 		<script src="../assets/js/aos.js"></script>
 		<!-- js -->
+
+		<!-- jQuery + Select2 JS -->
+		<script src="assets/js/header.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		<script src="assets/js/token.js"></script>
+		<script src="assets/js/blockchain.js"></script>
 		<script src="../assets/js/donate.js"></script>
 		<script src="../assets/js/link-modal.js"></script>
 		<script src="../assets/js/hero.js"></script>
@@ -598,10 +1162,19 @@
 		<script src="../assets/js/messenger.js"></script>
 		<script src="../assets/js/donate-validation.js"></script>
 		<script src="../assets/js/cart.js"></script>
-		<script src="../assets/js/char.js"></script>
+		<script src="assets/js/header.js"></script>
+		<!-- Thêm link sweetalert2 -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<!-- Xuất hóa đơn: PDF -->
+		<script src="https://cdn.jsdelivr.net/npm/@pdf-lib/fontkit@0.0.4/dist/fontkit.umd.min.js"></script>
+		<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+		<script src="assets/js/invoice.js"></script>
+		<!-- Token -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 		<!-- link Modal -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="../assets/js/modal.js"></script>
 	</body>
