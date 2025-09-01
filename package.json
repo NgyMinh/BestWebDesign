@@ -1,0 +1,29 @@
+{
+  "name": "bestwebdesign",
+  "version": "1.0.0",
+  "description": "My first Node.js backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NgyMinh/BestWebDesign.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NgyMinh/BestWebDesign/issues"
+  },
+  "homepage": "https://github.com/NgyMinh/BestWebDesign#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
