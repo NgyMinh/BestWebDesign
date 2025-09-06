@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = element.getAttribute('data-lang-key');
             // Kiểm tra xem key có tồn tại trong file translations không
             if (translations[key] && translations[key][lang]) {
-                element.textContent = translations[key][lang];
+                // SỬA Ở ĐÂY: Thay 'textContent' bằng 'innerHTML'
+                // Thay đổi này cho phép trình duyệt render các thẻ HTML
+                element.innerHTML = translations[key][lang];
             }
         });
 
