@@ -1,10 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="vi" xmlns="http://www.w3.org/1999/html">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qũy từ thiện MVP - Chatbot AI</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo.png" />
+    <!-- Nhúng font chữ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bree+Serif&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Quicksand:wght@300..700&display=swap"
+            rel="stylesheet" />
+    <!-- Nhúng font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Nhúng boxicons -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <!-- Link Bootstrap-->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <!-- Link CSS Gốc -->
+    <link rel="stylesheet" href="../assets/css/ui/common.css" />
+    <link rel="stylesheet" href="../assets/css/ui/index.css" />
+    <link rel="stylesheet" href="../assets/css/components/messenger.css" />
+    <!-- Link CSS cho Chatbot -->
+    <link rel="stylesheet" href="../assets/css/ui/chatbot.css" />
+</head>
+
+<body>
+<!-- Thanh Header (Lấy từ file index.html) -->
+<header class="header">
+    <div>
+        <a href="index.html"><img class="logo" src="../assets/img/logo.png" alt="Logo" /></a>
+    </div>
+
+    <!-- Navbar điều hướng -->
+    <nav class="navbar">
+        <div class="nav-item dropdown">
+            <a class="nav-link" href="index.html">
+                Trang chủ
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c2a52" stroke-width="3"
+                     stroke-linecap="round" stroke-linejoin="round" style="margin-left: 1px">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </a>
+            <div class="dropdown-menu">
+                <a href="index.html#sumenh">Sứ mệnh của chúng tôi</a>
+                <a href="index.html#conso">Những con số biết nói</a>
+                <a href="index.html#tinhnguyenvien">Tình nguyện viên tiêu biểu</a>
+                <a href="index.html#shop">MVP - Shop</a>
+            </div>
+        </div>
+
+        <div class="nav-item dropdown">
+            <a class="nav-link" href="about.html">
+                Về chúng tôi
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c2a52" stroke-width="3"
+                     stroke-linecap="round" stroke-linejoin="round" style="margin-left: 1px">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </a>
+            <div class="dropdown-menu">
+                <a href="about.html#cauchuyenkhoinguon">Câu chuyện khởi nguồn</a>
+                <a href="about.html#timelinehanhtrinh">Timeline hành trình</a>
+                <a href="about.html#cachchungtoilamviec">Cách chúng tôi làm việc</a>
+                <a href="about.html#doingulanhdao">Đội ngũ lãnh đạo</a>
+            </div>
+        </div>
+
+        <div class="nav-item dropdown">
+            <a class="nav-link" href="volunteer.html">
+                Tình nguyện
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c2a52" stroke-width="3"
+                     stroke-linecap="round" stroke-linejoin="round" style="margin-left: 1px">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </a>
+            <div class="dropdown-menu">
+                <a href="volunteer.html#meochotinhnguyenvien">Mẹo cho tình nguyện viên</a>
+                <a href="volunteer.html#doitac">Đối tác & nhà tài trợ</a>
+                <a href="volunteer.html#youtubevideo">Xem video tình nguyện</a>
+                <a href="volunteer.html#lydonenthamgia">Lý do nên đồng hành?</a>
+                <a href="volunteer.html#sukiensaptoi">Sự kiện sắp tới</a>
+                <a href="volunteer.html#volunteer-form">Đăng ký tình nguyện viên</a>
+            </div>
+        </div>
+
+        <div class="nav-item dropdown">
+            <a class="nav-link" href="donate.html">
+                Quyên góp
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c2a52" stroke-width="3"
+                     stroke-linecap="round" stroke-linejoin="round" style="margin-left: 1px">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </a>
+            <div class="dropdown-menu">
+                <a href="donate.html#donate">Quyên góp</a>
+                <a href="donate.html#table-donate">Danh sách quyên góp</a>
+                <a href="#">Biểu đồ thống kê</a>
+            </div>
+        </div>
+
+        <a class="nav-link" href="stories.html">Câu chuyện</a>
+        <a class="nav-link active" href="chatbot.html">Chatbot AI</a>
+    </nav>
+
+    <div class="right-header">
+        <div class="search">
+            <a href="#"><box-icon name="search-alt-2"></box-icon></a>
+        </div>
+        <div class="cart">
+            <a href="#"><box-icon name="cart"></box-icon></a>
+        </div>
+        <div class="auth-section">
+            <div id="auth-links" class="register-login" style="display: block;">
+                <a class="register" href="#">Đăng ký</a>
+                <span class="slash">/</span>
+                <a class="login" href="#">Đăng nhập</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content: Chatbox AI -->
+<main class="chat-page-container">
+    <div class="chat-wrapper">
+        <div class="chat-header">
+            <img src="https://placehold.co/50x50/f7b733/1c2a52?text=AI" alt="AI Avatar">
+            <div>
+                <h3>Trợ lý AI Tình nguyện</h3>
+                <p>Sẵn sàng giải đáp mọi thắc mắc của bạn!</p>
+            </div>
+        </div>
+        <div class="chat-window" id="chat-window">
+            <!-- Tin nhắn mẫu của bot -->
+            <div class="message bot-message">
+                <img src="https://placehold.co/40x40/f7b733/1c2a52?text=AI" alt="Bot Avatar" class="avatar">
+                <div class="message-bubble">
+                    Xin chào! Tôi là trợ lý AI của Quỹ từ thiện MVP. Tôi có thể giúp gì cho bạn hôm nay?
+                </div>
+            </div>
+        </div>
+        <form class="chat-input-form" id="chat-form">
+            <input type="text" id="chat-input" placeholder="Nhập câu hỏi của bạn..." autocomplete="off">
+            <button type="submit" id="send-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</main>
+
+
+<!-- Footer Section (Lấy từ file index.html) -->
+<footer class="footer-section">
+    <div class="container common-container">
+        <div class="row">
+            <div class="col-12 col-md-3 footer-first order-1 order-md-1">
+                <div class="d-flex align-items-center footer-logo-margin">
+                    <img class="img-footer" src="../assets/img/logo.png" alt="Logo MVP" height="40px" />
+                    <h3 class="ms-2 mb-0 footer-heading">Lan tỏa yêu thương</h3>
+                </div>
+                <p class="footer-content footer-content-first">Chúng tôi tạo ra một không gian sẻ chia - nơi mỗi hành động nhỏ đều có thể mang lại thay đổi lớn</p>
+            </div>
+            <div class="col-12 col-md-2 footer-padding order-2 order-md-2">
+                <h3 class="footer-heading">KHÁM PHÁ MVP</h3>
+                <ul class="footer-link list-unstyled">
+                    <li><a href="./about.html" class="footer-content link-1">Về chúng tôi</a></li>
+                    <li><a href="./volunteer.html" class="footer-content link-2">Tình nguyện</a></li>
+                    <li><a href="./donate.html" class="footer-content link-3">Quyên góp</a></li>
+                    <li><a href="./stories.html" class="footer-content link-4">Câu chuyện</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 order-4 order-md-3">
+                <h3 class="footer-heading">ĐỒNG HÀNH CÙNG CHÚNG TÔI</h3>
+                <p class="footer-content">Mỗi bước chân của bạn là nguồn cảm hứng để chúng tôi lan tỏa điều tốt đẹp mỗi ngày – Xem những tấm lòng đã đồng hành cùng chúng tôi.</p>
+                <a href="donate.html#table-donate" class="footer-btn">Xem ngay</a>
+            </div>
+            <div class="col-12 col-md-3 footer-padding order-5 order-md-4">
+                <h3 class="footer-heading">LIÊN HỆ</h3>
+                <ul class="footer-content list-unstyled">
+                    <li class="footer-contact"><i class="fas fa-envelope me-2"></i> lienhe@mvp.org</li>
+                    <li class="footer-contact"><i class="fas fa-phone me-2"></i> 0123 456 789</li>
+                    <li class="footer-contact"><i class="fas fa-map-marker-alt me-2"></i> Trần Đại Nghĩa, Hòa Quý, Đà Nẵng</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom text-center pt-4 border-top order-6">
+            <p class="footer-content mb-1">© 2025 MVP. Mỗi hành động nhỏ, một thay đổi lớn</p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/login" target="_blank" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/accounts/login/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com/login" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.tiktok.com/login" target="_blank" class="me-2"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    // --- LOGIC JAVASCRIPT CHO CHATBOT ---
+    document.addEventListener('DOMContentLoaded', function () {
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatWindow = document.getElementById('chat-window');
+        const sendBtn = document.getElementById('send-btn');
+
+        // Hàm để thêm tin nhắn vào cửa sổ chat
+        function addMessage(sender, text) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+
+            if (sender === 'user') {
+                messageElement.classList.add('user-message');
+                messageElement.innerHTML = `
+                        <div class="message-bubble">${text}</div>
+                        <img src="https://placehold.co/40x40/1c2a52/white?text=You" alt="User Avatar" class="avatar">
+                    `;
+            } else {
+                messageElement.classList.add('bot-message');
+                messageElement.innerHTML = `
+                        <img src="https://placehold.co/40x40/f7b733/1c2a52?text=AI" alt="Bot Avatar" class="avatar">
+                        <div class="message-bubble">${text}</div>
+                    `;
+            }
+            chatWindow.appendChild(messageElement);
+            // Cuộn xuống tin nhắn mới nhất
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            return messageElement;
+        }
+
+        // Hàm hiển thị hiệu ứng "đang gõ"
+        function showTypingIndicator() {
+            const typingElement = document.createElement('div');
+            typingElement.classList.add('message', 'bot-message', 'typing-indicator');
+            typingElement.innerHTML = `
+                    <img src="https://placehold.co/40x40/f7b733/1c2a52?text=AI" alt="Bot Avatar" class="avatar">
+                    <div class="message-bubble typing">
+                        <span></span><span></span><span></span>
+                    </div>
+                `;
+            chatWindow.appendChild(typingElement);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            return typingElement;
+        }
+
+        // Hàm gọi Gemini API
+        async function getGeminiResponse(prompt) {
+            const apiKey = ""; // Canvas sẽ tự động cung cấp API key
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            // Thêm bối cảnh cho AI
+            const fullPrompt = `Bạn là một trợ lý AI thân thiện và nhiệt tình của quỹ từ thiện MVP, chuyên về các hoạt động tình nguyện giúp đỡ trẻ em vùng cao. Hãy trả lời câu hỏi sau của người dùng một cách ngắn gọn, tích cực và tập trung vào chủ đề tình nguyện: "${prompt}"`;
+
+            const payload = {
+                contents: [{
+                    parts: [{
+                        text: fullPrompt
+                    }]
+                }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    console.error("API Error Response:", await response.text());
+                    return "Xin lỗi, tôi đang gặp sự cố kết nối. Vui lòng thử lại sau.";
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                    // Thay thế markdown ** thành thẻ <strong> để in đậm
+                    let text = result.candidates[0].content.parts[0].text;
+                    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    text = text.replace(/\n/g, '<br>'); // Chuyển đổi xuống dòng
+                    return text;
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    return "Xin lỗi, tôi không thể xử lý yêu cầu của bạn lúc này.";
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                return "Rất tiếc, đã có lỗi xảy ra. Vui lòng thử lại sau.";
+            }
+        }
+
+
+        // Xử lý khi gửi form
+        chatForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const userMessage = chatInput.value.trim();
+
+            if (userMessage) {
+                addMessage('user', userMessage);
+                chatInput.value = '';
+                sendBtn.disabled = true;
+
+                // Hiển thị hiệu ứng đang gõ
+                const typingIndicator = showTypingIndicator();
+
+                // Lấy câu trả lời từ bot
+                const botResponse = await getGeminiResponse(userMessage);
+
+                // Xóa hiệu ứng đang gõ và hiển thị câu trả lời
+                typingIndicator.remove();
+                addMessage('bot', botResponse);
+                sendBtn.disabled = false;
+            }
+        });
+    });
+</script>
 </body>
+
 </html>
