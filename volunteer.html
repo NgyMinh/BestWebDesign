@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Tham gia tình nguyện cùng MVP để hỗ trợ trẻ em vùng cao. Đăng ký ngay để lan tỏa tri thức và yêu thương!" />
+		<title>Tình nguyện - Quỹ Hy Vọng Việt MVP</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/assets/img/logo-mvp-removebg.png" />
+		<!-- Nhúng font chữ -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Nhúng font awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- Nhúng boxicons -->
+		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+		<!-- CSS của AOS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+		<!-- Link Bootstrap-->
+		<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+		<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Link tới Modal -->
+		<link rel="stylesheet" href="../html/modal/modals.html" />
+		<!-- Link CSS -->
+		<link rel="stylesheet" href="../assets/css/ui/volunteer.css" />
+		<link rel="stylesheet" href="../assets/css/ui/common.css" />
+		<link rel="stylesheet" href="../assets/css/components/messenger.css" />
+		<link rel="stylesheet" href="../assets/css/components/search-style.css" />
+		<link rel="stylesheet" href="../assets/css/components/stories-style.css" />
+	</head>
+	<body>
+		<!-- Hero -->
+		<div class="page-wrapper">
+			<div class="hero-section">
+				<img class="hero-background" src="../assets/img/chung-tay-tinh-nguyen.webp" alt="Hình ảnh chung tay kêu gọi tình nguyện cho trẻ em vùng cao MVP" />
+				<div class="overlay"></div>
+				<!-- Thanh Header -->
+				<header class="header">
+					<div>
+						<a href="#"><img class="logo" src="../assets/img/logo-mvp.png" alt="Logo Quỹ Hy Vọng Việt MVP" /></a>
+					</div>
+
+					<!-- Navbar điều hướng -->
+					<nav class="navbar">
+						<div class="nav-item dropdown">
+							<a style="--i: 1" class="nav-link" href="index.html">Trang chủ </a>
+						</div>
+						<div class="nav-item dropdown">
+							<a style="--i: 2" class="nav-link" href="about.html">Về chúng tôi </a>
+						</div>
+						<div class="nav-item dropdown">
+							<a style="--i: 3" class="nav-link active" href="volunteer.html">Tình nguyện </a>
+						</div>
+						<div class="nav-item dropdown">
+							<a style="--i: 4" class="nav-link" href="donate.html">Quyên góp </a>
+						</div>
+						<a style="--i: 5" class="nav-link" href="stories.html">Câu chuyện</a>
+					</nav>
+
+					<div class="right-header">
+						<div class="search">
+							<a href="#" id="searchToggle"><box-icon name="search-alt-2"></box-icon></a>
+							<div class="search-dropdown" id="searchDropdown">
+								<input type="text" id="searchInput" placeholder="Tìm kiếm câu chuyện..." />
+								<div id="searchResults" class="search-results"></div>
+							</div>
+						</div>
+
+						<div class="cart">
+							<a href="#" style="position: relative" onclick="toggleCartPopup(event)">
+								<box-icon name="cart"></box-icon>
+								<span id="cart-count" class="cart-count">0</span>
+							</a>
+						</div>
+
+						<div class="language-switcher">
+							<button id="lang-vi" class="lang-btn active">VN</button>
+							<button id="lang-en" class="lang-btn">EN</button>
+						</div>
+
+						<div class="auth-section">
+							<!-- Links cho user chưa đăng nhập -->
+							<div id="auth-links" class="register-login" style="display: block">
+								<a class="register" href="login_register.html">Đăng ký</a>
+								<span class="slash">/</span>
+								<a class="login" href="login_register.html">Đăng nhập</a>
+							</div>
+
+							<!-- Thông tin user đã đăng nhập -->
+							<div id="user-info" class="user-info" style="display: none">
+								<span class="welcome-text">Xin chào, <strong id="username"></strong>!</span>
+								<button class="logout-btn" id="logout-btn">Đăng xuất</button>
+							</div>
+						</div>
+					</div>
+					<!-- Giỏ hàng -->
+					<div id="cart-sidebar" class="cart-sidebar">
+						<div class="cart-sidebar-header">
+							<h4>Giỏ hàng của bạn</h4>
+							<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')">×</button>
+						</div>
+						<ul id="cart-items" class="cart-items"></ul>
+						<div class="cart-total">
+							<p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
+							<button class="checkout-btn">Thanh toán</button>
+						</div>
+					</div>
+					<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+				</header>
+
+				<!-- Content -->
+				<section class="home">
+					<div class="home-content">
+						<h1>Cùng chung tay giúp đỡ.</h1>
+						<h3>Tình nguyện hôm nay!</h3>
+						<p>Hãy tham gia đội ngũ tình nguyện viên để mang đến cơ hội học tập và hy vọng cho trẻ em vùng cao, góp phần xây dựng một tương lai tốt đẹp hơn</p>
+						<a href="#shop" class="hero-btn btn-animation">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+					</div>
+				</section>
+
+				<section class="hero-footer">
+					<div class="social-media">
+						<a style="--i: 1" target="_blank" href="https://www.facebook.com/login"><box-icon type="logo" name="facebook"></box-icon></a>
+						<a style="--i: 2" target="_blank" href="https://www.twitter.com/login"><box-icon name="twitter" type="logo"></box-icon></a>
+						<a style="--i: 3" target="_blank" href="https://www.instagram.com/accounts/login/"><box-icon name="instagram" type="logo"></box-icon></a>
+					</div>
+				</section>
+			</div>
+
+			<!-- Volunteer Tip Section -->
+			<section id="meochotinhnguyenvien" class="volunteer-tips-section px-md-0 px-3" data-aos="fade-up">
+				<div class="background">
+					<div class="circle" style="top: -100px; left: 86%; width: 380px; height: 380px"></div>
+					<div class="circle" style="top: 300px; left: -8%; width: 320px; height: 320px"></div>
+				</div>
+
+				<div class="container common-container">
+					<h2 class="common-heading volunteer-tip-heading text-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Mẹo cho tình nguyện viên</h2>
+					<div class="row">
+						<div class="col-md-6" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="150">
+							<div class="card mb-3">
+								<img class="volunteer-tip-img" src="../assets/img/tam-ly.png" alt="Hình minh họa chuẩn bị tâm lý cho tình nguyện viên MVP" />
+								<h5 class="card-title">Chuẩn Bị Tâm Lý</h5>
+								<p class="card-text">Tình nguyện là một công việc đầy ý nghĩa, nhưng đôi khi có thể gặp phải những thử thách</p>
+							</div>
+						</div>
+						<div class="col-md-6" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="150">
+							<div class="card mb-3">
+								<img class="volunteer-tip-img" src="../assets/img/cap-nhat.png" alt="Hình minh họa cập nhật thông tin tình nguyện MVP" />
+								<h5 class="card-title">Cập Nhật Thông Tin</h5>
+								<p class="card-text">Hãy chắc chắn rằng bạn luôn cập nhật thông tin về chương trình và yêu cầu cần thiết để tham gia tình nguyện</p>
+							</div>
+						</div>
+						<div class="col-md-6" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="150">
+							<div class="card mb-3">
+								<img class="volunteer-tip-img" src="../assets/img/nhom.png" alt="Hình minh họa làm việc nhóm tình nguyện viên MVP" />
+								<h5 class="card-title">Làm Việc Nhóm</h5>
+								<p class="card-text">Tình nguyện là công việc của tập thể, vì vậy hãy học cách làm việc nhóm và hỗ trợ nhau để đạt được mục tiêu chung</p>
+							</div>
+						</div>
+						<div class="col-md-6" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="150">
+							<div class="card mb-3">
+								<img class="volunteer-tip-img" src="../assets/img/ki-nang.png" alt="Hình minh họa rèn luyện kỹ năng qua tình nguyện MVP" />
+								<h5 class="card-title">Trau Dồi Kỹ Năng</h5>
+								<p class="card-text">Hãy tận dụng cơ hội tình nguyện để học hỏi, rèn luyện kỹ năng giao tiếp, tổ chức và quản lý thời gian</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- YouTube Video Section -->
+			<section id="youtubevideo" class="margin-section px-md-0 px-3">
+				<div class="container common-container">
+					<div class="text-center">
+						<h2 class="common-heading yt-heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Cùng xem video tình nguyện</h2>
+						<p class="section-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150">
+							Hãy xem những khoảnh khắc tuyệt vời từ các hoạt động tình nguyện của chúng tôi!
+						</p>
+					</div>
+					<div class="embed-responsive embed-responsive-16by9" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="250">
+						<div class="video-container">
+							<iframe
+								width="1200"
+								height="500"
+								src="https://www.youtube.com/embed/pQbvd_krSJQ?si=hcHiDplgju7yBMBK"
+								title="Thumbnail video hoạt động tình nguyện Quỹ MVP"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerpolicy="strict-origin-when-cross-origin"
+								allowfullscreen
+							></iframe>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Reason Section -->
+			<section id="lydonenthamgia" class="margin-section text-center px-md-0 px-3">
+				<div class="container common-container">
+					<h2 class="common-heading reason-heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Tại sao nên tình nguyện cùng chúng tôi?</h2>
+					<div class="row justify-content-center">
+						<!-- Card 1 -->
+						<div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+							<div class="reason-card">
+								<div class="reason-icon text-primary">
+									<img src="assets/img/reason-1.gif" alt="Hình minh họa chia sẻ yêu thương cho trẻ em khó khăn" />
+								</div>
+								<h5>Chia sẻ yêu thương</h5>
+								<span class="reason-line"></span>
+								<p>Lan tỏa tình yêu thương và chia sẻ ấm áp đến những mảnh đời khó khăn</p>
+							</div>
+						</div>
+
+						<!-- Card 2 -->
+						<div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="300">
+							<div class="reason-card">
+								<div class="reason-icon text-success">
+									<img src="assets/img/reason-2.gif" alt="Hình minh họa hỗ trợ giáo dục trẻ em vùng cao MVP" />
+								</div>
+								<h5>Hỗ trợ giáo dục</h5>
+								<span class="reason-line"></span>
+								<p>Đem con chữ, kiến thức và cơ hội học tập đến với trẻ em vùng cao</p>
+							</div>
+						</div>
+
+						<!-- Card 3 -->
+						<div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="600">
+							<div class="reason-card">
+								<div class="reason-icon text-info">
+									<img src="assets/img/reason-3.gif" alt="Hình minh họa kết nối cộng đồng qua tình nguyện MVP" />
+								</div>
+								<h5>Kết nối cộng đồng</h5>
+								<span class="reason-line"></span>
+								<p>Gặp gỡ, học hỏi và phát triển kỹ năng cùng bạn bè cùng chí hướng</p>
+							</div>
+						</div>
+
+						<!-- Card 4 -->
+						<div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="900">
+							<div class="reason-card">
+								<div class="reason-icon text-warning">
+									<img src="assets/img/reason-4.gif" alt="Hình minh họa trải nghiệm tình nguyện độc đáo MVP" />
+								</div>
+								<h5>Trải nghiệm độc đáo</h5>
+								<span class="reason-line"></span>
+								<p>Tham gia, khám phá và cùng nhau tạo nên ý tưởng độc đáo cho cộng đồng</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Event Section-->
+			<section class="events-section margin-section">
+				<div class="container common-container">
+					<h2 class="common-heading section-title" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Sự kiện sắp tới</h2>
+					<div class="row">
+						<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+							<div class="event-card">
+								<img src="assets/img/event-1.jpg" alt="Hình ảnh ngày hội quyên góp sách cho trẻ em vùng cao" />
+								<div class="event-content">
+									<h5>Ngày hội quyên góp sách</h5>
+									<p>Tham gia cùng chúng tôi trong hoạt động tặng sách cho trẻ em vùng cao</p>
+									<span class="event-date">20/08/2025</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="300">
+							<div class="event-card">
+								<img src="assets/img/event-2.jpg" alt="Hình ảnh sự kiện chạy bộ gây quỹ cho trẻ em nghèo" />
+								<div class="event-content">
+									<h5>Chạy bộ gây quỹ</h5>
+									<p>Hoạt động thể thao kết hợp gây quỹ giúp trẻ em nghèo</p>
+									<span class="event-date">05/09/2025</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="600">
+							<div class="event-card">
+								<img src="assets/img/event-3.jpg" alt="Hình ảnh triển lãm tranh thiếu nhi ước mơ vùng cao" />
+								<div class="event-content">
+									<h5>Triển lãm tranh thiếu nhi</h5>
+									<p>Triển lãm tranh với chủ đề "Ước mơ vùng cao"</p>
+									<span class="event-date">15/09/2025</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Form đăng ký tình nguyện -->
+			<section id="volunteer-form" class="volunteer-form-section margin-section" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="250">
+				<div class="container container-custom">
+					<form action="#" method="POST" class="volunteer-card-form shadow rounded-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="250">
+						<!-- Thông tin cá nhân -->
+						<h2 class="common-heading mb-4 text-light">ĐĂNG KÝ TÌNH NGUYỆN VIÊN</h2>
+						<div class="row">
+							<div class="col-12">
+								<h5 class="volunteer-form-title">Thông tin cá nhân</h5>
+							</div>
+							<div class="col-6">
+								<input type="text" class="form-control input-with-icon volunteer-input-with-icon-1" id="fullName" name="fullName" placeholder="Họ và tên" required />
+							</div>
+							<div class="col-6">
+								<input type="date" class="form-control input-with-icon volunteer-input-with-icon-2" id="dob" name="dob" placeholder="Ngày sinh" required />
+							</div>
+							<div class="col-6">
+								<input type="email" class="form-control input-with-icon volunteer-input-with-icon-3" id="email" name="email" placeholder="Email" required />
+							</div>
+							<div class="col-6">
+								<input type="tel" class="form-control input-with-icon volunteer-input-with-icon-4" id="phone" name="phone" placeholder="Số điện thoại" required />
+							</div>
+						</div>
+
+						<!-- Thông tin tham gia -->
+						<div class="row">
+							<div class="col-12">
+								<h5 class="volunteer-form-title">Thông tin tham gia</h5>
+							</div>
+							<div class="col-6">
+								<select class="form-select input-with-icon volunteer-input-with-icon-5" id="location" name="location" required>
+									<option value="" disabled selected>Chọn khu vực</option>
+									<option value="Hanoi">Hà Nội</option>
+									<option value="HCM">TP.HCM</option>
+									<option value="Danang">Đà Nẵng</option>
+									<option value="Hue">Huế</option>
+								</select>
+							</div>
+							<div class="col-6">
+								<select class="form-select input-with-icon volunteer-input-with-icon-6" id="interest" name="interest" required>
+									<option value="" disabled selected>Chọn lĩnh vực</option>
+									<option value="Education">Giáo dục</option>
+									<option value="Environment">Bảo vệ môi trường</option>
+									<option value="BloodDonation">Hiến máu</option>
+								</select>
+							</div>
+							<div class="col-6">
+								<input
+									type="text"
+									class="form-control input-with-icon volunteer-input-with-icon-7"
+									id="availability"
+									name="availability"
+									placeholder="Thời gian bạn có thể tham gia"
+									required
+								/>
+							</div>
+							<div class="col-6">
+								<input type="text" class="form-control input-with-icon volunteer-input-with-icon-8" id="skills" name="skills" placeholder="Kinh nghiệm (nếu có)" required />
+							</div>
+
+							<div class="col-12">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" id="privacyPolicy" required />
+									<span class="form-check-label">Tôi đồng ý với <a href="#" class="privacy">chính sách bảo mật</a> của tổ chức</span>
+								</div>
+							</div>
+							<div class="col-12">
+								<button type="submit" class="btn-form"><i class="bi bi-send-fill me-2"></i>ĐĂNG KÝ THAM GIA</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<!-- Footer Section -->
+			<footer class="footer-section">
+				<div class="container common-container">
+					<div class="row">
+						<div class="col-12 col-md-3 footer-first order-1 order-md-1">
+							<div class="d-flex align-items-center footer-logo-margin">
+								<img class="img-footer" src="../assets/img/logo-mvp.png" alt="Logo MVP" height="40px" />
+								<h3 class="ms-2 mb-0 footer-heading">Lan tỏa yêu thương</h3>
+							</div>
+							<p class="footer-content footer-content-first">Chúng tôi tạo ra một không gian sẻ chia - nơi mỗi hành động nhỏ đều có thể mang lại thay đổi lớn</p>
+						</div>
+						<div class="col-12 col-md-2 footer-padding order-2 order-md-2">
+							<h3 class="footer-heading">KHÁM PHÁ MVP</h3>
+							<ul class="footer-link list-unstyled">
+								<li><a href="./about.html" class="footer-content link-1">Về chúng tôi</a></li>
+								<li><a href="./volunteer.html" class="footer-content link-2">Tình nguyện</a></li>
+								<li><a href="./donate.html" class="footer-content link-3">Quyên góp</a></li>
+								<li><a href="./stories.html" class="footer-content link-4">Câu chuyện</a></li>
+							</ul>
+						</div>
+						<div class="col-12 col-md-4 order-4 order-md-3">
+							<h3 class="footer-heading">ĐỒNG HÀNH CÙNG CHÚNG TÔI</h3>
+							<p class="footer-content">Mỗi bước chân của bạn là nguồn cảm hứng để chúng tôi lan tỏa điều tốt đẹp mỗi ngày – Xem những tấm lòng đã đồng hành cùng chúng tôi.</p>
+							<a href="donate.html#table-donate" class="footer-btn">Xem ngay</a>
+						</div>
+						<div class="col-12 col-md-3 footer-padding order-5 order-md-4">
+							<h3 class="footer-heading">LIÊN HỆ</h3>
+							<ul class="footer-content list-unstyled">
+								<li class="footer-contact"><i class="fas fa-envelope me-2"></i> lienhe@mvp.org</li>
+								<li class="footer-contact"><i class="fas fa-phone me-2"></i> 0123 456 789</li>
+								<li class="footer-contact"><i class="fas fa-map-marker-alt me-2"></i> Trần Đại Nghĩa, Hòa Quý, Đà Nẵng</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer-bottom text-center pt-4 border-top order-6">
+						<p class="footer-content mb-1">© 2025 MVP. Mỗi hành động nhỏ, một thay đổi lớn</p>
+						<div class="footer-social">
+							<a href="https://www.facebook.com/login" target="_blank" class="me-2"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://www.instagram.com/accounts/login/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+							<a href="https://www.twitter.com/login" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
+							<a href="https://www.tiktok.com/login" target="_blank" class="me-2"><i class="fa-brands fa-tiktok"></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<a href="https://m.me/ErasmusFade" target="_blank" class="messenger-icon">
+			<i class="fa-brands fa-facebook-messenger"></i>
+		</a>
+		<!-- AOS -->
+		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+		<script src="../assets/js/aos.js"></script>
+		<!-- js -->
+		<script src="../assets/js/link-modal.js"></script>
+		<script src="../assets/js/hero.js"></script>
+		<script src="../assets/js/data.js"></script>
+		<script src="../assets/js/search.js"></script>
+		<script src="../assets/js/messenger.js"></script>
+		<script src="../assets/js/voluteer-validation.js"></script>
+		<script src="../assets/js/cart.js"></script>
+		<script src="..assets/js/featured-stories.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<!-- link Modal -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="../assets/js/modal.js"></script>
+		<script src="assets/js/languages.js"></script>
+		<script src="../assets/js/language-switcher.js"></script>
+		<!-- Gọi script -->
+		<script src="auth.js"></script>
+		<!-- Chuyển trang -->
+		<!-- <script src="assets/js/load.js"></script> -->
+	</body>
+</html>

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Quỹ Hy Vọng Việt MVP mang giáo dục và hy vọng đến trẻ em vùng cao. Tham gia quyên góp và tình nguyện ngay để tạo thay đổi lớn!" />
+		<title>Quỹ Hy Vọng Việt MVP - Hỗ trợ Trẻ em vùng cao</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/assets/img/logo-mvp-removebg.png" />
+		<!-- Nhúng font chữ -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bree+Serif&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Nhúng font awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- Nhúng boxicons -->
+		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+		<!-- CSS của AOS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+		<!-- Link Bootstrap-->
+		<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+		<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Link CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<link rel="stylesheet" href="assets/css/ui/common.css" />
+		<link rel="stylesheet" href="../assets/css/ui/index.css" />
+		<link rel="stylesheet" href="../assets/css/components/messenger.css" />
+		<link rel="stylesheet" href="../assets/css/ui/stories.css" />
+		<!-- Link Chatbot -->
+		<link rel="stylesheet" href="assets/css/ui/style.css" />
+		<script src="assets/js/chatbox.js" defer></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	</head>
+	<body>
+		<button id="scrollTopBtn">
+			<i class="fas fa-arrow-up"></i>
+		</button>
+
+		<button id="hideHeaderBtn">
+			<i id="iconHeader" class="fas fa-eye"></i>
+		</button>
+
+		<!-- Hero -->
+
+		<div class="hero-section">
+			<img class="hero-background homepage-background" src="assets/img/tre-em-vung-cao-tam-suoi.webp" alt="Hình ảnh trẻ em vùng cao tắm suối - Quỹ Hy Vọng Việt MVP" fetchpriority="high" />
+			<div class="overlay"></div>
+			<!-- Bong bóng nước -->
+			<div class="bubbles">
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+				<div class="bubble"></div>
+			</div>
+
+			<!-- Thanh Header -->
+			<header class="header">
+				<div>
+					<a href=""><img class="logo" src="../assets/img/logo-mvp.png" alt="Logo" /></a>
+				</div>
+
+				<nav class="navbar" aria-label="Menu điều hướng chính">
+					<div class="nav-item dropdown">
+						<a style="" class="nav-link active" href="index.html" data-lang-key="nav_home"> Trang chủ </a>
+					</div>
+
+					<div class="nav-item dropdown">
+						<a style="" class="nav-link" href="about.html" data-lang-key="nav_about"> Về chúng tôi </a>
+					</div>
+
+					<div class="nav-item dropdown">
+						<a style="" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer"> Tình nguyện </a>
+					</div>
+
+					<div class="nav-item dropdown">
+						<a style="" class="nav-link" href="donate.html" data-lang-key="nav_donate"> Quyên góp </a>
+					</div>
+
+					<a style="" class="nav-link" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
+				</nav>
+
+				<div class="right-header">
+					<div class="search">
+						<a href="#" id="searchToggle"><box-icon name="search-alt-2"></box-icon></a>
+						<div class="search-dropdown" id="searchDropdown">
+							<input type="text" id="searchInput" placeholder="Tìm kiếm câu chuyện..." />
+							<div id="searchResults" class="search-results"></div>
+						</div>
+					</div>
+
+					<div class="cart">
+						<a href="#" style="position: relative" onclick="toggleCartPopup(event)">
+							<box-icon name="cart"></box-icon>
+							<span id="cart-count" class="cart-count">0</span>
+						</a>
+					</div>
+
+					<div class="language-switcher">
+						<button id="lang-vi" class="lang-btn active">VN</button>
+						<button id="lang-en" class="lang-btn">EN</button>
+					</div>
+
+					<div class="auth-section">
+						<div id="auth-links" class="register-login" style="display: block">
+							<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
+							<span class="slash">/</span>
+							<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
+						</div>
+
+						<div id="user-info" class="user-info" style="display: none">
+							<span class="welcome-text">
+								<span data-lang-key="auth_greeting">Xin chào,</span>
+								<strong id="username"></strong>!
+							</span>
+							<button class="logout-btn" id="logout-btn" data-lang-key="auth_logout">Đăng xuất</button>
+						</div>
+					</div>
+				</div>
+				<!-- Gio hàng -->
+				<div id="cart-sidebar" class="cart-sidebar">
+					<div class="cart-sidebar-header">
+						<h4>Giỏ hàng của bạn</h4>
+						<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')">×</button>
+					</div>
+					<ul id="cart-items" class="cart-items"></ul>
+					<div class="cart-total">
+						<p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
+						<button class="checkout-btn">Thanh toán</button>
+					</div>
+				</div>
+				<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+			</header>
+
+			<!-- Content -->
+			<section class="home">
+				<div class="home-content">
+					<h1 data-lang-key="hero_title">Chung tay vì trẻ em vùng cao.</h1>
+					<h3 data-lang-key="hero_subtitle">Hành động ngay!</h3>
+					<p data-lang-key="hero_description">Mỗi đóng góp là bước đệm giúp trẻ em vùng cao đến gần tri thức, cơ hội và hy vọng</p>
+					<a href="#shop" class="hero-btn btn-animation" data-lang-key="hero_button">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+				</div>
+			</section>
+
+			<!-- Chatbot AI -->
+			<button class="chatbot-toggler">
+				<span class="material-symbols-outlined">mode_comment</span>
+				<span class="material-symbols-outlined">close</span>
+			</button>
+			<div class="chatbot">
+				<header>
+					<h2>Chatbot</h2>
+					<span class="close-btn material-symbols-outlined">close</span>
+				</header>
+				<ul class="chatbox">
+					<li class="chat incoming">
+						<span class="material-symbols-outlined">smart_toy</span>
+						<p>
+							Xin chào💕 <br /><a style="color: red"><b>MVP</b></a> có thể giúp gì bạn hôm nay
+						</p>
+					</li>
+				</ul>
+				<div class="chat-input">
+					<textarea placeholder="Enter a message..." required></textarea>
+					<span id="send-btn" class="material-symbols-outlined">send</span>
+				</div>
+			</div>
+
+			<section class="hero-footer">
+				<div class="social-media">
+					<a style="" target="_blank" href="https://www.facebook.com/login"><box-icon type="logo" name="facebook"></box-icon></a>
+					<a style="" target="_blank" href="https://www.twitter.com/login"><box-icon name="twitter" type="logo"></box-icon></a>
+					<a style="" target="_blank" href="https://www.instagram.com/accounts/login/"><box-icon name="instagram" type="logo"></box-icon></a>
+				</div>
+			</section>
+		</div>
+		<!-- Welcome Section -->
+		<section class="welcome-section">
+			<div class="container common-container">
+				<div class="row g-5">
+					<div class="col-12 col-md-6">
+						<div class="text-md-start">
+							<h3 class="common-caption welcome-caption" data-lang-key="welcome_caption" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+								Đồng hành cùng Quỹ Hy Vọng Việt MVP
+							</h3>
+							<h2 class="common-heading welcome-heading" data-lang-key="welcome_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="100">
+								MVP – Mang tri thức đi khắp mọi miền
+							</h2>
+							<p class="common-content welcome-content" data-lang-key="welcome_content" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="200">
+								<b>Quỹ Hy Vọng Việt MVP</b> là tổ chức từ thiện phi lợi nhuận, cam kết mang giáo dục và hy vọng đến trẻ em vùng cao. Với sự hỗ trợ của cộng đồng, chúng tôi đã giúp hơn
+								<strong>1,000 trẻ em</strong> được đến trường và xây dựng tương lai tươi sáng hơn.
+							</p>
+							<div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+								<a href="./about.html" class="common-btn btn btn-primary" data-lang-key="welcome_button"> <i class="fa-solid fa-heart-pulse mx-1"></i> Tìm hiểu thêm </a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 mt-3 mt-md-0">
+						<img
+							src="../assets/img/welcome-section.webp"
+							class="common-img img-fluid"
+							alt="Hình ảnh chung tay - MVP"
+							data-aos="fade-left"
+							data-aos-duration="1000"
+							data-aos-offset="300"
+							data-aos-delay="300"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Featured Stories Section -->
+		<section class="featured-stories-section margin-section px-md-0 px-3">
+			<div class="container common-container">
+				<div class="section-header d-flex justify-content-between align-items-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">
+					<h2 class="fs-stories-heading common-heading">
+						<span data-lang-key="stories_heading">Câu chuyện</span> <span class="strong-heading" data-lang-key="stories_heading_strong">nổi bật</span>
+					</h2>
+					<a href="./stories.html#storiesSection" class="view-all" data-lang-key="stories_view_all">Xem tất cả →</a>
+				</div>
+				<div class="swiper featured-stories-slider" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/tusachnho.webp" alt="Dự án tủ sách nhỏ cho trẻ em vùng cao MVP" />
+									<div class="fs-progress-overlay"><span>60%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title" data-lang-key="story1_title">Tủ sách nhỏ cho điểm trường lẻ</h5>
+									<p class="fs-meta" data-lang-key="story1_meta">2.8N lượt ủng hộ - Còn lại 12 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 60%"></div></div>
+									<p class="fs-raised">540.000.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/quyengopsach.webp" alt="Quyên góp sách vở cho trẻ em nghèo tại MVP" />
+									<div class="fs-progress-overlay"><span>85%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title" data-lang-key="story2_title">Quyên góp sách vở cho trẻ em nghèo</h5>
+									<p class="fs-meta" data-lang-key="story2_meta">5.2N lượt ủng hộ - Còn lại 40 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 85%"></div></div>
+									<p class="fs-raised">556.900.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/kynangsongchotre.jpg" alt="Khóa học kỹ năng sống cho trẻ em vùng cao" />
+									<div class="fs-progress-overlay"><span>40%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title" data-lang-key="story3_title">Khóa học kỹ năng sống cho trẻ em</h5>
+									<p class="fs-meta" data-lang-key="story3_meta">2.4N lượt ủng hộ - Còn lại 15 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 40%"></div></div>
+									<p class="fs-raised">380.550.500 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Card 4 -->
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/hotroaoam.jpg" alt="Hỗ trợ áo ấm mùa đông cho trẻ em khó khăn" />
+									<div class="fs-progress-overlay"><span>55%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title">Hỗ trợ áo ấm mùa đông cho trẻ em</h5>
+									<p class="fs-meta">3.1N lượt ủng hộ - Còn lại 22 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 55%"></div></div>
+									<p class="fs-raised">210.200.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Card 5 -->
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/hotroyte.jpg" alt="Dự án hỗ trợ y tế vùng sâu vùng xa MVP" />
+									<div class="fs-progress-overlay"><span>85%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title">Hỗ trợ y tế vùng sâu vùng xa</h5>
+									<p class="fs-meta">4.9N lượt ủng hộ - Còn lại 8 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 85%"></div></div>
+									<p class="fs-raised">350.000.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Card 6 -->
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/tetthieunhi.webp" alt="Sự kiện Tết Thiếu nhi cho trẻ em vùng cao" />
+									<div class="fs-progress-overlay"><span>30%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title">Tổ chức Tết Thiếu nhi ở vùng cao</h5>
+									<p class="fs-meta">1.7N lượt ủng hộ - Còn lại 35 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 30%"></div></div>
+									<p class="fs-raised">320.000.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Card 7 -->
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/tinhnguyenhe.webp" alt="Lớp học tình nguyện mùa hè cho trẻ em" />
+									<div class="fs-progress-overlay"><span>65%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title">Mùa hè ý nghĩa cùng lớp học tình nguyện</h5>
+									<p class="fs-meta">3.8N lượt ủng hộ - Còn lại 38 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 65%"></div></div>
+									<p class="fs-raised">396.467.970 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Card 8 -->
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/conduongdentruong.webp" alt="Dự án xây đường đến trường cho trẻ em vùng cao" />
+									<div class="fs-progress-overlay"><span>40%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title">Làm đường đến trường</h5>
+									<p class="fs-meta">1.2N lượt ủng hộ - Còn lại 18 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 40%"></div></div>
+									<p class="fs-raised">280.000.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Card 9 -->
+						<div class="swiper-slide">
+							<div class="fs-card">
+								<div class="fs-img">
+									<img src="assets/img/thapsangduongque.webp" alt="" />
+									<div class="fs-progress-overlay"><span>95%</span></div>
+								</div>
+								<div class="fs-info">
+									<h5 class="fs-title">Thắp sáng đường quê</h5>
+									<p class="fs-meta">6.5N lượt ủng hộ - Còn lại 3 ngày</p>
+									<div class="fs-progress"><div class="progress-bar" style="width: 95%"></div></div>
+									<p class="fs-raised">2.750.000.000 VNĐ</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Pagination -->
+					<div class="swiper-pagination" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="100"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Impact Section -->
+		<section id="conso" class="impact-section margin-section px-md-0 px-5">
+			<div class="container common-container">
+				<div class="row g-5">
+					<h2 class="common-heading text-center impact-heading" data-lang-key="impact_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Những con số biết nói</h2>
+					<h3 class="common-intro" data-lang-key="impact_intro" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150">
+						Mỗi con số là một câu chuyện – về những nụ cười, hành trình và niềm tin. <br />
+						Chúng tôi đã cùng cộng đồng tạo nên trong suốt hành trình mang tri thức và hy vọng đến với trẻ em vùng khó khăn
+					</h3>
+
+					<div class="col-12 col-md-4 impact-card impact-card-1 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+						<img src="../assets/img/impact-1.png" alt="Trẻ em học tập" class="impact-icon" />
+						<h2 class="impact-title" data-target="1000">1000+</h2>
+						<p class="common-content" data-lang-key="impact1_desc">Trẻ em được hỗ trợ học bổng và có điều kiện đến trường</p>
+					</div>
+					<div class="col-12 col-md-4 impact-card impact-card-2 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="300">
+						<img src="../assets/img/impact-2.png" alt="Tham gia tình nguyện" class="impact-icon" />
+						<h2 class="impact-title" data-target="500">500+</h2>
+						<p class="common-content" data-lang-key="impact2_desc">Tình nguyện viên tích cực tham gia các dự án cộng đồng</p>
+					</div>
+					<div class="col-12 col-md-4 impact-card impact-card-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="600">
+						<img src="../assets/img/impact-3.png" alt="Xây trường cho trẻ em vùng cao" class="impact-icon" />
+						<h2 class="impact-title" data-target="10">10+</h2>
+						<p class="common-content" data-lang-key="impact3_desc">Ngôi trường khang trang được xây dựng tại vùng cao</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Volunteer Section -->
+		<section id="tinhnguyenvien" class="volunteer-section margin-section px-md-0 px-3">
+			<div class="container common-container">
+				<h2 class="common-heading volunteer-heading text-center" data-lang-key="volunteer_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">
+					Tình nguyện viên tiêu biểu
+				</h2>
+				<h3 class="common-intro" data-lang-key="volunteer_intro" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150">
+					Mỗi con số là dấu ấn của những tình nguyện viên tận tâm – những người đã góp sức lan tỏa tri thức và hy vọng đến trẻ em vùng khó khăn
+				</h3>
+				<!-- Carousel -->
+				<div id="volunteerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<!-- Slide 1 -->
+						<div class="carousel-item volunteer-carousel-item active">
+							<div
+								class="volunteer-card d-flex justify-content-center flex-column align-items-center"
+								data-aos="fade-up"
+								data-aos-duration="1000"
+								data-aos-offset="150"
+								data-aos-delay="0"
+							>
+								<img class="volunteer-img" src="../assets/img/volunteer-slide-1-1.png" alt="Tình nguyện viên Nguyễn Tiến Đạt hỗ trợ MVP" loading="lazy" />
+								<p class="volunteer-title" data-lang-key="volunteer1_name">Nguyễn Tiến Đạt</p>
+								<p class="volunteer-subtitle" data-lang-key="volunteer1_role">Sinh viên</p>
+								<p class="volunteer-content common-content" data-lang-key="volunteer1_desc">Năng động, luôn sẵn lòng giúp đỡ những hoàn cảnh khó khăn</p>
+							</div>
+							<div
+								class="volunteer-card d-flex justify-content-center flex-column align-items-center"
+								data-aos="fade-up"
+								data-aos-duration="1000"
+								data-aos-offset="150"
+								data-aos-delay="300"
+							>
+								<img class="volunteer-img" src="../assets/img/volunteer-slide-1-2.png" alt="Tình nguyện viên Từ Thị Tú Uyên mang hy vọng" loading="lazy" />
+								<p class="volunteer-title" data-lang-key="volunteer2_name">Từ Thị Tú Uyên</p>
+								<p class="volunteer-subtitle" data-lang-key="volunteer2_role">Sinh viên</p>
+								<p class="volunteer-content" data-lang-key="volunteer2_desc">Tận tâm, mang lại niềm vui và hy vọng cho cộng đồng</p>
+							</div>
+							<div
+								class="volunteer-card d-flex justify-content-center flex-column align-items-center"
+								data-aos="fade-up"
+								data-aos-duration="1000"
+								data-aos-offset="150"
+								data-aos-delay="600"
+							>
+								<img class="volunteer-img" src="../assets/img/volunteer-slide-1-3.png" alt="Tình nguyện viên Trịnh Hoài Phi giúp trẻ em" loading="lazy" />
+								<p class="volunteer-title" data-lang-key="volunteer3_name">Trịnh Hoài Phi</p>
+								<p class="volunteer-subtitle" data-lang-key="volunteer3_role">Sinh viên</p>
+								<p class="volunteer-content" data-lang-key="volunteer3_desc">Nhiệt huyết, luôn đứng về phía những người cần giúp đỡ</p>
+							</div>
+						</div>
+						<!-- Slide 2 -->
+						<div class="carousel-item volunteer-carousel-item">
+							<div class="volunteer-card d-flex justify-content-center flex-column align-items-center">
+								<img class="volunteer-img" src="../assets/img/volunteer-slide-2-1.png" alt="Tình nguyện viên Ngọ Đình Phúc cống hiến MVP" loading="lazy" />
+								<p class="volunteer-title" data-lang-key="volunteer4_name">Ngọ Đình Phúc</p>
+								<p class="volunteer-subtitle" data-lang-key="volunteer4_role">Sinh viên</p>
+								<p class="volunteer-content" data-lang-key="volunteer4_desc">Tấm lòng rộng mở, không ngừng cống hiến cho xã hội</p>
+							</div>
+							<div class="volunteer-card d-flex justify-content-center flex-column align-items-center">
+								<img class="volunteer-img" src="../assets/img/volunteer-slide-2-2.png" alt="Tình nguyện viên Trình Phương Uyên hành động thiết thực" loading="lazy" />
+								<p class="volunteer-title" data-lang-key="volunteer5_name">Trình Phương Uyên</p>
+								<p class="volunteer-subtitle" data-lang-key="volunteer5_role">Sinh viên</p>
+								<p class="volunteer-content" data-lang-key="volunteer5_desc">Đam mê, giúp đỡ mọi người những hành động thiết thực</p>
+							</div>
+							<div class="volunteer-card d-flex justify-content-center flex-column align-items-center">
+								<img class="volunteer-img" src="../assets/img/volunteer-slide-2-3.png" alt="Tình nguyện viên Quỳnh Trang xây cộng đồng MVP" loading="lazy" />
+								<p class="volunteer-title" data-lang-key="volunteer6_name">Quỳnh Trang</p>
+								<p class="volunteer-subtitle" data-lang-key="volunteer6_role">Sinh viên</p>
+								<p class="volunteer-content" data-lang-key="volunteer6_desc">Trách nhiệm, góp phần xây dựng cộng đồng vững mạnh</p>
+							</div>
+						</div>
+					</div>
+					<!-- Nút điều hướng trái/phải -->
+					<button class="carousel-control-prev" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				<!-- Nút bấm đến trang -->
+				<div class="text-center d-flex justify-content-center">
+					<div data-aos="fade-right" data-aos-duration="1000" data-aos-offset="150">
+						<a href="./volunteer.html" class="common-btn me-2" data-lang-key="volunteer_btn_join"><i class="fas fa-users me-1"></i> Tham gia tình nguyện</a>
+					</div>
+
+					<div data-aos="fade-left" data-aos-duration="1000" data-aos-offset="150">
+						<a href="./donate.html" class="common-btn" data-lang-key="volunteer_btn_donate"> <i class="fas fa-heart me-1"></i> Quyên góp ngay </a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Banner-section -->
+		<section
+			class="banner-section margin-section"
+			style="background-image: url('assets/img/img5.jpg'); background-size: cover; background-position: center"
+			data-aos="fade-up"
+			data-aos-duration="1000"
+			data-aos-offset="250"
+		>
+			<div class="overlay"></div>
+		</section>
+
+		<!-- Mission -->
+		<section id="sumenh" class="mission-section margin-section" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="250">
+			<div class="container common-container text-center">
+				<h2 class="common-heading mission-heading" data-lang-key="mission_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="100">
+					Sứ mệnh của chúng tôi
+				</h2>
+				<div class="row justify-content-center mission-grid">
+					<!-- Item 1 -->
+					<div class="col-md-6 mission-item d-flex" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="200">
+						<div class="mission-icon-wrap">
+							<img src="assets/img/education.webp" alt="Minh họa cơ hội học tập cho trẻ em vùng cao" class="mission-icon" />
+						</div>
+						<div class="mission-text text-start">
+							<h3 class="mission-subheading" data-lang-key="mission1_title">Cơ hội học tập</h3>
+							<p class="common-content mission-content" data-lang-key="mission1_desc">Mọi đứa trẻ đều xứng đáng có cơ hội học tập và phát triển toàn diện</p>
+						</div>
+					</div>
+
+					<!-- Item 2 -->
+					<div class="col-md-6 mission-item d-flex" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="500">
+						<div class="mission-icon-wrap">
+							<img src="assets/img/heart.webp" alt="Minh họa kết nối yêu thương với trẻ em khó khăn" class="mission-icon" />
+						</div>
+						<div class="mission-text text-start">
+							<h3 class="mission-subheading" data-lang-key="mission2_title">Kết nối yêu thương</h3>
+							<p class="common-content mission-content" data-lang-key="mission2_desc">Kết nối giữa cộng đồng và trẻ em vùng cao đầy khó khăn</p>
+						</div>
+					</div>
+
+					<!-- Item 3 -->
+					<div class="col-md-6 mission-item d-flex" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="200">
+						<div class="mission-icon-wrap">
+							<img src="assets/img/skill.webp" alt="Minh họa phát triển kỹ năng sống cho trẻ em" class="mission-icon" />
+						</div>
+						<div class="mission-text text-start">
+							<h3 class="mission-subheading" data-lang-key="mission3_title">Phát triển toàn diện</h3>
+							<p class="common-content mission-content" data-lang-key="mission3_desc">Hỗ trợ trẻ em không chỉ học tập mà còn nâng cao kỹ năng sống, tự tin vươn lên</p>
+						</div>
+					</div>
+
+					<!-- Item 4 -->
+					<div class="col-md-6 mission-item d-flex" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="500">
+						<div class="mission-icon-wrap">
+							<img src="assets/img/community.webp" alt="Minh họa tình nguyện lan tỏa nhân văn MVP" class="mission-icon" />
+						</div>
+						<div class="mission-text text-start">
+							<h3 class="mission-subheading" data-lang-key="mission4_title">Tình nguyện vì cộng đồng</h3>
+							<p class="common-content mission-content" data-lang-key="mission4_desc">Khơi dậy tinh thần trách nhiệm, lan tỏa sự tử tế và nhân văn trong xã hội</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Đơn vị tài trợ -->
+		<section id="doitac" class="partners-section px-md-0 px-3">
+			<div class="container common-container">
+				<div class="row">
+					<!-- Nhóm 1: 3 logo đầu -->
+					<div class="col-12 col-md-6 d-flex justify-content-around" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="150">
+						<div class="col-4 partners-img">
+							<img src="/assets/img/nhataitro_7.png" alt="Partner 1" class="img-fluid biger2-logo" />
+						</div>
+						<div class="col-4 partners-img">
+							<img src="/assets/img/nhataitro_2.png" alt="Partner 2" class="img-fluid big-logo" />
+						</div>
+						<div class="col-4 partners-img">
+							<img src="/assets/img/nhataitro_4.png" alt="Partner 3" class="img-fluid small-logo" />
+						</div>
+					</div>
+
+					<!-- Nhóm 2: 3 logo sau -->
+					<div class="col-12 col-md-6 d-flex justify-content-around" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="150">
+						<div class="col-4 partners-img">
+							<img src="/assets/img/nhataitro_1.png" alt="Partner 4" class="img-fluid small-logo" />
+						</div>
+						<div class="col-4 partners-img">
+							<img src="/assets/img/nhataitro_3.png" alt="Partner 5" class="img-fluid biger-logo" />
+						</div>
+						<div class="col-4 partners-img">
+							<img src="/assets/img/nhataitro_5.png" alt="Partner 6" class="img-fluid smaller-logo" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonials -->
+		<section class="testimonials-section px-md-0 px-3">
+			<div class="container">
+				<div class="row align-items-center">
+					<!-- Slogan bên trái -->
+					<div class="col-12 col-md-4 slogan-wrapper">
+						<h2 class="main-slogan common-heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="400" data-aos-delay="0">
+							<span data-lang-key="testimonial_heading">Gieo hạt yêu thương</span><br />
+							<span data-lang-key="testimonial_heading_strong" class="strong-heading">ươm mầm tương lai</span>
+						</h2>
+					</div>
+
+					<!-- Card bên phải -->
+					<div class="col-12 col-md-8 px-5">
+						<div class="testimonials-container">
+							<!-- Card 1 -->
+							<div class="testimonial-card" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="150">
+								<div class="quote-icon">
+									<img src="../assets/img/quote.svg" alt="Trích dẫn Maria Montessori về phát triển trẻ em" class="quote-img" />
+								</div>
+								<p class="testimonial-quote" data-lang-key="testimonial1_quote">Để hỗ trợ trẻ nhỏ, chúng ta phải cho nó một môi trường cho phép nó phát triển tự do</p>
+								<div class="testimonial-footer">
+									<img src="assets/img/testimonials_1.webp" alt="" class="avatar" />
+									<div class="footer-text">
+										<footer class="blockquote-footer" data-lang-key="testimonial1_author">Maria Montessori</footer>
+										<small data-lang-key="testimonial1_role">Bác sĩ, nhà giáo dục học</small>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card 2 -->
+							<div class="testimonial-card" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="150">
+								<div class="quote-icon">
+									<img src="../assets/img/quote.svg" alt="Trích dẫn UNICEF về trẻ em và tương lai" class="quote-img" />
+								</div>
+								<p class="testimonial-quote" data-lang-key="testimonial2_quote">Trẻ em hôm nay, thế giới ngày mai.</p>
+								<div class="testimonial-footer">
+									<img src="assets/img/testimonials_2.webp" alt="" class="avatar" />
+									<div class="footer-text">
+										<footer class="blockquote-footer" data-lang-key="testimonial2_author">UNICEF</footer>
+										<small data-lang-key="testimonial2_role">Quỹ Nhi đồng Liên hợp quốc</small>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card 3 -->
+							<div class="testimonial-card" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="150">
+								<div class="quote-icon">
+									<img src="../assets/img/quote.svg" alt="Trích dẫn Phạm Minh Hạc về giáo dục gia đình" class="quote-img" />
+								</div>
+								<p class="testimonial-quote" data-lang-key="testimonial3_quote">
+									Giáo dục một đứa trẻ là giáo dục một con người, nhưng giáo dục một người mẹ là giáo dục cả một gia đình
+								</p>
+								<div class="testimonial-footer">
+									<img src="assets/img/testimonials_3.webp" alt="" class="avatar" />
+									<div class="footer-text">
+										<footer class="blockquote-footer" data-lang-key="testimonial3_author">Phạm Minh Hạc</footer>
+										<small data-lang-key="testimonial3_role">Giáo sư, nhà giáo dục học</small>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card 4 -->
+							<div class="testimonial-card" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="150">
+								<div class="quote-icon">
+									<img src="../assets/img/quote.svg" alt="Trích dẫn Angela Schwindt về ý nghĩa cuộc sống" class="quote-img" />
+								</div>
+								<p class="testimonial-quote" data-lang-key="testimonial4_quote">Khi chúng ta cố gắng dạy trẻ em tất cả về cuộc sống, chúng lại dạy chúng ta ý nghĩa cuộc sống là gì</p>
+								<div class="testimonial-footer">
+									<img src="assets/img/testimonials_4.webp" alt="" class="avatar" />
+									<div class="footer-text">
+										<footer class="blockquote-footer" data-lang-key="testimonial4_author">Angela Schwindt</footer>
+										<small data-lang-key="testimonial4_role">Nhà văn, diễn giả</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Shop Section -->
+		<div id="shop" class="shop-section px-md-0">
+			<div class="container common-container">
+				<h2 class="heading-style" data-lang-key="shop_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">MVP Shop - Mua Là Góp</h2>
+				<p class="intro-text fw-bold text-center rounded hover-shadow mb-5" data-lang-key="shop_intro" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150">
+					Chọn mua một món quà – Gửi trao một tương lai
+				</p>
+				<div class="row justify-content-center row-cols-1">
+					<!-- Sản phẩm 1 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+						<div class="shop-card">
+							<div class="ribbon sold-out"><span>Hết hàng</span></div>
+							<img src="../assets/img/binh-nuoc.png" alt="Bình nước hy vọng MVP Shop hỗ trợ từ thiện" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product1_title">Bình nước hy vọng</h3>
+							<p class="shop-price">140.000 VNĐ</p>
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Bình nước hy vọng"
+								data-number="8"
+								data-danger=""
+								data-img="../assets/img/binh-nuoc.jpg"
+								data-desc="Bình nước bằng thép không gỉ với hình minh họa trẻ em vùng cao bên dòng sông sạch, mỗi sản phẩm bán ra hỗ trợ dự án lọc nước tại các khu vực xa xôi."
+								data-price="140000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+					<!-- Sản phẩm 2 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="100">
+						<div class="shop-card">
+							<div class="ribbon shock"><span>Ưu đãi sốc</span></div>
+							<img src="../assets/img/so-mo-uoc.png" alt="Sổ mơ ước MVP Shop cho trẻ em vùng cao" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product2_title">Sổ mơ ước</h3>
+
+							<p class="shop-price">
+								<span class="price-old">120.000</span>
+								<span class="price-new">49.900 VNĐ</span>
+							</p>
+
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Sổ mơ ước"
+								data-number="42"
+								data-img="../assets/img/so-mo-uoc.jpg"
+								data-desc="Sổ bìa cứng với hình ảnh trẻ em trên ruộng bậc thang, mỗi cuốn bán ra giúp mang sách đến tay trẻ em khó khăn."
+								data-price="89000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+					<!-- Sản phẩm 3 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="200">
+						<div class="shop-card">
+							<div class="ribbon new"><span>Mới</span></div>
+							<img src="assets/img/ao-thun.webp" alt="Áo thun tự hào MVP Shop lan tỏa yêu thương" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product3_title">Áo thun tự hào</h3>
+							<p class="shop-price">167.000 VNĐ</p>
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Áo thun tự hào"
+								data-number="7"
+								data-danger=""
+								data-img="../assets/img/ao-thun.jpg"
+								data-desc="Áo thun cotton in hình trẻ em trong làng núi, 30% lợi nhuận từ mỗi áo hỗ trợ xây dựng lớp học vùng cao"
+								data-price="169000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+					<!-- Sản phẩm 4 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="300">
+						<div class="shop-card">
+							<div class="ribbon gift"><span>Quà tặng</span></div>
+							<img src="../assets/img/tui-vai.png" alt="Túi vải đồng hành MVP Shop hỗ trợ trẻ em" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product4_title">Túi vải đồng hành</h3>
+							<p class="shop-price">150.000 VNĐ</p>
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Túi vải đồng hành"
+								data-number="15"
+								data-img="../assets/img/tui-vai.jpg"
+								data-desc="Túi vải canvas với hình hai em nhỏ đeo ba lô, mỗi túi bán ra đóng góp cho các chương trình giáo dục."
+								data-price="150000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center row-cols-1">
+					<!-- Sản phẩm 5 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+						<div class="shop-card">
+							<div class="ribbon shock"><span>Ưu đãi sốc</span></div>
+							<img src="../assets/img/hop-com.png" alt="Hộp cơm yêu thương MVP Shop cho trẻ em" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product5_title">Hộp cơm yêu thương</h3>
+							<p class="shop-price">
+								<span class="price-old">180.000</span>
+								<span class="price-new">59.900 VNĐ</span>
+							</p>
+
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Hộp cơm yêu thương"
+								data-number="5"
+								data-danger=""
+								data-img="../assets/img/hop-com.jpg"
+								data-desc="Hộp cơm bằng thép không gỉ với hình trẻ em bên cây cổ thụ, mỗi hộp bán ra hỗ trợ bữa ăn cho học sinh vùng cao."
+								data-price="180000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+					<!-- Sản phẩm 6 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="100">
+						<div class="shop-card">
+							<div class="ribbon sale"><span>-20%</span></div>
+							<img src="../assets/img/op-lung.png" alt="Ốp lưng mùa xuân MVP Shop mang hy vọng" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product6_title">Ốp lưng mùa xuân</h3>
+							<p class="shop-price">
+								<span class="price-old">79.000</span>
+								<span class="price-new">63.000 VNĐ</span>
+							</p>
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Ốp lưng mùa xuân"
+								data-number="31"
+								data-img="../assets/img/op-lung.jpg"
+								data-desc="Ốp lưng điện thoại với họa tiết hoa đào và trẻ em, mỗi sản phẩm bán ra giúp mua sách giáo khoa cho trẻ em nghèo."
+								data-price="80000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+					<!-- Sản phẩm 7 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="200">
+						<div class="shop-card">
+							<div class="ribbon sale"><span>-35%</span></div>
+							<img src="../assets/img/ba-lo.webp" alt="Balo ước nguyện MVP Shop cho tương lai trẻ" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product7_title">Balo ước nguyện</h3>
+							<p class="shop-price">
+								<span class="price-old">290.000</span>
+								<span class="price-new">189.000 VNĐ</span>
+							</p>
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Balo ước nguyện"
+								data-number="50"
+								data-img="../assets/img/ba-lo.jpg"
+								data-desc="Ba lô vải với hình em nhỏ và bảng 'I want to be', mỗi ba lô bán ra tặng một ba lô cho học sinh vùng cao.."
+								data-price="290000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+					<!-- Sản phẩm 8 -->
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="300">
+						<div class="shop-card">
+							<div class="ribbon limited"><span>Giới hạn</span></div>
+							<img src="../assets/img/hop-but.png" alt="Hộp bút mặt trời MVP Shop thắp sáng tri thức" class="shop-image" loading="lazy" />
+							<h3 class="shop-title" data-lang-key="product8_title">Hộp bút mặt trời</h3>
+							<p class="shop-price">95.000 VNĐ</p>
+							<button
+								class="shop-btn"
+								data-bs-toggle="modal"
+								data-bs-target="#myModal"
+								data-title="Hộp bút mặt trời"
+								data-number="2"
+								data-danger=""
+								data-img="../assets/img/hop-but.jpg"
+								data-desc="Hộp bút màu vải với hình trẻ em học tập, mỗi hộp bán ra quyên góp dụng cụ học tập cho trẻ em khó khăn.."
+								data-price="95000"
+								data-lang-key="product_view_detail"
+							>
+								<i class="fa-regular fa-eye"></i> Xem chi tiết
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<!-- Modal Content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="text-primary modal-title">Tiêu đề</h4>
+					</div>
+					<div class="modal-body">
+						<p class="number text-success">Số lượng</p>
+						<p class="danger text-danger fw-bold">Cảnh báo</p>
+						<p class="desc">Mô tả sản phẩm</p>
+						<img class="modal-img img-fluid" src="" alt="Ảnh sản phẩm" onclick="openLargeImage(this)" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" data-price="">Đặt mua ngay</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer Section -->
+		<footer class="footer-section">
+			<div class="container common-container">
+				<div class="row">
+					<div class="col-12 col-md-3 footer-first order-1 order-md-1">
+						<div class="d-flex align-items-center footer-logo-margin">
+							<img class="img-footer" src="/assets/img/logo-mvp.png" alt="Logo Quỹ Hy Vọng Việt MVP - Footer" height="40px" />
+							<h3 class="ms-2 mb-0 footer-heading" data-lang-key="footer_slogan">Lan tỏa yêu thương</h3>
+						</div>
+						<p class="footer-content footer-content-first" data-lang-key="footer_desc">Chúng tôi tạo ra một không gian sẻ chia - nơi mỗi hành động nhỏ đều có thể mang lại thay đổi lớn</p>
+					</div>
+					<div class="col-12 col-md-2 footer-padding order-2 order-md-2">
+						<h3 class="footer-heading" data-lang-key="footer_explore_heading">KHÁM PHÁ MVP</h3>
+						<ul class="footer-link list-unstyled">
+							<li><a href="./about.html" class="footer-content link-1" data-lang-key="footer_link_about">Về chúng tôi</a></li>
+							<li><a href="./volunteer.html" class="footer-content link-2" data-lang-key="footer_link_volunteer">Tình nguyện</a></li>
+							<li><a href="./donate.html" class="footer-content link-3" data-lang-key="footer_link_donate">Quyên góp</a></li>
+							<li><a href="./stories.html" class="footer-content link-4" data-lang-key="footer_link_stories">Câu chuyện</a></li>
+						</ul>
+					</div>
+					<div class="col-12 col-md-4 order-4 order-md-3">
+						<h3 class="footer-heading" data-lang-key="footer_partner_heading">ĐỒNG HÀNH CÙNG CHÚNG TÔI</h3>
+						<p class="footer-content" data-lang-key="footer_partner_desc">
+							Mỗi bước chân của bạn là nguồn cảm hứng để chúng tôi lan tỏa điều tốt đẹp mỗi ngày – Xem những tấm lòng đã đồng hành cùng chúng tôi.
+						</p>
+						<a href="donate.html#table-donate" class="footer-btn" data-lang-key="footer_partner_btn">Xem ngay</a>
+					</div>
+					<div class="col-12 col-md-3 footer-padding order-5 order-md-4">
+						<h3 class="footer-heading" data-lang-key="footer_contact_heading">LIÊN HỆ</h3>
+						<ul class="footer-content list-unstyled">
+							<li class="footer-contact"><i class="fas fa-envelope me-2"></i> lienhe@mvp.org</li>
+							<li class="footer-contact"><i class="fas fa-phone me-2"></i> 0123 456 789</li>
+							<li class="footer-contact"><i class="fas fa-map-marker-alt me-2"></i> Trần Đại Nghĩa, Hòa Quý, Đà Nẵng</li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-bottom text-center pt-4 border-top order-6">
+					<p class="footer-content mb-1" data-lang-key="footer_copyright">© 2025 MVP. Mỗi hành động nhỏ, một thay đổi lớn</p>
+					<div class="footer-social">
+						<a href="https://www.facebook.com/login" target="_blank" class="me-2"><i class="fab fa-facebook-f"></i></a>
+						<a href="https://www.instagram.com/accounts/login/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+						<a href="https://www.twitter.com/login" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
+						<a href="https://www.tiktok.com/login" target="_blank" class="me-2"><i class="fa-brands fa-tiktok"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!--  -->
+		<a href="https://m.me/ErasmusFade" target="_blank" class="messenger-icon">
+			<i class="fa-brands fa-facebook-messenger"></i>
+		</a>
+		<!-- AOS -->
+		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+		<!-- js -->
+		<script src="assets/js/header.js"></script>
+		<script src="../assets/js/link-modal.js"></script>
+		<script src="../assets/js/aos.js"></script>
+		<script src="../assets/js/hero.js"></script>
+		<script src="../assets/js/data.js"></script>
+		<script src="../assets/js/search.js"></script>
+		<script src="../assets/js/messenger.js"></script>
+		<script src="../assets/js/cart.js"></script>
+		<script src="../assets/js/search.js"></script>
+		<script src="assets/js/featured-stories.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<!-- link Modal -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="../assets/js/modal.js"></script>
+		<script src="../assets/js/languages.js"></script>
+		<script src="../assets/js/language-switcher.js"></script>
+		<!-- Gọi script -->
+		<script src="auth.js"></script>
+		<!-- Chuyển trang -->
+		<!-- <script src="assets/js/load.js"></script> -->
+	</body>
+</html>

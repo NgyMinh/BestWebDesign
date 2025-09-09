@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Tìm hiểu về Quỹ Hy Vọng Việt MVP, sứ mệnh mang tri thức và cơ hội đến trẻ em vùng cao. Khám phá ngay!" />
+		<title>Về chúng tôi - Quỹ Hy Vọng Việt MVP</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/assets/img/logo-mvp-removebg.png" />
+		<!-- Nhúng font chữ -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Nhúng font awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- Nhúng boxicons -->
+		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+		<!-- CSS của AOS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+		<!-- Link Bootstrap-->
+		<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+		<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Link CSS -->
+		<link rel="stylesheet" href="../assets/css/ui/common.css" />
+		<link rel="stylesheet" href="../assets/css/ui/about.css" />
+		<link rel="stylesheet" href="../assets/css/components/messenger.css" />
+		<link rel="stylesheet" href="../assets/css/components/search-style.css" />
+		<link rel="stylesheet" href="../assets/css/components/stories-style.css" />
+		<link rel="stylesheet" href="../assets/css/ui/stories.css" />
+	</head>
+	<body>
+		<!-- Hero -->
+
+		<div class="hero-section">
+			<img class="hero-background" src="../assets/img/mang-den-anh-sang-cho-tre-em.webp" alt="Hình ảnh biểu tượng ánh sáng trẻ em vùng cao MVP" />
+			<div class="overlay"></div>
+			<!-- Thanh Header -->
+			<header class="header">
+				<div>
+					<a href="#"><img class="logo" src="../assets/img/logo-mvp.png" alt="Logo Quỹ Hy Vọng Việt MVP" /></a>
+				</div>
+
+				<!-- Navbar điều hướng -->
+				<nav class="navbar">
+					<div class="nav-item dropdown">
+						<a style="--i: 1" class="nav-link" href="index.html" data-lang-key="nav_home">Trang chủ </a>
+					</div>
+					<div class="nav-item dropdown">
+						<a style="--i: 2" class="nav-link active" href="about.html" data-lang-key="nav_about">Về chúng tôi </a>
+					</div>
+					<div class="nav-item dropdown">
+						<a style="--i: 3" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer">Tình nguyện </a>
+					</div>
+					<div class="nav-item dropdown">
+						<a style="--i: 4" class="nav-link" href="donate.html" data-lang-key="nav_donate">Quyên góp </a>
+					</div>
+					<a style="--i: 5" class="nav-link" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
+				</nav>
+
+				<div class="right-header">
+					<div class="search">
+						<a href="#" id="searchToggle"><box-icon name="search-alt-2"></box-icon></a>
+						<div class="search-dropdown" id="searchDropdown">
+							<input type="text" id="searchInput" placeholder="Tìm kiếm câu chuyện..." />
+							<div id="searchResults" class="search-results"></div>
+						</div>
+					</div>
+
+					<div class="cart">
+						<a href="#" style="position: relative" onclick="toggleCartPopup(event)">
+							<box-icon name="cart"></box-icon>
+							<span id="cart-count" class="cart-count">0</span>
+						</a>
+					</div>
+
+					<div class="language-switcher">
+						<button id="lang-vi" class="lang-btn active">VN</button>
+						<button id="lang-en" class="lang-btn">EN</button>
+					</div>
+
+					<div class="auth-section">
+						<!-- Links cho user chưa đăng nhập -->
+						<div id="auth-links" class="register-login" style="display: block">
+							<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
+							<span class="slash">/</span>
+							<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
+						</div>
+
+						<!-- Thông tin user đã đăng nhập -->
+						<div id="user-info" class="user-info" style="display: none">
+							<span class="welcome-text"> <span data-lang-key="auth_greeting">Xin chào,</span> <strong id="username"></strong>! </span>
+							<button class="logout-btn" id="logout-btn" data-lang-key="auth_logout">Đăng xuất</button>
+						</div>
+					</div>
+				</div>
+				<!-- Giỏ hàng -->
+				<div id="cart-sidebar" class="cart-sidebar">
+					<div class="cart-sidebar-header">
+						<h4 data-lang-key="cart_title">Giỏ hàng của bạn</h4>
+						<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')">×</button>
+					</div>
+					<ul id="cart-items" class="cart-items"></ul>
+					<div class="cart-total">
+						<p><span data-lang-key="cart_total">Tổng cộng:</span> <span id="cart-total">0 VNĐ</span></p>
+						<button class="checkout-btn" data-lang-key="cart_checkout">Thanh toán</button>
+					</div>
+				</div>
+				<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+			</header>
+
+			<!-- Content -->
+			<section class="home">
+				<div class="home-content">
+					<h1 data-lang-key="about_hero_title">Mang ánh sáng đến với trẻ em.</h1>
+					<h3 data-lang-key="about_hero_subtitle">Yêu thương mỗi ngày!</h3>
+					<p data-lang-key="about_hero_description">
+						Qũy từ thiện chúng tôi hoạt động để mang đến cơ hội học tập và hy vọng cho trẻ em vùng cao, với đội ngũ tình nguyện viên tận tụy và cộng đồng hỗ trợ
+					</p>
+					<a href="#shop" class="hero-btn btn-animation" data-lang-key="hero_button">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+				</div>
+			</section>
+
+			<section class="hero-footer">
+				<div class="social-media">
+					<a style="--i: 1" target="_blank" href="https://www.facebook.com/login"><box-icon type="logo" name="facebook"></box-icon></a>
+					<a style="--i: 2" target="_blank" href="https://www.twitter.com/login"><box-icon name="twitter" type="logo"></box-icon></a>
+					<a style="--i: 3" target="_blank" href="https://www.instagram.com/accounts/login/"><box-icon name="instagram" type="logo"></box-icon></a>
+				</div>
+			</section>
+		</div>
+
+		<!-- Timeline-->
+		<div id="timeline" class="timeline-section px-md-0 px-3" data-aos="fade-right">
+			<div class="background">
+				<div class="circle" style="top: -100px; left: 86%; width: 300px; height: 300px"></div>
+				<div class="circle" style="top: 400px; left: -11%; width: 300px; height: 300px"></div>
+				<div class="circle" style="top: 800px; left: 92%; width: 300px; height: 300px"></div>
+				<div class="circle" style="top: 1340px; left: -12%; width: 300px; height: 300px"></div>
+			</div>
+			<div class="container common-container">
+				<h3 id="timelinehanhtrinh" class="heading-style pt-0" data-lang-key="timeline_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">🚀 TIMELINE HÀNH TRÌNH</h3>
+				<div class="timeline" data-aos="fade-down" data-aos-duration="1500">
+					<div class="timeline-line"></div>
+					<!-- 2018 -->
+					<div class="timeline-entry left" data-year="2018">
+						<div class="timeline-icon" style="background: linear-gradient(135deg, #f43f5e, #f59e0b)" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="0" data-aos-offset="150">
+							<i class="fas fa-mountain"></i>
+						</div>
+						<div class="timeline-card-wrapper" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+							<div class="timeline-card">
+								<h3>2018</h3>
+								<p class="timeline-content" data-lang-key="timeline_2018">Chuyến đi Tà Phìn, Điện Biên – khởi nguồn MVP</p>
+							</div>
+
+							<!-- Ảnh -->
+							<div class="timeline-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+								<img src="assets/img/nam-2018.jpg" alt="Hình ảnh Chuyến đi Chuyến đi Tà Phìn, Điện Biên – khởi nguồn MVP Quỹ Hy Vọng Việt" />
+							</div>
+						</div>
+					</div>
+
+					<!-- 2019 -->
+					<div class="timeline-entry right" data-year="2019">
+						<div class="timeline-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4)" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="0" data-aos-offset="150">
+							<i class="fas fa-users"></i>
+						</div>
+						<div class="timeline-card-wrapper" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+							<div class="timeline-card">
+								<h3>2019</h3>
+								<p class="timeline-content" data-lang-key="timeline_2019">Thành lập nhóm MVP với các tình nguyện viên</p>
+							</div>
+							<!-- Ảnh -->
+							<div class="timeline-image" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+								<img src="assets/img/nam-2019.jpg" alt="Hình ảnh Thành lập nhóm MVP Quỹ Hy Vọng Việt" />
+							</div>
+						</div>
+					</div>
+
+					<!-- 2020 -->
+					<div class="timeline-entry left" data-year="2020">
+						<div class="timeline-icon" style="background: linear-gradient(135deg, #10b981, #34d399)" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="0" data-aos-offset="150">
+							<i class="fas fa-school"></i>
+						</div>
+						<div class="timeline-card-wrapper" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+							<div class="timeline-card">
+								<h3>2020</h3>
+								<p class="timeline-content" data-lang-key="timeline_2020">Xây lớp học đầu tiên cho trẻ em vùng cao</p>
+							</div>
+							<!-- Ảnh -->
+							<div class="timeline-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+								<img src="assets/img/nam-2020.jpg" alt="Hình ảnh Xây lớp học đầu tiên cho trẻ em vùng cao MVP Quỹ Hy Vọng Việt" />
+							</div>
+						</div>
+					</div>
+					<!-- 2022 -->
+					<div class="timeline-entry right" data-year="2022">
+						<div class="timeline-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4)" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="0" data-aos-offset="150">
+							<i class="fas fa-map-marked-alt"></i>
+						</div>
+						<div class="timeline-card-wrapper" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+							<div class="timeline-card">
+								<h3>2022</h3>
+								<p class="timeline-content" data-lang-key="timeline_2022">Mở rộng hoạt động ra nhiều tỉnh phía Bắc</p>
+							</div>
+							<!-- Ảnh -->
+							<div class="timeline-image" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+								<img src="assets/img/nam-2022.jpg" alt="Hình ảnh MVP Quỹ Hy Vọng Việt mở rộng hoạt động ra nhiều tỉnh phía Bắc" />
+							</div>
+						</div>
+					</div>
+					<!-- 2023 -->
+					<div class="timeline-entry left" data-year="2023">
+						<div class="timeline-icon" style="background: linear-gradient(135deg, #f97316, #fb923c)" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="0" data-aos-offset="150">
+							<i class="fas fa-graduation-cap"></i>
+						</div>
+						<div class="timeline-card-wrapper" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+							<div class="timeline-card">
+								<h3>2023</h3>
+								<p class="timeline-content" data-lang-key="timeline_2023">Triển khai chương trình học bổng dài hạn cho 500 trẻ em vùng cao</p>
+							</div>
+							<!-- Ảnh -->
+							<div class="timeline-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+								<img src="assets/img/nam-2023.jpg" alt="MVP triển khai chương trình học bổng dài hạn cho 500 trẻ em vùng cao" />
+							</div>
+						</div>
+					</div>
+					<!-- 2024 -->
+					<div class="timeline-entry right" data-year="2024">
+						<div class="timeline-icon" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf)" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="0" data-aos-offset="150">
+							<i class="fas fa-child"></i>
+						</div>
+						<div class="timeline-card-wrapper" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+							<div class="timeline-card">
+								<h3>2024</h3>
+								<p class="timeline-content" data-lang-key="timeline_2024">Hỗ trợ học tập cho hàng nghìn trẻ em</p>
+							</div>
+							<!-- Ảnh -->
+							<div class="timeline-image" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="150">
+								<img src="assets/img/nam-2024.jpg" alt="MVP hỗ trợ học tập cho hàng nghìn trẻ em " />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="cachchungtoilamviec" class="how-we-work-section margin-section px-md-0 px-3">
+			<div class="container common-container">
+				<h2 class="text-center work-heading common-heading" data-lang-key="work_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Chúng tôi làm việc như thế nào?</h2>
+				<div class="row justify-content-center">
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+						<div class="card">
+							<div class="card-icon"><i class="fas fa-search"></i></div>
+							<div class="card-number">1</div>
+							<div class="card-title" data-lang-key="work_step1_title">Khám phá nhu cầu</div>
+							<div class="card-text" data-lang-key="work_step1_desc">Trực tiếp đến các bản làng, lắng nghe và đánh giá nhu cầu giáo dục của trẻ em qua những câu chuyện thực tế.</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+						<div class="card">
+							<div class="card-icon"><i class="fas fa-users"></i></div>
+							<div class="card-number">2</div>
+							<div class="card-title" data-lang-key="work_step2_title">Kết nối cộng đồng</div>
+							<div class="card-text" data-lang-key="work_step2_desc">Hợp tác với những tình nguyện viên và nhà tài trợ từ đó tạo nên những buổi học miễn phí đầy cảm hứng</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+						<div class="card">
+							<div class="card-icon"><i class="fas fa-tools"></i></div>
+							<div class="card-number">3</div>
+							<div class="card-title" data-lang-key="work_step3_title">Triển khai hiệu quả</div>
+							<div class="card-text" data-lang-key="work_step3_desc">
+								Tiến hành thiết kế lớp học một cách bài bản, đảm bảo rằng mỗi dự án được thực hiện đều đạt được chất lượng cao nhất
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">
+						<div class="card">
+							<div class="card-icon"><i class="fas fa-chart-line"></i></div>
+							<div class="card-number">4</div>
+							<div class="card-title" data-lang-key="work_step4_title">Báo cáo minh bạch</div>
+							<div class="card-text" data-lang-key="work_step4_desc">Công khai minh bạch tất cả các khoản đóng góp cũng như kết quả đạt được, mang đến sự tin tưởng cho cộng đồng</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="doingulanhdao" class="leadership-section">
+			<div class="container text-center">
+				<h2 class="common-heading leader-heading" data-lang-key="leader_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Đội ngũ lãnh đạo</h2>
+				<div class="leader-row">
+					<div class="leader-card" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="0">
+						<img src="../assets/img/leader-1.jpg" alt="Nguyễn Hữu Minh" class="leader-image" />
+						<div class="leader-info">
+							<h3 class="leader-name" data-lang-key="leader1_name">Nguyễn Hữu Minh</h3>
+							<p class="leader-role" data-lang-key="leader1_role">24IT2</p>
+							<p class="leader-description" data-lang-key="leader1_desc">Trưởng nhóm, luôn nhiệt huyết và sáng tạo, giữ vai trò kết nối và định hướng nhóm</p>
+						</div>
+					</div>
+					<div class="leader-card" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="300">
+						<img src="../assets/img/FAT-2.jpg" alt="Lê Nhuận Phát" class="leader-image" />
+						<div class="leader-info">
+							<h3 class="leader-name" data-lang-key="leader2_name">Lê Nhuận Phát</h3>
+							<p class="leader-role" data-lang-key="leader2_role">24IT2</p>
+							<p class="leader-description" data-lang-key="leader2_desc">Thành viên năng động, luôn tìm kiếm giải pháp mới và cải thiện chất lượng sản phẩm</p>
+						</div>
+					</div>
+
+					<div class="leader-card" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="150" data-aos-delay="600">
+						<img src="../assets/img/Viet.png" alt="Nguyễn Hữu Việt" class="leader-image" />
+						<div class="leader-info">
+							<h3 class="leader-name" data-lang-key="leader3_name">Nguyễn Hữu Việt</h3>
+							<p class="leader-role" data-lang-key="leader3_role">24IT2</p>
+							<p class="leader-description" data-lang-key="leader3_desc">Tinh thần trách nhiệm cao, chú trọng sự hoàn thiện và trải nghiệm người dùng</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer-section">
+			<div class="container common-container">
+				<div class="row">
+					<div class="col-12 col-md-3 footer-first order-1 order-md-1">
+						<div class="d-flex align-items-center footer-logo-margin">
+							<img class="img-footer" src="../assets/img/logo-mvp.png" alt="Logo MVP" height="40px" />
+							<h3 class="ms-2 mb-0 footer-heading" data-lang-key="footer_slogan">Lan tỏa yêu thương</h3>
+						</div>
+						<p class="footer-content footer-content-first" data-lang-key="footer_desc">Chúng tôi tạo ra một không gian sẻ chia - nơi mỗi hành động nhỏ đều có thể mang lại thay đổi lớn</p>
+					</div>
+					<div class="col-12 col-md-2 footer-padding order-2 order-md-2">
+						<h3 class="footer-heading" data-lang-key="footer_explore_heading">KHÁM PHÁ MVP</h3>
+						<ul class="footer-link list-unstyled">
+							<li><a href="./about.html" class="footer-content link-1" data-lang-key="footer_link_about">Về chúng tôi</a></li>
+							<li><a href="./volunteer.html" class="footer-content link-2" data-lang-key="footer_link_volunteer">Tình nguyện</a></li>
+							<li><a href="./donate.html" class="footer-content link-3" data-lang-key="footer_link_donate">Quyên góp</a></li>
+							<li><a href="./stories.html" class="footer-content link-4" data-lang-key="footer_link_stories">Câu chuyện</a></li>
+						</ul>
+					</div>
+					<div class="col-12 col-md-4 order-4 order-md-3">
+						<h3 class="footer-heading" data-lang-key="footer_partner_heading">ĐỒNG HÀNH CÙNG CHÚNG TÔI</h3>
+						<p class="footer-content" data-lang-key="footer_partner_desc">
+							Mỗi bước chân của bạn là nguồn cảm hứng để chúng tôi lan tỏa điều tốt đẹp mỗi ngày – Xem những tấm lòng đã đồng hành cùng chúng tôi.
+						</p>
+						<a href="donate.html#table-donate" class="footer-btn" data-lang-key="footer_partner_btn">Xem ngay</a>
+					</div>
+					<div class="col-12 col-md-3 footer-padding order-5 order-md-4">
+						<h3 class="footer-heading" data-lang-key="footer_contact_heading">LIÊN HỆ</h3>
+						<ul class="footer-content list-unstyled">
+							<li class="footer-contact"><i class="fas fa-envelope me-2"></i> lienhe@mvp.org</li>
+							<li class="footer-contact"><i class="fas fa-phone me-2"></i> 0123 456 789</li>
+							<li class="footer-contact"><i class="fas fa-map-marker-alt me-2"></i> Trần Đại Nghĩa, Hòa Quý, Đà Nẵng</li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-bottom text-center pt-4 border-top order-6">
+					<p class="footer-content mb-1" data-lang-key="footer_copyright">© 2025 MVP. Mỗi hành động nhỏ, một thay đổi lớn</p>
+					<div class="footer-social">
+						<a href="https://www.facebook.com/login" target="_blank" class="me-2"><i class="fab fa-facebook-f"></i></a>
+						<a href="https://www.instagram.com/accounts/login/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+						<a href="https://www.twitter.com/login" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
+						<a href="https://www.tiktok.com/login" target="_blank" class="me-2"><i class="fa-brands fa-tiktok"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!--  -->
+		<a href="https://m.me/ErasmusFade" target="_blank" class="messenger-icon">
+			<i class="fa-brands fa-facebook-messenger"></i>
+		</a>
+		<!-- AOS -->
+		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+		<script src="../assets/js/aos.js"></script>
+		<!-- js -->
+		<script src="../assets/js/link-modal.js"></script>
+		<script src="../assets/js/aos.js"></script>
+		<script src="../assets/js/hero.js"></script>
+		<script src="../assets/js/data.js"></script>
+		<script src="../assets/js/search.js"></script>
+		<script src="../assets/js/messenger.js"></script>
+		<script src="../assets/js/cart.js"></script>
+		<script src="../assets/js/search.js"></script>
+		<script src="assets/js/featured-stories.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<!-- link Modal -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="../assets/js/modal.js"></script>
+		<script src="../assets/js/languages.js"></script>
+		<script src="../assets/js/language-switcher.js"></script>
+		<!-- Gọi script -->
+		<script src="auth.js"></script>
+		<!-- Chuyển trang -->
+		<!-- <script src="assets/js/load.js"></script> -->
+	</body>
+</html>
