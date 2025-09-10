@@ -140,7 +140,7 @@
 
 /* Welcome section */
 .welcome-section {
-	background-image: url("../../img/bg-trang-chu-1.webp");
+	background-image: url("../../img/bg-trang-1.webp");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -151,22 +151,21 @@
 
 .welcome-heading {
 	color: var(--color-secondary);
-	margin-bottom: 24px !important;
+	margin-bottom: 24px;
 }
-
-.welcome-section .row {
+welcome-caption .welcome-section .row {
 	align-items: center;
 	padding: 0 !important;
 }
 
 .welcome-content {
 	padding-right: 18px;
-	margin-bottom: 24px !important;
+	margin-bottom: 24px;
 	color: #000;
 }
 
 .welcome-caption {
-	margin-bottom: 20px !important;
+	margin-bottom: 20px;
 }
 
 .welcome-section .common-img {
@@ -272,42 +271,11 @@
 
 .mission-text p {
 	margin: 0;
-	font-size: 1rem;
 	color: #fafafa;
 }
 
 .mission-content {
 	padding: 0px !important;
-}
-
-.mission-section .common-heading,
-.mission-section .common-content {
-	color: #fff;
-	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-	.mission-grid {
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.mission-item {
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		max-width: 100%;
-	}
-
-	.mission-text {
-		text-align: center !important;
-		align-items: center;
-	}
-
-	.mission-icon-wrap {
-		margin-bottom: 1rem;
-	}
 }
 
 /* Impact section */
@@ -319,10 +287,6 @@
 .impact-heading {
 	color: var(--color-secondary);
 	margin-bottom: 16px !important;
-}
-
-.impact-section .common-intro {
-	margin-bottom: 20px !important;
 }
 
 .impact-card {
@@ -683,21 +647,6 @@ artners-img img.biger2-logo {
 	font-family: Quicksand;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-	.container {
-		max-width: 100%;
-		padding: 0 10px; /* Giảm padding trên màn hình nhỏ */
-	}
-	.testimonial-card {
-		width: 100%; /* Card chiếm toàn bộ trên màn hình nhỏ */
-		min-height: 250px;
-	}
-	.main-slogan {
-		text-align: center;
-	}
-}
-
 /* Shop Section */
 .shop-section {
 	padding: 70px 0 70px 0;
@@ -917,10 +866,6 @@ artners-img img.biger2-logo {
 	font-size: 18px;
 }
 
-/* Giá mới */
-.shop-price .price-new {
-}
-
 .shop-number {
 	font-size: 14px;
 	font-family: "Be Vietnam Pro", sans-serif;
@@ -949,72 +894,4 @@ artners-img img.biger2-logo {
 
 .shop-btn i {
 	margin-right: 5px;
-}
-
-@media (min-width: 768px) {
-	.common-img {
-		max-width: 400px;
-	}
-}
-
-/* Impact */
-@media (max-width: 767px) {
-	.impact-section .row {
-		display: block;
-	}
-
-	.impact-card {
-		width: 100%;
-		margin-bottom: 20px;
-	}
-
-	.impact-card-1,
-	.impact-card-2,
-	.impact-card-3 {
-		transform: none;
-	}
-
-	.impact-card-1:hover,
-	.impact-card-2:hover,
-	.impact-card-3:hover {
-		transform: none;
-	}
-
-	.impact-card:last-child {
-		margin-bottom: 0;
-	}
-}
-
-/* Volunteer */
-@media (max-width: 767px) {
-	.volunteer-section .carousel-item {
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
-	}
-	.volunteer-card {
-		width: 100%;
-		min-height: auto;
-	}
-	.volunteer-img {
-		width: 100px;
-		height: 100px;
-	}
-}
-
-@media (min-width: 768px) {
-	.volunteer-card {
-		width: 280px;
-	}
-}
-
-/*Shop*/
-@media (max-width: 767px) {
-	.shop-card {
-		margin-bottom: 5px;
-	}
-	.shop-image {
-		height: 400px;
-		width: 400px;
-	}
 }

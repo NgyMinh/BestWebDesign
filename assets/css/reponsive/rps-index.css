@@ -1,0 +1,359 @@
+/* Quy tắc chung cho các class common */
+@media (max-width: 767px) {
+	.common-heading {
+		font-size: 1.15rem;
+		line-height: 1.4;
+		margin-bottom: 12px;
+	}
+
+	.common-caption {
+		font-size: 0.85rem;
+		line-height: 1.5;
+		margin-bottom: 12px;
+	}
+
+	.common-intro {
+		font-size: 0.8rem !important;
+		line-height: 1.65;
+		margin-bottom: 12px;
+		text-align: center;
+	}
+
+	.common-content {
+		font-size: 0.9rem;
+		line-height: 1.65;
+	}
+
+	.common-btn {
+		font-size: 0.9rem;
+		padding: 8px 16px;
+		border-radius: 5px;
+		display: inline-block;
+		text-align: center;
+		width: auto;
+		min-width: 120px;
+	}
+
+	.container {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+	}
+
+	/* Phần footer */
+	.img-footer {
+		display: none;
+	}
+
+	.footer-section {
+		background: linear-gradient(rgba(42, 109, 181, 0.9), rgba(42, 109, 181, 0.9)), center/cover no-repeat;
+	}
+
+	.footer-first {
+		padding-left: 10px;
+	}
+
+	.footer-logo-margin {
+		display: block !important;
+	}
+
+	/* .img-footer {
+		display: block;
+		margin-bottom: 10px;
+		height: 50px;
+	} */
+
+	.footer-section .row {
+		flex-direction: column;
+	}
+
+	.footer-section .col-12 {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.footer-heading,
+	.footer-content {
+		display: block;
+		margin-bottom: 15px;
+	}
+
+	.footer-btn {
+		margin: 0 auto 15px;
+	}
+
+	.footer-section .col-12:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/* Mission Section */
+@media (max-width: 768px) {
+	.mission-grid {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.mission-section {
+		background: linear-gradient(45deg, transparent 90%, rgba(249, 166, 76, 0.8) 10%), linear-gradient(-135deg, transparent 90%, rgba(249, 166, 76, 0.8) 10%),
+			linear-gradient(rgba(70, 130, 180, 0.88), rgba(70, 130, 180, 0.88)), no-repeat center center/cover;
+	}
+
+	.mission-item {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		max-width: 100%;
+	}
+
+	.mission-text {
+		text-align: center !important;
+		align-items: center;
+	}
+
+	.mission-icon-wrap {
+		margin-bottom: 1rem;
+		width: 80px;
+		height: 80px;
+	}
+
+	.mission-icon {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+/* Impact Section */
+@media (max-width: 767px) {
+	.impact-section .row {
+		display: block;
+		flex-direction: column;
+	}
+
+	.impact-section .common-heading {
+		margin-top: 80px;
+	}
+
+	.impact-card {
+		width: 100%;
+		margin-bottom: 20px;
+		transform: none;
+	}
+
+	.impact-card-1,
+	.impact-card-2,
+	.impact-card-3 {
+		transform: none;
+	}
+
+	.impact-card-1:hover,
+	.impact-card-2:hover,
+	.impact-card-3:hover {
+		transform: none;
+	}
+
+	.impact-card:last-child {
+		margin-bottom: 0;
+	}
+
+	.impact-icon {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+/* Volunteer Section */
+@media (max-width: 767px) {
+	.volunteer-section .carousel-item {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.volunteer-card {
+		width: 100%;
+		min-height: auto;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.volunteer-img {
+		width: 120px;
+		height: 120px;
+		object-fit: cover;
+		border-radius: 50%;
+		display: block;
+		margin: 0 auto 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.volunteer-card {
+		width: 280px;
+	}
+}
+
+/* Shop Section */
+@media (max-width: 767px) {
+	.shop-section .row {
+		flex-direction: column;
+	}
+
+	.shop-card {
+		margin-bottom: 20px;
+		padding: 20px;
+	}
+
+	.shop-image {
+		width: 100%;
+		height: 200px;
+		object-fit: contain;
+		border-radius: 5px;
+		display: block;
+		margin: 0 auto 10px;
+	}
+
+	.ribbon {
+		width: 150px;
+		font-size: 10px;
+		transform: rotate(-45deg) translate(-25%, 0);
+	}
+}
+
+/* Banner Section */
+@media (max-width: 767px) {
+	.banner-section {
+		height: 50vh;
+		padding: 20px 15px; /* Đồng nhất với container */
+	}
+}
+
+/* Welcome Section */
+@media (max-width: 767px) {
+	.welcome-section {
+		padding: 60px 0 20px 0;
+	}
+}
+
+/* Featured Stories (Câu chuyện nổi bật) */
+@media (max-width: 767px) {
+	.fs-img {
+		height: 200px;
+	}
+
+	.fs-card {
+		margin: 0 auto;
+	}
+
+	.swiper-pagination-bullet {
+		width: 15px;
+		height: 5px;
+	}
+
+	.swiper-pagination {
+		margin-top: 0;
+	}
+}
+
+/* Testimonials, Footer */
+@media (max-width: 767px) {
+	.testimonials-container {
+		grid-template-columns: 1fr;
+	}
+
+	.testimonial-card {
+		min-height: auto;
+	}
+}
+
+/* Các media queries khác từ common.css */
+@media (max-width: 991.98px), (max-width: 768px), (max-width: 576px) {
+	.header.scrolled,
+	.navbar {
+		display: none;
+	}
+
+	.hero-background {
+		width: 100%;
+		object-fit: contain;
+		display: block;
+	}
+
+	.home-content {
+		padding: 0 9.5%;
+	}
+
+	.search-results {
+		max-height: 300px;
+		min-width: 250px;
+		padding: 15px;
+	}
+
+	.search-result-item {
+		padding: 12px 10px;
+		margin-bottom: 8px;
+	}
+
+	.search-result-item a {
+		font-size: 14px;
+		line-height: 1.6;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.story-card img {
+		height: 160px;
+	}
+
+	.story-card h3 {
+		font-size: 1.2rem;
+	}
+
+	.search-results {
+		max-height: 250px;
+		min-width: 200px;
+		padding: 10px;
+	}
+
+	.search-result-item a {
+		font-size: 13px;
+		line-height: 1.5;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.margin-section {
+		margin-top: 50px;
+	}
+
+	.story-card {
+		min-height: 500px;
+		margin-bottom: 15px;
+	}
+
+	.story-card img {
+		height: 200px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.story-card {
+		min-height: 700px;
+	}
+
+	.footer-section {
+		padding: 60px 15px 30px;
+	}
+}
+
+/* @media (min-width: 768px) {
+	.common-img {
+		max-width: 400px;
+	}
+} */

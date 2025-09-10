@@ -103,7 +103,6 @@
 	position: absolute;
 	width: 380px;
 	z-index: 1;
-	
 }
 
 /* card nên nổi lên trên ảnh */
@@ -303,12 +302,6 @@
 	100% {
 		background-position: 0% 0%;
 	}
-}
-
-.how-we-work-section .common-heading {
-	color: #fff;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-	padding-bottom: 24px;
 }
 
 .how-we-work-section .work-circle {
@@ -615,11 +608,6 @@
 
 /* How we work */
 @media (max-width: 767px) {
-	.common-heading {
-		font-size: 1.8rem;
-		margin-bottom: 15px;
-	}
-
 	.divider img {
 		max-width: 80px; /* Giảm kích thước divider trên mobile */
 	}
