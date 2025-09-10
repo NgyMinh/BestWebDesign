@@ -1,10 +1,5 @@
 /* Quy tắc chung cho các class common */
 @media (max-width: 767px) {
-	* {
-		max-width: 100% !important;
-		box-sizing: border-box;
-	}
-
 	.common-heading {
 		font-size: 1.15rem;
 		line-height: 1.4;
@@ -99,7 +94,6 @@
 }
 
 /* Kiểu cho Header trên Mobile */
-/* Kiểu cho Header trên Mobile */
 @media (max-width: 768px) {
 	.home-content {
 		max-width: 300px;
@@ -179,7 +173,6 @@
 	.header .logo {
 		height: 36px;
 		width: auto;
-
 		margin: 0;
 		padding: 0;
 		right: 0;
