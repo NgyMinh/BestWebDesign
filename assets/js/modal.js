@@ -43,7 +43,7 @@ function openLargeImage(imgElement) {
 	modal.style.position = "fixed";
 	modal.style.top = "0";
 	modal.style.left = "0";
-	modal.style.width = "100vw";
+	modal.style.width = "100%";
 	modal.style.height = "100vh";
 	modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
 	modal.style.display = "flex";

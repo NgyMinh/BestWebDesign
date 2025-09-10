@@ -1,0 +1,430 @@
+/* Quy tắc chung cho các class common */
+@media (max-width: 767px) {
+	* {
+		max-width: 100% !important;
+		box-sizing: border-box;
+	}
+
+	.common-heading {
+		font-size: 1.15rem;
+		line-height: 1.4;
+		margin-bottom: 12px;
+	}
+
+	.common-caption {
+		font-size: 0.85rem;
+		line-height: 1.5;
+		margin-bottom: 12px;
+	}
+
+	.common-intro {
+		font-size: 0.8rem !important;
+		line-height: 1.65;
+		margin-bottom: 12px;
+		text-align: center;
+	}
+
+	.common-content {
+		font-size: 0.9rem;
+		line-height: 1.65;
+	}
+
+	.common-btn {
+		font-size: 0.9rem;
+		padding: 8px 16px;
+		border-radius: 5px;
+		display: inline-block;
+		text-align: center;
+		width: auto;
+		min-width: 120px;
+	}
+
+	.container {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+	}
+
+	/* Phần footer */
+	.img-footer {
+		display: none;
+	}
+
+	.footer-section {
+		background: linear-gradient(rgba(42, 109, 181, 0.9), rgba(42, 109, 181, 0.9)), center/cover no-repeat;
+	}
+
+	.footer-first {
+		padding-left: 10px;
+	}
+
+	.footer-logo-margin {
+		display: block !important;
+	}
+
+	/* .img-footer {
+		display: block;
+		margin-bottom: 10px;
+		height: 50px;
+	} */
+
+	.footer-section .row {
+		flex-direction: column;
+	}
+
+	.footer-section .col-12 {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.footer-heading,
+	.footer-content {
+		display: block;
+		margin-bottom: 15px;
+	}
+
+	.footer-btn {
+		margin: 0 auto 15px;
+	}
+
+	.footer-section .col-12:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/* Kiểu cho Header trên Mobile */
+/* Kiểu cho Header trên Mobile */
+@media (max-width: 768px) {
+	.home-content {
+		max-width: 300px;
+		z-index: 2;
+	}
+
+	.home-content h1 {
+		font-size: 1.2rem;
+		margin-bottom: 10px;
+	}
+
+	.home-content h3 {
+		font-size: 0.9rem;
+		margin-bottom: 10px;
+	}
+
+	.home-content p {
+		font-size: 0.7rem;
+		line-height: 1.6;
+	}
+	/* Ngăn tràn ngang toàn bộ trang */
+	html,
+	body {
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden !important;
+		box-sizing: border-box;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none; /* Ẩn thanh cuộn trên IE/Edge */
+		scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+	}
+
+	/* Ẩn thanh cuộn ngang trên trình duyệt WebKit */
+	html::-webkit-scrollbar,
+	body::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Đảm bảo các phần tử nền và overlay không tràn */
+	.hero-section,
+	.hero-background,
+	.overlay,
+	[class*="hero"],
+	[class*="background"] {
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden !important;
+		box-sizing: border-box;
+	}
+
+	/* Ẩn navbar và right-header trên mobile */
+	.header .navbar,
+	.header .right-header {
+		display: none;
+	}
+
+	/* Đảm bảo header hiển thị logo và nút toggle, không tràn */
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		max-width: 100%;
+		padding: 10px 12px;
+		margin: 0;
+		box-sizing: border-box;
+		overflow-x: hidden !important;
+		z-index: 1100;
+		background: transparent;
+	}
+
+	/* Định kiểu logo cho mobile */
+	.header .logo {
+		height: 36px;
+		width: auto;
+
+		margin: 0;
+		padding: 0;
+		right: 0;
+		object-fit: contain;
+		box-sizing: border-box;
+	}
+
+	.hero-footer {
+		display: none;
+	}
+
+	/* Nút toggle (biểu tượng hamburger) */
+	.toggle-btn {
+		display: block;
+		width: 28px;
+		height: 28px;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		position: relative;
+		z-index: 1201;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.toggle-btn span,
+	.toggle-btn span::before,
+	.toggle-btn span::after {
+		content: "";
+		display: block;
+		width: 24px;
+		height: 3px;
+		background: #fff;
+		position: absolute;
+		transition: all 0.3s ease;
+		border-radius: 2px;
+	}
+
+	.toggle-btn span {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.toggle-btn span::before {
+		top: -7px;
+	}
+
+	.toggle-btn span::after {
+		top: 7px;
+	}
+
+	/* Màu nút toggle khi header cuộn */
+	.header.scrolled .toggle-btn span,
+	.header.scrolled .toggle-btn span::before,
+	.header.scrolled .toggle-btn span::after {
+		background: #333;
+	}
+
+	/* Hiệu ứng nút toggle khi active */
+	.toggle-btn.active span {
+		background: transparent;
+	}
+
+	.toggle-btn.active span::before {
+		transform: rotate(45deg);
+		top: 0;
+	}
+
+	.toggle-btn.active span::after {
+		transform: rotate(-45deg);
+		top: 0;
+	}
+
+	/* Menu di động */
+	.mobile-menu {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 100%; /* Full viewport width */
+		max-width: 260px;
+		height: 100vh;
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(8px);
+		z-index: 1200;
+		transform: translateX(100%); /* Bắt đầu từ cạnh phải của viewport */
+		transition: transform 0.25s ease-in-out;
+		padding: 12px;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+		box-sizing: border-box;
+		overflow-x: hidden !important;
+	}
+
+	.mobile-menu.active {
+		transform: translateX(0);
+	}
+
+	/* Định kiểu navbar trong menu di động */
+	.mobile-menu .navbar {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		box-sizing: border-box;
+		overflow-x: hidden;
+	}
+
+	.mobile-menu .navbar .nav-item {
+		margin: 8px 0;
+		width: 100%;
+	}
+
+	.mobile-menu .navbar .nav-link {
+		color: #113080;
+		font-size: 17px;
+		padding: 8px;
+		display: block;
+		text-align: left;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.mobile-menu .navbar .nav-link:hover,
+	.mobile-menu .navbar .nav-link.active {
+		color: #00c6ff;
+		font-weight: 600;
+	}
+
+	/* Định kiểu right-header trong menu di động */
+	.mobile-menu .right-header {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		overflow-x: hidden;
+	}
+
+	.mobile-menu .right-header .search,
+	.mobile-menu .right-header .cart,
+	.mobile-menu .right-header .language-switcher,
+	.mobile-menu .right-header .auth-section {
+		width: 100%;
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	.mobile-menu .right-header .search-dropdown {
+		position: static;
+		width: 100%;
+		max-width: 100%;
+		box-shadow: none;
+		transform: none;
+		visibility: visible;
+		opacity: 1;
+		display: none;
+		margin: 0;
+		padding: 5px 0;
+		box-sizing: border-box;
+	}
+
+	.mobile-menu .right-header .search.active .search-dropdown {
+		display: block;
+	}
+
+	.mobile-menu .right-header .language-switcher {
+		flex-direction: row;
+		justify-content: flex-start;
+		margin: 0;
+		width: 100%;
+	}
+
+	.mobile-menu .right-header .auth-section .register-login {
+		display: flex;
+		gap: 8px;
+	}
+
+	.mobile-menu .right-header .auth-section .register,
+	.mobile-menu .right-header .auth-section .login {
+		color: #113080;
+		font-size: 16px;
+	}
+
+	.mobile-menu .right-header .auth-section .register:hover,
+	.mobile-menu .right-header .auth-section .login:hover {
+		color: #00c6ff;
+	}
+
+	.mobile-menu .right-header .auth-section .user-info {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.mobile-menu .right-header .auth-section .logout-btn {
+		background: #e74c3c;
+		color: #fff;
+		border: none;
+		padding: 8px 12px;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	.mobile-menu .right-header .auth-section .logout-btn:hover {
+		background: #c0392b;
+	}
+
+	/* Lớp phủ (overlay) cho menu di động */
+	.mobile-menu-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		max-width: 100%;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 1199;
+		display: none;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		overflow-x: hidden;
+	}
+
+	.mobile-menu-overlay.active {
+		display: block;
+	}
+
+	.carousel,
+	.swiper,
+	.slick-slider {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+}

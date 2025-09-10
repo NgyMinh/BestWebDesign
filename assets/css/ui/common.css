@@ -250,8 +250,8 @@
 }
 
 html {
-	scroll-behavior: smooth; /*cuộn*/
-	overflow-x: hidden;
+	scroll-behavior: smooth; 
+	overflow-x: hidden !important;
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 }
@@ -551,7 +551,7 @@ body::selection {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	object-fit: cover;
 	z-index: -1;
@@ -589,7 +589,7 @@ body::selection {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	background: rgba(0, 0, 0, 0.25);
 	z-index: 0;
@@ -607,6 +607,8 @@ body::selection {
 	z-index: 1100;
 	transition: background-color 1s ease, color 1s ease, padding 1s ease, transform 1s ease, opacity 1s ease;
 }
+
+
 
 .header.scrolled {
 	padding: 16px 8%;
@@ -861,7 +863,7 @@ body::selection {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 100$;
 	height: 100vh;
 	background: rgba(0, 0, 0, 0.55);
 	z-index: 999;
