@@ -60,8 +60,8 @@ const translations = {
 	welcome_button: { vi: "Tìm hiểu thêm", en: "Learn More" },
 
 	// Featured Stories Section (Index Page)
-	stories_heading: { vi: "CÂU CHUYỆN", en: "FEATURED" },
-	stories_heading_strong: { vi: "NỔI BẬT", en: "STORIES" },
+	stories_heading: { vi: "Câu chuyện", en: "Featured" },
+	stories_heading_strong: { vi: "nổi bật", en: "stories" },
 	stories_view_all: { vi: "Xem tất cả →", en: "View all →" },
 	story1_title: { vi: "Tủ sách nhỏ cho điểm trường lẻ", en: "A small library for a remote school" },
 	story1_meta: { vi: "2.8N lượt ủng hộ - Còn lại 12 ngày", en: "2.8K supporters - 12 days left" },

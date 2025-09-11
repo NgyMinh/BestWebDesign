@@ -538,7 +538,7 @@ artners-img img.biger2-logo {
 	color: var(--color-secondary);
 	line-height: 1.5;
 	text-align: center;
-	font-size: 30px !important;
+	font-size: 30px;
 }
 
 .testimonials-section .strong-heading {

@@ -3,6 +3,7 @@
 	.mission-grid {
 		flex-direction: column;
 		align-items: center;
+		row-gap: 1.8rem;
 	}
 
 	.mission-section {
@@ -23,7 +24,6 @@
 	}
 
 	.mission-icon-wrap {
-		margin-bottom: 1rem;
 		width: 80px;
 		height: 80px;
 	}
@@ -31,6 +31,10 @@
 	.mission-icon {
 		width: 50px;
 		height: 50px;
+	}
+
+	.mission-subheading {
+		margin-bottom: 0.5rem;
 	}
 }
 
@@ -42,12 +46,12 @@
 	}
 
 	.impact-section .common-heading {
-		margin-top: 80px;
+		margin-top: 50px;
 	}
 
 	.impact-card {
 		width: 100%;
-		margin-bottom: 20px;
+		margin-top: 20px;
 		transform: none;
 	}
 
@@ -84,7 +88,6 @@
 	.volunteer-card {
 		width: 100%;
 		min-height: auto;
-		margin-bottom: 20px;
 		text-align: center;
 	}
 
@@ -95,6 +98,26 @@
 		border-radius: 50%;
 		display: block;
 		margin: 0 auto 10px;
+	}
+
+	.carousel-control-prev,
+	.carousel-control-next {
+		width: auto;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.carousel-control-prev {
+		left: -10px;
+	}
+
+	.carousel-control-next {
+		right: -10px;
+	}
+
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		background-size: 80% 80%; /* icon nhỏ lại */
 	}
 }
 
@@ -144,10 +167,26 @@
 	.welcome-section {
 		padding: 60px 0 20px 0;
 	}
+
+	.welcome-content {
+		text-align: justify;
+	}
+
+	.swiper-pagination {
+		display: none;
+	}
 }
 
 /* Featured Stories (Câu chuyện nổi bật) */
 @media (max-width: 767px) {
+	.view-all {
+		display: none;
+	}
+
+	.stories-heading {
+		margin-bottom: 18px;
+	}
+
 	.fs-img {
 		height: 200px;
 	}
@@ -174,6 +213,27 @@
 
 	.testimonial-card {
 		min-height: auto;
+	}
+
+	.testimonials-section .col-12 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	.testimonial-footer {
+		display: flex !important;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.testimonial-footer .avatar {
+		width: 48px;
+		height: 48px;
+		margin: 0px;
+	}
+
+	.footer-text {
+		text-align: right; /* chữ căn trái (theo avatar) */
 	}
 }
 

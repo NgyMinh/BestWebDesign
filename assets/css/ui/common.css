@@ -250,7 +250,7 @@
 }
 
 html {
-	scroll-behavior: smooth; 
+	scroll-behavior: smooth;
 	overflow-x: hidden !important;
 	overflow-y: scroll;
 	scroll-behavior: smooth;
@@ -608,8 +608,6 @@ body::selection {
 	transition: background-color 1s ease, color 1s ease, padding 1s ease, transform 1s ease, opacity 1s ease;
 }
 
-
-
 .header.scrolled {
 	padding: 16px 8%;
 	transform: translateY(0);
@@ -964,11 +962,10 @@ body::selection {
 	margin-bottom: 8px;
 	background: linear-gradient(320deg, #00c6ff, #ff6ec4, #ffdd00, #00c6ff);
 	background-size: 600% 600%;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	filter: brightness(1.2);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	/* opacity: 0; */
-	/* animation: slideRight 1s ease forwards;
-	animation-delay: 1.8s; */
 }
 
 .home-content p {
@@ -984,11 +981,6 @@ body::selection {
 .home-content p,
 .home-content h1 {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.55);
-}
-
-.home-content h3 {
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-	filter: brightness(1.2);
 }
 
 .social-media a {
