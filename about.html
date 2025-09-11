@@ -36,10 +36,11 @@
 		<link rel="stylesheet" href="../assets/css/components/search-style.css" />
 		<link rel="stylesheet" href="../assets/css/components/stories-style.css" />
 		<link rel="stylesheet" href="../assets/css/ui/stories.css" />
+		<link rel="stylesheet" href="assets/css/reponsive/rps-about.css" />
+		<link rel="stylesheet" href="assets/css/reponsive/rps-common.css" />
 	</head>
 	<body>
 		<!-- Hero -->
-
 		<div class="hero-section">
 			<img class="hero-background" src="../assets/img/mang-den-anh-sang-cho-tre-em.webp" alt="Hình ảnh biểu tượng ánh sáng trẻ em vùng cao MVP" />
 			<div class="overlay"></div>
@@ -50,20 +51,26 @@
 				</div>
 
 				<!-- Navbar điều hướng -->
-				<nav class="navbar">
-					<div class="nav-item dropdown">
-						<a style="--i: 1" class="nav-link" href="index.html" data-lang-key="nav_home">Trang chủ </a>
+				<nav class="navbar" aria-label="Menu điều hướng chính">
+					<div class="nav-item">
+						<a style="" class="nav-link" href="index.html" data-lang-key="nav_home"> Trang chủ </a>
 					</div>
-					<div class="nav-item dropdown">
-						<a style="--i: 2" class="nav-link active" href="about.html" data-lang-key="nav_about">Về chúng tôi </a>
+
+					<div class="nav-item">
+						<a style="" class="nav-link active" href="about.html" data-lang-key="nav_about"> Về chúng tôi </a>
 					</div>
-					<div class="nav-item dropdown">
-						<a style="--i: 3" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer">Tình nguyện </a>
+
+					<div class="nav-item">
+						<a style="" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer"> Tình nguyện </a>
 					</div>
-					<div class="nav-item dropdown">
-						<a style="--i: 4" class="nav-link" href="donate.html" data-lang-key="nav_donate">Quyên góp </a>
+
+					<div class="nav-item">
+						<a style="" class="nav-link" href="donate.html" data-lang-key="nav_donate"> Quyên góp </a>
 					</div>
-					<a style="--i: 5" class="nav-link" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
+
+					<div class="nav-item">
+						<a style="" class="nav-link" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
+					</div>
 				</nav>
 
 				<div class="right-header">
@@ -255,7 +262,7 @@
 
 		<div id="cachchungtoilamviec" class="how-we-work-section margin-section px-md-0 px-3">
 			<div class="container common-container">
-				<h2 class="text-center work-heading common-heading" data-lang-key="work_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Chúng tôi làm việc như thế nào?</h2>
+				<h2 class="text-center work-heading common-heading" data-lang-key="work_heading" data-aos="zoom-out" data-aos-duration="1000" data-aos-offset="150">Cách chúng tôi làm việc</h2>
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
 						<div class="card">
@@ -404,5 +411,6 @@
 		<script src="auth.js"></script>
 		<!-- Chuyển trang -->
 		<!-- <script src="assets/js/load.js"></script> -->
+		<script src="assets/js/navbar-mobile.js"></script>
 	</body>
 </html>

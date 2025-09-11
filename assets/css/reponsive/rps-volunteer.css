@@ -1,0 +1,46 @@
+@media (max-width: 767px) {
+	/* Tip */
+	.volunteer-tips-section .card-text {
+		text-align: justify;
+		line-height: 1.8;
+	}
+
+	.volunteer-tips-section .card-title {
+		margin-bottom: 16px;
+		font-size: 1.3rem;
+	}
+
+	.volunteer-tips-section .card {
+		padding: 25px 30px;
+	}
+
+	/* Reason */
+	.reason-card p {
+		text-align: justify;
+		line-height: 1.8;
+	}
+
+	.reason-card {
+		margin: 0;
+	}
+
+	/* Event */
+	.events-section .row {
+		gap: 24px;
+	}
+
+	.events-section .common-heading {
+		text-align: center;
+		margin-bottom: 18px;
+	}
+
+	/* Form */
+	.volunteer-card-form {
+		padding: 60px 35px;
+	}
+
+	.volunteer-card-form .common-heading {
+		font-size: 20px;
+		margin-left: -8.5px;
+	}
+}

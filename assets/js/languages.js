@@ -215,7 +215,7 @@ const translations = {
 	timeline_2024: { vi: "Hỗ trợ học tập cho hàng nghìn trẻ em", en: "Provided educational support for thousands of children" },
 
 	// How We Work Section (About Page)
-	work_heading: { vi: "Chúng tôi làm việc như thế nào?", en: "How do we work?" },
+	work_heading: { vi: "Cách chúng tôi làm việc?", en: "How do we work?" },
 	work_step1_title: { vi: "Khám phá nhu cầu", en: "Discovering Needs" },
 	work_step1_desc: {
 		vi: "Trực tiếp đến các bản làng, lắng nghe và đánh giá nhu cầu giáo dục của trẻ em qua những câu chuyện thực tế.",

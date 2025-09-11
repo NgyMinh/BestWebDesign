@@ -1,0 +1,119 @@
+@media (max-width: 767px) {
+	#label1,
+	#label2,
+	#label3 {
+		font-size: 0.75rem;
+	}
+
+	.line {
+		height: 2px;
+		margin: 0 -33px;
+		margin-top: -25px;
+	}
+
+	.step {
+		padding: 0;
+	}
+
+	.form-label {
+		font-size: 0.86rem;
+		margin-top: 4px;
+		margin-bottom: 14px;
+	}
+
+	#step1 br {
+		display: none;
+	}
+
+	.donate-tabs .tab-btn::after {
+		bottom: 5px;
+	}
+
+	.donate-tabs .tab-btn {
+		font-size: 1rem;
+	}
+
+	.form-control,
+	.form-select,
+	.select2-container--default .select2-selection--single {
+		margin-bottom: 10px;
+	}
+
+	/* step 2 */
+	.payment-option {
+		font-size: 0.9rem;
+		padding: 12px 20px;
+	}
+
+	.fieldset {
+		padding: 32px 24px;
+	}
+
+	.atm-payment-form {
+		padding: 36px 30px;
+	}
+
+	#credit-card-form .col-md-4 {
+		align-items: center;
+		margin-top: 12px;
+	}
+
+	#credit-card-form .alert img {
+		display: inline-block;
+	}
+
+	#atm-bank-list .qr-heading {
+		font-size: 1rem;
+		margin-bottom: 16px;
+	}
+
+	p#bank-atm-title {
+		font-size: 0.9rem;
+	}
+
+	.atm-header {
+		gap: 30px;
+	}
+
+	.alert-info {
+		text-align: justify;
+	}
+
+	.bank-logo {
+		width: 100px;
+		height: auto;
+	}
+
+	.banks-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+	}
+
+	/* step 3 */
+	.transaction-status {
+		padding: 50px 25px;
+		margin: 20px auto;
+	}
+
+	.transaction-status .thanks {
+		font-size: 1rem;
+		margin-bottom: 6px;
+	}
+
+	.order-wrapper {
+		padding: 20px 10px;
+		margin: 20px 0;
+	}
+
+	#order-summary-card.order-summary {
+		margin: none;
+	}
+
+	/* 3 nút */
+	.hero-btn.btn-back,
+	.hero-btn.btn-next,
+	.hero-btn.btn-reset {
+		font-size: 16px;
+		height: 42px;
+	}
+}

@@ -595,20 +595,26 @@ document.querySelectorAll(".wallet-tab-btn").forEach((tab) => {
 document.addEventListener("DOMContentLoaded", () => {
 	const bankItems = document.querySelectorAll(".bank-item");
 	const atmForm = document.getElementById("atm-payment-form");
-	const orderSummaryAtm = document.getElementById("order-summary-atm"); // thêm dòng này
+	const orderSummaryAtm = document.getElementById("order-summary-atm");
+	const bankTitle = document.getElementById("bank-atm-title");
+	const bankLogo = document.getElementById("bank-logo");
 
 	// Ẩn order-summary-atm lúc đầu
 	if (orderSummaryAtm) orderSummaryAtm.style.display = "none";
 
-	const bankTitle = document.getElementById("bank-atm-title");
-	const bankLogo = document.getElementById("bank-logo");
+	// Chọn ngân hàng mặc định là cái đầu tiên
+	if (bankItems.length > 0) {
+		const firstImg = bankItems[0].querySelector("img");
+		bankItems[0].classList.add("active");
+		bankTitle.textContent = `Bạn đang thanh toán qua ngân hàng ${firstImg.alt}`;
+		bankLogo.src = firstImg.src;
+		if (orderSummaryAtm) orderSummaryAtm.style.display = "block";
+		atmForm.style.display = "block";
+	}
 
 	bankItems.forEach((item) => {
 		item.addEventListener("click", () => {
-			// Xóa active ở tất cả
 			bankItems.forEach((i) => i.classList.remove("active"));
-
-			// Thêm active cho cái được chọn
 			item.classList.add("active");
 
 			// Lấy tên và logo

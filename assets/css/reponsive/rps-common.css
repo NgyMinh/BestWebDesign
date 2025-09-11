@@ -213,11 +213,11 @@
 		padding: 10px 12.7% 10px 9.5%;
 		margin: 0;
 		box-sizing: border-box;
-		overflow-x: hidden !important;
-		z-index: 1300; /* Cao hơn các phần tử khác */
-		background-color: #ffffff; /* Nền trắng, loại bỏ transparent */
-		border-bottom: 1px solid #e9ecef; /* Tách biệt */
-		transition: background-color 0.3s ease; /* Hiệu ứng mượt khi scrolled */
+
+		z-index: 1300; 
+		background-color: #ffffff; 
+		border-bottom: 1px solid #e9ecef; 
+		transition: transform 0.3s ease, opacity 0.3s ease;
 	}
 
 	/* Khi cuộn, giữ nền trắng và fixed */

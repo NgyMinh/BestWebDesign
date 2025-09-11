@@ -396,6 +396,11 @@
 	line-height: 1.9;
 }
 
+.how-we-work-section .common-heading {
+	color: #fff;
+	margin-bottom: 24px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
 	.how-we-work-section .work-circle {

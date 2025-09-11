@@ -49,6 +49,8 @@
 		<link rel="stylesheet" href="../assets/css/components/search-style.css" />
 		<link rel="stylesheet" href="../assets/css/components/stories-style.css" />
 		<link rel="stylesheet" href="../assets/css/ui/stories.css" />
+		<link rel="stylesheet" href="assets/css/reponsive/rps-donate.css" />
+		<link rel="stylesheet" href="assets/css/reponsive/rps-common.css" />
 	</head>
 	<body>
 		<button id="scrollTopBtn">
@@ -167,7 +169,7 @@
 							<!-- Phân trang -->
 							<div class="donate-tabs">
 								<button class="tab-btn active" onclick="switchDonateTab('traditional')">QUYÊN GÓP TRUYỀN THỐNG</button>
-								<button class="tab-btn" onclick="switchDonateTab('blockchain')">QUYÊN GÓP BẰNG BLOCKCHAIN</button>
+								<button class="tab-btn" onclick="switchDonateTab('blockchain')">QUYÊN GÓP BLOCKCHAIN</button>
 							</div>
 
 							<!-- Truyền thống -->
@@ -291,7 +293,7 @@
 														<div id="qr-info" class="qr-card" style="display: none">
 															<p class="qr-heading">Quyên góp qua mã VietQR</p>
 															<div class="qr-scan-frame">
-																<img id="qr-code" src="" alt="Mã QR VietQR cho quyên góp từ thiện Quỹ MVP" />
+																<img id="qr-code" src="assets/img/qr-momo.png" alt="Mã QR VietQR cho quyên góp từ thiện Quỹ MVP" />
 																<div class="corner top-left"></div>
 																<div class="corner top-right"></div>
 																<div class="corner bottom-left"></div>
@@ -456,7 +458,7 @@
 													</div>
 
 													<!-- Cột phải: Thẻ -->
-													<div class="col-md-4 d-flex flex-column align-items-end">
+													<div class="col-md-4 d-flex flex-column">
 														<!-- ✅ Thẻ mô phỏng -->
 														<div title="Hình ảnh thẻ mang tính chất tham khảo :>" id="card-preview" class="credit-card mb-3">
 															<div class="card-chip"></div>
@@ -690,7 +692,7 @@
 												<!-- Header logo ngân hàng -->
 												<div class="atm-header d-flex align-items-center">
 													<p id="bank-atm-title" class="">Bạn đang thanh toán qua ngân hàng ...</p>
-													<img id="bank-logo" src="" alt="Bank Logo" class="bank-logo" />
+													<img id="bank-logo" src="" alt="" class="bank-logo" />
 												</div>
 
 												<fieldset>

@@ -1165,6 +1165,10 @@ input.placeholder-bold {
 
 /* Phương thức: Thẻ tín dụng */
 /* Form */
+#credit-card-form .col-md-4 {
+	align-items: end;
+}
+
 
 .credit-card {
 	width: 320px;
@@ -1219,7 +1223,7 @@ input.placeholder-bold {
 }
 
 #order-summary-card.order-summary {
-	margin-bottom: 70px !important;
+	margin-bottom: 50px !important;
 }
 
 #credit-card-form label,
@@ -1868,15 +1872,7 @@ i.fas.fa-check {
 	#donate-buttons {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		max-width: 100%;
-	}
-
-	#donate-buttons .form-label {
-		display: block;
-		margin-top: 15px;
-		text-align: center;
-		font-size: 0.9rem;
 	}
 
 	#donate-buttons .button-container {
