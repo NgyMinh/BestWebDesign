@@ -70,10 +70,20 @@
 					<button id="lang-en" class="lang-btn">EN</button>
 				</div>
 
-				<div class="register-login">
-					<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
-					<span class="slash">/</span>
-					<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
+				<div class="auth-section">
+					<div id="auth-links" class="register-login" style="display: block">
+						<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
+						<span class="slash">/</span>
+						<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
+					</div>
+
+					<div id="user-info" class="user-info" style="display: none">
+							<span class="welcome-text">
+								<span data-lang-key="auth_greeting">Xin chào,</span>
+								<strong id="username"></strong>!
+							</span>
+						<button class="logout-btn" id="logout-btn" data-lang-key="auth_logout">Đăng xuất</button>
+					</div>
 				</div>
 			</div>
 			<div id="cart-sidebar" class="cart-sidebar">
