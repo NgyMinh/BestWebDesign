@@ -91,20 +91,28 @@ function wrapText(font, text, fontSize, maxWidth) {
 			return false;
 		}
 
-		// Kiểm tra dữ liệu dự án từ window.sharedData
+		// Check for project data from window.sharedData
 		if (!window.sharedData || !Array.isArray(window.sharedData)) {
 			console.warn("⚠️ donate.js: window.sharedData chưa sẵn sàng hoặc không đúng định dạng");
 			return false;
 		}
 
-		// Reset option mặc định trước
+		// Reset default option
 		select.innerHTML = `<option value="" selected disabled hidden>Dự án đóng góp (*)</option>`;
 
-		// Thêm các option từ dữ liệu dự án
+		// Add options from project data
 		window.sharedData.forEach((project, i) => {
 			const opt = document.createElement("option");
-			opt.value = project.title || `project-${i}`; // có id thì nên dùng id thay vì title
-			opt.textContent = project.title || `Dự án ${i + 1}`;
+			const titleKey = project.title; // e.g., "story_1_title"
+
+			// Get the Vietnamese title from the translations object
+			// Add a fallback in case the translation is missing
+			const translatedTitle = (translations[titleKey] && translations[titleKey].vi)
+				|| titleKey
+				|| `Dự án ${i + 1}`;
+
+			opt.value = titleKey || `project-${i}`;
+			opt.textContent = translatedTitle; // Use the translated title here
 			select.appendChild(opt);
 		});
 
