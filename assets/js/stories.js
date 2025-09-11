@@ -59,8 +59,8 @@ function showStories() {
     <div class="image-wrapper">
       ${
 			story.source
-				? `<a href="${story.source}"><img src="${story.image}" alt="${story.title}" onerror="this.src='../assets/img/welcome-section.jpeg'" loading="lazy"/></a>`
-				: `<img src="${story.image}" alt="${story.title}" onerror="this.src='../assets/img/welcome-section.jpeg'" loading="lazy"/>`
+				? `<a href="${story.source}"><img src="${story.image}" alt="${story.title}" onerror="this.src='../assets/img/welcome-section.jpeg'" /></a>`
+				: `<img src="${story.image}" alt="${story.title}" onerror="this.src='../assets/img/welcome-section.jpeg'" />`
 		}
       <div class="progress-overlay">
         <div class="progress-content">
@@ -149,7 +149,7 @@ function showStories() {
 	const hint = document.getElementById("scroll-hint");
 	if (!hint) return;
 
-	const THRESHOLD = 120; 
+	const THRESHOLD = 120;
 	const SHOW_DURATION = 5000; // ms hiển thị (6s)
 	let lastY = window.scrollY || 0;
 	let shown = false;

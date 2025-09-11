@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Tạo menu di động
 	const mobileMenu = document.createElement("div");
 	mobileMenu.classList.add("mobile-menu");
+	mobileMenu.style.display = "none"; // Ẩn hẳn ban đầu
 	document.body.appendChild(mobileMenu);
 
 	// Di chuyển navbar và right-header vào menu di động
@@ -21,17 +22,43 @@ document.addEventListener("DOMContentLoaded", () => {
 	overlay.classList.add("mobile-menu-overlay");
 	document.body.appendChild(overlay);
 
-	// Chức năng toggle
-	toggleBtn.addEventListener("click", () => {
-		toggleBtn.classList.toggle("active");
-		mobileMenu.classList.toggle("active");
-		overlay.classList.toggle("active");
-	});
+	// Hàm mở menu
+	const openMenu = () => {
+		mobileMenu.style.display = "flex";
+		requestAnimationFrame(() => {
+			toggleBtn.classList.add("active");
+			mobileMenu.classList.add("active");
+			overlay.classList.add("active");
+		});
+	};
 
-	// Đóng menu khi nhấn vào lớp phủ
-	overlay.addEventListener("click", () => {
+	// Hàm đóng menu
+	const closeMenu = () => {
 		toggleBtn.classList.remove("active");
 		mobileMenu.classList.remove("active");
 		overlay.classList.remove("active");
+
+		// Đợi animation xong rồi mới ẩn hẳn
+		mobileMenu.addEventListener(
+			"transitionend",
+			() => {
+				if (!mobileMenu.classList.contains("active")) {
+					mobileMenu.style.display = "none";
+				}
+			},
+			{ once: true }
+		);
+	};
+
+	// Toggle khi bấm nút
+	toggleBtn.addEventListener("click", () => {
+		if (mobileMenu.classList.contains("active")) {
+			closeMenu();
+		} else {
+			openMenu();
+		}
 	});
+
+	// Đóng khi click overlay
+	overlay.addEventListener("click", closeMenu);
 });

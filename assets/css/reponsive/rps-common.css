@@ -214,9 +214,9 @@
 		margin: 0;
 		box-sizing: border-box;
 
-		z-index: 1300; 
-		background-color: #ffffff; 
-		border-bottom: 1px solid #e9ecef; 
+		z-index: 1300;
+		background-color: #ffffff;
+		border-bottom: 1px solid #e9ecef;
 		transition: transform 0.3s ease, opacity 0.3s ease;
 	}
 
@@ -309,27 +309,26 @@
 		left: 0;
 		width: 100%;
 		max-width: 100%;
-		height: auto;
-		max-height: 100vh;
 		background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
 		backdrop-filter: blur(10px);
 		z-index: 1200;
 
-		transform: translateY(-100%); /* Ẩn trên */
+		/* Hiệu ứng ẩn */
+		transform: translateY(-100%);
 		opacity: 0;
+		pointer-events: none;
 
 		padding: 20px 9.5%;
-		margin: 0;
 		display: flex;
 		flex-direction: column;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-		box-sizing: border-box;
 		transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
 	}
 
 	.mobile-menu.active {
-		transform: translateY(0); /* Trượt xuống */
+		transform: translateY(0);
 		opacity: 1;
+		pointer-events: auto;
 	}
 
 	/* Thêm nút đóng nổi bật (giả sử bạn thêm <span class="close-btn">×</span> trong HTML) */

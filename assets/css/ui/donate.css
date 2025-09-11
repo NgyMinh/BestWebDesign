@@ -427,7 +427,7 @@
 }
 
 .circle.active {
-	background: var(--color-tertiary) !important;
+	background: #1cb78d !important;
 }
 
 .line {
@@ -439,7 +439,7 @@
 }
 
 .line.active {
-	background: var(--color-tertiary);
+	background: #1cb78d;
 }
 
 .label {
@@ -450,7 +450,7 @@
 }
 
 .label.active {
-	color: var(--color-tertiary);
+	color: #1cb78d;
 }
 
 /* =========================
@@ -1169,7 +1169,6 @@ input.placeholder-bold {
 	align-items: end;
 }
 
-
 .credit-card {
 	width: 320px;
 	height: 180px;
@@ -1621,6 +1620,9 @@ i.fas.fa-check {
 #token-price-board {
 	font-family: "Inter";
 	color: #1f2937;
+	margin-top: 60px;
+	margin-left: -96px;
+	margin-right: -96px;
 }
 
 #token-price-board table {
@@ -1680,7 +1682,7 @@ i.fas.fa-check {
 }
 #token-price-board thead th:nth-child(5),
 #token-price-board tbody td:nth-child(5) {
-	width: 15%;
+	width: 17%;
 }
 #token-price-board thead th:nth-child(6),
 #token-price-board tbody td:nth-child(6),
@@ -1696,7 +1698,7 @@ i.fas.fa-check {
 }
 #token-price-board thead th:nth-child(10),
 #token-price-board tbody td:nth-child(10) {
-	width: 19%;
+	width: 17%;
 }
 
 #token-price-board tbody tr {
@@ -1772,20 +1774,6 @@ i.fas.fa-check {
 .buy-button:hover {
 	background-color: limegreen;
 	color: white;
-}
-
-/* Responsive: cuộn ngang trên màn nhỏ */
-@media (max-width: 880px) {
-	#token-price-board table {
-		display: block;
-		overflow-x: auto;
-		white-space: nowrap;
-	}
-	#token-price-board thead th,
-	#token-price-board tbody td {
-		padding: 10px 12px;
-		font-size: 13px;
-	}
 }
 
 /* =========================

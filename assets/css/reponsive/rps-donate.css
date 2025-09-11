@@ -84,6 +84,14 @@
 		height: auto;
 	}
 
+	/* TOKEN */
+	/* Mobile (<768px) */
+	@media (max-width: 767px) {
+		.select-wrapper {
+			width: 100%;
+		}
+	}
+
 	.banks-grid {
 		grid-template-columns: repeat(3, 1fr);
 		gap: 8px;
@@ -115,5 +123,23 @@
 	.hero-btn.btn-reset {
 		font-size: 16px;
 		height: 42px;
+	}
+}
+
+@media (max-width: 768px) {
+	#token-price-board {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	#token-price-board span {
+		display: none;
+	}
+
+	#token-price-board tbody td {
+		padding: 14px;
+		font-size: 0.9rem;
+		vertical-align: middle;
+		border-bottom: 1px solid rgba(15, 23, 42, 0.04);
 	}
 }

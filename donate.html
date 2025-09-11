@@ -1015,7 +1015,7 @@
 								</div>
 
 								<!-- Bảng thông tin giá Token -->
-								<div id="token-price-board" style="margin-top: 60px; margin-left: -96px; margin-right: -96px">
+								<div id="token-price-board" style="">
 									<div class="header-row">
 										<h3 class="board-title common-heading">Bảng thông tin tiền điện tử</h3>
 										<!-- controls nằm bên phải tiêu đề -->
@@ -1032,23 +1032,25 @@
 
 									<!-- Loading -->
 									<div id="loading" style="text-align: center; padding: 20px; font-weight: 500">Đang tải dữ liệu, chờ chút nhé...</div>
-									<table id="market-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: center; border-collapse: collapse; display: none">
-										<thead>
-											<tr style="background: #f4f4f4">
-												<th title="Số thứ tự">#</th>
-												<th title="Tên tiền điện tử">Tiền điện tử</th>
-												<th></th>
-												<th title="Giá hiện tại theo tiền USD">Giá ($)</th>
-												<th title="Giá hiện tại theo tiền VNĐ">Giá (VNĐ)</th>
-												<th title=" Biến động giá trong 1 giờ qua">1 giờ</th>
-												<th title=" Biến động giá trong 24 giờ qua">24 giờ</th>
-												<th title=" Biến động giá trong 7 ngày qua">7 ngày</th>
-												<th class="col-30d" style="display: none" title=" Biến động giá trong 30 ngày qua">30 ngày</th>
-												<th title="Biểu đồ thể hiện xu hướng tăng/giảm giá tiền điện tử trong 7 ngày qua">Biểu đồ 7 ngày</th>
-											</tr>
-										</thead>
-										<tbody id="market-body"></tbody>
-									</table>
+									<div style="overflow-x: auto; -webkit-overflow-scrolling: touch">
+										<table id="market-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: center; border-collapse: collapse; display: none">
+											<thead>
+												<tr style="background: #f4f4f4">
+													<th title="Số thứ tự">#</th>
+													<th title="Tên tiền điện tử">Tiền điện tử</th>
+													<th></th>
+													<th title="Giá hiện tại theo tiền USD">Giá ($)</th>
+													<th title="Giá hiện tại theo tiền VNĐ">Giá (VNĐ)</th>
+													<th title=" Biến động giá trong 1 giờ qua">1 giờ</th>
+													<th title=" Biến động giá trong 24 giờ qua">24 giờ</th>
+													<th title=" Biến động giá trong 7 ngày qua">7 ngày</th>
+													<th class="col-30d" style="display: none" title=" Biến động giá trong 30 ngày qua">30 ngày</th>
+													<th title="Biểu đồ thể hiện xu hướng tăng/giảm giá tiền điện tử trong 7 ngày qua">Biểu đồ 7 ngày</th>
+												</tr>
+											</thead>
+											<tbody id="market-body"></tbody>
+										</table>
+									</div>
 									<!-- Phân trang -->
 									<div id="pagination" style="text-align: center; margin-top: 20px"></div>
 								</div>
@@ -1179,5 +1181,6 @@
 		<script src="../assets/js/modal.js"></script>
 		<!-- Chuyển trang -->
 		<!-- <script src="assets/js/load.js"></script> -->
+		<script src="assets/js/navbar-mobile.js"></script>
 	</body>
 </html>
