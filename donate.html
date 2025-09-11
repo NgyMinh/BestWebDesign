@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Quyên góp cho MVP để mang sách vở, áo ấm và hy vọng đến trẻ em vùng cao. Hỗ trợ ngay hôm nay!" />
+	<title>Quỹ Hy Vọng Việt MVP - Hỗ trợ Trẻ em vùng cao</title>
+	<link rel="icon" type="image/x-icon" href="/assets/img/logo-mvp-removebg.png" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet"
+	/>
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+	<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+	<script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<link rel="stylesheet" href="../html/modal/modals.html" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../assets/css/ui/common.css" />
+	<link rel="stylesheet" href="../assets/css/ui/index.css" />
+	<link rel="stylesheet" href="../assets/css/ui/donate.css" />
+	<link rel="stylesheet" href="../assets/css/components/messenger.css" />
+	<link rel="stylesheet" href="../assets/css/components/search-style.css" />
+	<link rel="stylesheet" href="../assets/css/components/stories-style.css" />
+	<link rel="stylesheet" href="../assets/css/ui/stories.css" />
+</head>
+<body>
+<button id="scrollTopBtn">
+	<i class="fas fa-arrow-up"></i>
+</button>
+
+<button id="hideHeaderBtn">
+	<i id="iconHeader" class="fas fa-eye"></i>
+</button>
+
+<div class="page-wrapper">
+	<div class="hero-section">
+		<img class="hero-background" src="../assets/img/chung-tay-quyen-gop.webp" alt="Hình ảnh chung tay quyên góp lan tỏa hy vọng cho trẻ em vùng cao MVP" />
+		<div class="overlay"></div>
+		<header class="header">
+			<div>
+				<a href="#"><img class="logo" src="../assets/img/logo-mvp.png" alt="Logo Quỹ Hy Vọng Việt MVP" /></a>
+			</div>
+
+			<nav class="navbar">
+				<div class="nav-item dropdown">
+					<a style="--i: 1" class="nav-link" href="index.html" data-lang-key="nav_home">Trang chủ </a>
+				</div>
+				<div class="nav-item dropdown">
+					<a style="--i: 2" class="nav-link" href="about.html" data-lang-key="nav_about">Về chúng tôi </a>
+				</div>
+				<div class="nav-item dropdown">
+					<a style="--i: 3" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer">Tình nguyện </a>
+				</div>
+				<div class="nav-item dropdown">
+					<a style="--i: 4" class="nav-link active" href="donate.html" data-lang-key="nav_donate">Quyên góp </a>
+				</div>
+				<a style="--i: 5" class="nav-link" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
+			</nav>
+
+			<div class="right-header">
+				<div class="search">
+					<a href="#" id="searchToggle"><box-icon name="search-alt-2"></box-icon></a>
+					<div class="search-dropdown" id="searchDropdown">
+						<input type="text" id="searchInput" placeholder="Tìm kiếm câu chuyện..." data-lang-key="search_placeholder" />
+						<div id="searchResults" class="search-results"></div>
+					</div>
+				</div>
+
+				<div class="cart">
+					<a href="#" style="position: relative" onclick="toggleCartPopup(event)">
+						<box-icon name="cart"></box-icon>
+						<span id="cart-count" class="cart-count">0</span>
+					</a>
+				</div>
+
+				<div class="language-switcher">
+					<button id="lang-vi" class="lang-btn active">VN</button>
+					<button id="lang-en" class="lang-btn">EN</button>
+				</div>
+
+				<div class="register-login">
+					<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
+					<span class="slash">/</span>
+					<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
+				</div>
+			</div>
+			<div id="cart-sidebar" class="cart-sidebar">
+				<div class="cart-sidebar-header">
+					<h4 data-lang-key="cart_title">Giỏ hàng của bạn</h4>
+					<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></button>
+				</div>
+				<ul id="cart-items" class="cart-items"></ul>
+				<div class="cart-total">
+					<p><span data-lang-key="cart_total">Tổng cộng:</span> <span id="cart-total">0 VNĐ</span></p>
+					<button class="checkout-btn" data-lang-key="cart_checkout">Thanh toán</button>
+				</div>
+			</div>
+
+			<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+		</header>
+
+		<section class="home">
+			<div class="home-content">
+				<h1 data-lang-key="donate_hero_title">Chung tay vì trẻ em.</h1>
+				<h3 data-lang-key="donate_hero_subtitle">Lan tỏa hi vọng!</h3>
+				<p data-lang-key="donate_hero_desc">Mọi đóng góp của bạn sẽ giúp trẻ em vùng cao vượt qua khó khăn, tiếp cận giáo dục và xây dựng cuộc sống tốt đẹp hơn với sự hỗ trợ từ cộng đồng</p>
+				<a href="#shop" class="hero-btn btn-animation" data-lang-key="hero_button">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+			</div>
+		</section>
+
+		<section class="hero-footer">
+			<div class="social-media">
+				<a style="--i: 1" target="_blank" href="https://www.facebook.com/login"><box-icon type="logo" name="facebook"></box-icon></a>
+				<a style="--i: 2" target="_blank" href="https://www.twitter.com/login"><box-icon name="twitter" type="logo"></box-icon></a>
+				<a style="--i: 3" target="_blank" href="https://www.instagram.com/accounts/login/"><box-icon name="instagram" type="logo"></box-icon></a>
+			</div>
+		</section>
+	</div>
+
+	<div id="alert-container"></div>
+
+	<section id="donate" class="donate-section">
+		<div class="donate-container" data-aos="fade-right">
+			<div class="row d-flex justify-content-center align-items-center">
+				<div class="col-12">
+					<h3 class="common-heading donate-heading" data-lang-key="donate_main_heading">CHUNG TAY CÙNG CHÚNG TÔI</h3>
+					<p class="donate-content" data-lang-key="donate_main_desc">
+						Từ thiện là hành động mang đến sự giúp đỡ và chia sẻ cho những người có hoàn cảnh khó khăn. Nó không chỉ thể hiện lòng nhân ái mà còn góp phần tạo nên một cộng đồng
+						đoàn kết và yêu thương.
+					</p>
+					<div class="donate-tabs">
+						<button class="tab-btn active" onclick="switchDonateTab('traditional')" data-lang-key="donate_tab_traditional">QUYÊN GÓP TRUYỀN THỐNG</button>
+						<button class="tab-btn" onclick="switchDonateTab('blockchain')" data-lang-key="donate_tab_blockchain">QUYÊN GÓP BẰNG BLOCKCHAIN</button>
+					</div>
+
+					<div id="donate-traditional" class="donate-tab-content">
+						<div class="step">
+							<div class="sub-step">
+								<div class="circle" id="circle1">1</div>
+								<div class="label" id="label1" data-lang-key="donate_step_info">THÔNG TIN</div>
+							</div>
+							<div class="line" id="line1"></div>
+							<div class="sub-step">
+								<div class="circle" id="circle2">2</div>
+								<div class="label" id="label2" data-lang-key="donate_step_payment">THANH TOÁN</div>
+							</div>
+							<div class="line" id="line2"></div>
+							<div class="sub-step">
+								<div class="circle" id="circle3">3</div>
+								<div class="label" id="label3" data-lang-key="donate_step_result">KẾT QUẢ</div>
+							</div>
+						</div>
+
+						<div id="step1" class="hidden">
+							<form>
+								<div class="row">
+									<label class="form-label" data-lang-key="donate_form1_heading">NHẬP THÔNG TIN QUYÊN GÓP</label><br />
+									<div class="col-12">
+										<input type="text" id="donor-name" class="form-control input-with-icon donate-input-with-icon-6" placeholder="Nhập họ và tên" data-lang-key="donate_form1_name_placeholder" />
+									</div>
+									<div class="col-12">
+										<input type="text" id="donor-email" class="form-control input-with-icon donate-input-with-icon-5" placeholder="Nhập e-mail" data-lang-key="donate_form1_email_placeholder" />
+									</div>
+									<div class="col-12 select-wrapper">
+										<select required id="donation-project" class="form-select input-with-icon donate-input-with-icon-2">
+											<option value="" selected disabled hidden data-lang-key="donate_form1_project_placeholder">Chọn 1 dự án muốn quyên góp (*)</option>
+										</select>
+									</div>
+									<div id="donate-buttons" class="col-12">
+										<label class="form-label" data-lang-key="donate_form1_amount_label">CHỌN SỐ TIỀN (*) (Đơn vị: VNĐ)</label><br />
+										<div class="button-container">
+											<button type="button" class="donate-btn-money">100.000</button>
+											<button type="button" class="donate-btn-money">200.000</button>
+											<button type="button" class="donate-btn-money">500.000</button>
+											<button type="button" class="donate-btn-money">1.000.000</button>
+											<button type="button" class="donate-btn-money">2.000.000</button>
+											<button type="button" class="donate-btn-money">3.000.000</button>
+											<button type="button" class="donate-btn-money">5.000.000</button>
+											<button type="button" class="donate-btn-money" id="customAmountBtn" data-lang-key="donate_form1_custom_amount_btn">Chọn số tiền khác</button>
+										</div>
+									</div>
+
+									<div id="customAmountInput" style="display: none" class="mt-2">
+										<input type="text" id="donationAmount" class="form-control input-with-icon donate-input-with-icon-3" placeholder="Nhập số tiền bạn muốn quyên góp" data-lang-key="donate_form1_custom_amount_placeholder" />
+									</div>
+									<div class="note-method-info">
+										<p class="note-heading"><strong data-lang-key="donate_note_heading">Lưu ý:</strong></p>
+										<ul class="note-list">
+											<li data-lang-key="donate_note1_text">Ô “Họ và Tên” và “Email” không bắt buộc. Tuy nhiên, nếu điền, hệ thống sẽ ghi nhận chính xác và gửi bản xác nhận đến email của bạn</li>
+											<li data-lang-key="donate_note2_text">Vui lòng nhập chính xác để nhận được bản xác nhận đầy đủ</li>
+										</ul>
+									</div>
+								</div>
+
+								<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
+									<button type="button" class="hero-btn btn-back" data-lang-key="donate_btn_back">Quay Về</button>
+									<button type="button" class="hero-btn btn-reset" data-lang-key="donate_btn_reset">Xóa Tất Cả</button>
+									<button type="button" class="hero-btn btn-next" data-lang-key="donate_btn_next">Tiếp Tục</button>
+								</div>
+							</form>
+						</div>
+
+						<div id="step2" class="hidden">
+							<form>
+								<div class="row">
+									<label class="form-label" data-lang-key="donate_form2_heading">VUI LÒNG CHỌN 1 PHƯƠNG THỨC THANH TOÁN</label>
+									<div id="payment-methods">
+										<div class="payment-option" data-lang-key="donate_method_vietqr">
+											Thanh Toán Bằng Mã VietQR
+											<img src="assets/img/qr-option.png" alt="QR" />
+										</div>
+										<div class="payment-option" data-lang-key="donate_method_card">
+											Thanh Toán Bằng Thẻ Tín Dụng / Ghi Nợ
+											<div class="icons">
+												<img src="assets/img/the-tin-dung-option1.png" alt="Card" />
+												<img src="assets/img/the-tin-dung-option2.png" alt="Card" />
+												<img src="assets/img/the-tin-dung-option4.png" alt="Card" />
+												<img src="assets/img/the-tin-dung-option5.png" alt="Card" />
+											</div>
+										</div>
+										<div class="payment-option" data-lang-key="donate_method_wallet">
+											Thanh Toán Bằng Ví Điện Tử
+											<div class="icons">
+												<img src="assets/img/momo-option.jpg" alt="Wallet" />
+												<img src="assets/img/zalopay-option.png" alt="Wallet" />
+											</div>
+										</div>
+										<div class="payment-option" data-lang-key="donate_method_atm">
+											Thanh Toán Bằng Thẻ ATM / Tài Khoản Ngân Hàng
+											<img src="assets/img/atm-option.webp" alt="Bank" />
+										</div>
+									</div>
+								</div>
+
+								<div class="order-wrapper">
+									<div class="row justify-content-between g-3">
+										<div class="col-md-6 p-0">
+											<div id="qr-info" class="qr-card" style="display: none">
+												<p class="qr-heading" data-lang-key="donate_qr_title">Quyên góp qua mã VietQR</p>
+												<div class="qr-scan-frame">
+													<img id="qr-code" src="" alt="Mã QR VietQR cho quyên góp từ thiện Quỹ MVP" />
+													<div class="corner top-left"></div>
+													<div class="corner top-right"></div>
+													<div class="corner bottom-left"></div>
+													<div class="corner bottom-right"></div>
+												</div>
+												<div id="bank-info">
+													<p><span data-lang-key="donate_qr_account_holder">Chủ tài khoản:</span> <strong>NGUYỄN HỮU MINH</strong></p>
+													<p><span data-lang-key="donate_qr_account_number">Số tài khoản:</span> <strong>1039764872</strong></p>
+													<p><span data-lang-key="donate_qr_bank">Ngân hàng:</span> <strong>Vietcombank</strong></p>
+													<p><span data-lang-key="donate_qr_memo">Nội dung chuyển khoản:</span> <strong>UngHoTreEm</strong></p>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6 p-0">
+											<div id="order-summary" class="order-summary" style="display: none">
+												<div class="order-head">
+													<span class="order-title" data-lang-key="donate_order_summary_title">Thông tin đơn hàng</span>
+													<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+												</div>
+												<div class="order-body">
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_merchant">Đơn vị chấp nhận thanh toán:</strong><br />
+														<span class="order-body-content">QUỸ HY VỌNG VIỆT MVP</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_amount_numeric">Số tiền thanh toán bằng số:</strong><br />
+														<span id="order-amount" class="order-amount order-body-content">1,000 VNĐ</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_amount_text">Số tiền thanh toán bằng chữ:</strong><br />
+														<span id="order-amount-words" class="order-amount order-body-content">Một nghìn đồng</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_method">Phương thức thanh toán:</strong><br />
+														<span class="order-body-content" data-lang-key="donate_order_method_qr_value">Quét mã QR </span>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="note-method-qr">
+										<p class="note-heading"><strong>Lưu ý khi QUÉT MÃ QR:</strong></p>
+										<ul class="note-list">
+											<li>Vui lòng quét đúng mã QR được cung cấp để đảm bảo chuyển khoản tới đúng tài khoản người nhận</li>
+											<li>
+												Hệ thống có thể tự động kiểm tra nội dung chuyển khoản. Do đó, bạn cần giữ nguyên nội dung chuyển khoản được hiển thị, không thêm, bớt hoặc
+												chỉnh sửa ký tự nào
+											</li>
+											<li>
+												Vui lòng chuyển đúng số tiền như đã hiển thị trong phần thanh toán. Việc chuyển sai số tiền có thể khiến hệ thống không ghi nhận giao dịch.
+											</li>
+											<li>
+												Nếu bạn sử dụng ứng dụng ngân hàng có hỗ trợ mã QR, hãy đảm bảo rằng thông tin tài khoản và nội dung được hiển thị đúng trước khi xác nhận
+												chuyển khoản
+											</li>
+											<li>
+												Trong trường hợp gặp lỗi khi quét mã, không thấy thông tin hoặc đã chuyển khoản nhưng không nhận được xác nhận, vui lòng liên hệ ngay với bộ
+												phận hỗ trợ để được kiểm tra và xử lý kịp thời
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div id="credit-card-form" style="display: none">
+									<div id="order-summary-card" class="order-summary m-auto" style="display: none">
+										<div class="order-head">
+											<span class="order-title" data-lang-key="donate_order_summary_title">Thông tin đơn hàng</span>
+											<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+										</div>
+										<div class="order-body">
+											<p>
+												<strong class="order-body-heading" data-lang-key="donate_order_merchant">Đơn vị chấp nhận thanh toán:</strong><br />
+												<span class="order-body-content">QUỸ HY VỌNG VIỆT MVP</span>
+											</p>
+											<p>
+												<strong class="order-body-heading" data-lang-key="donate_order_amount_numeric">Số tiền thanh toán bằng số:</strong><br />
+												<span id="order-amount-card" class="order-amount order-body-content">1,000 VNĐ</span>
+											</p>
+											<p>
+												<strong class="order-body-heading" data-lang-key="donate_order_amount_text">Số tiền thanh toán bằng chữ:</strong><br />
+												<span id="order-amount-words-card" class="order-amount order-body-content">Một nghìn đồng</span>
+											</p>
+											<p>
+												<strong class="order-body-heading" data-lang-key="donate_order_method">Phương thức thanh toán:</strong><br />
+												<span class="order-body-content">Thẻ tín dụng / ghi nợ</span>
+											</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-8">
+											<fieldset>
+												<legend class="legend-heading" data-lang-key="donate_card_form_title">Thông tin thẻ tín dụng</legend>
+												<label class="label-tooltip" data-lang-key="donate_card_number"
+												>Số thẻ (*)
+													<img
+															src="assets/img/question.png"
+															alt="Hướng dẫn"
+															class="tooltip-image"
+															data-bs-toggle="modal"
+															id="question-img"
+															data-bs-target="#helpModal"
+															data-title="Số thẻ (Card Number)"
+															data-content="Nhập đúng <strong>16 chữ số</strong> in trên mặt trước của thẻ </br> Ví dụ: 4000 1234 5678 9010"
+															data-img="assets/img/sothe.png"
+													/>
+												</label>
+
+												<input type="text" id="card-number" class="form-control" required />
+
+												<label class="mt-3 label-tooltip" data-lang-key="donate_card_expiry"
+												>Tháng/Năm hết hạn (*)
+													<img
+															src="assets/img/question.png"
+															alt="Hướng dẫn"
+															class="tooltip-image"
+															data-bs-toggle="modal"
+															data-bs-target="#helpModal"
+															data-title="Tháng/Năm hết hạn (Expiration Date)"
+															data-content="Tháng/Năm hết hạn là thời hạn sử dụng <strong>được in trên mặt trước</strong> của thẻ, thường ở dạng <strong>MM/YY</strong> <br> Ví dụ: 08/25 (nghĩa là thẻ có hiệu lực đến hết tháng 08 năm 2025)"
+															data-img="assets/img/ngaythang_the.png"
+													/>
+												</label>
+												<input type="text" id="card-expiry" class="form-control" required />
+
+												<label class="mt-3 label-tooltip" data-lang-key="donate_card_csc"
+												>CSC (*)
+													<img
+															src="assets/img/question.png"
+															alt="Hướng dẫn"
+															class="tooltip-image"
+															data-bs-toggle="modal"
+															data-bs-target="#helpModal"
+															data-title="CSC/CVV/CVC"
+															data-content="CSC/CVV/CVC là các mã bảo mật quan trọng gồm <strong>3 hoặc 4 chữ số cuối cùng</strong> nằm ở <strong>mặt sau</strong> của thẻ, bên phải phần chữ ký, dùng để xác thực giao dịch khi thanh toán trực tuyến <br> Ví dụ: Nếu mặt sau ghi .....123, hãy nhập: 123"
+															data-img="assets/img/csc.webp"
+													/>
+												</label>
+												<input type="text" class="form-control" required />
+
+												<label class="mt-3" data-lang-key="donate_card_name">Tên in trên thẻ (*)</label>
+												<input type="text" id="card-name" class="form-control" required />
+
+												<label class="mt-3" data-lang-key="donate_card_phone">Số điện thoại (*)</label>
+												<input type="text" class="form-control" required />
+
+												<div class="form-check mt-3">
+													<input class="form-check-input" type="checkbox" id="agree-credit" />
+													<label class="form-check-label" for="agree-credit">
+														<span data-lang-key="donate_card_policy">Tôi đã đọc, hiểu rõ và đồng ý với</span> <a href="#"> Chính sách bảo vệ và xử lý dữ liệu cá nhân</a>
+													</label>
+												</div>
+											</fieldset>
+										</div>
+
+										<div class="col-md-4 d-flex flex-column align-items-end">
+											<div title="Hình ảnh thẻ mang tính chất tham khảo :>" id="card-preview" class="credit-card mb-3">
+												<div class="card-chip"></div>
+												<img class="card-contactless-icon" src="assets/img/contactless.png" alt="" />
+												<div class="card-number" id="preview-number">---- ---- ---- ----</div>
+												<div class="card-expiry">
+													<span class="label">GOOD THRU</span>
+													<span id="preview-expiry">--/--</span>
+												</div>
+												<div class="card-name" id="preview-name">NGUYEN VAN A</div>
+											</div>
+
+											<div class="alert alert-warning px-3 py-2 small text-center" data-lang-key="donate_card_tooltip_guide">
+												Bấm vào biểu tượng <img class="tooltip-image alert-tooltip" src="assets/img/question.png" alt="" /> để xem hướng dẫn
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="wallets-tabs-container">
+									<div class="wallet-tabs">
+										<button class="wallet-tab-btn active" data-tab="momo">MOMO</button>
+										<button class="wallet-tab-btn" data-tab="zalopay">ZALOPAY</button>
+									</div>
+								</div>
+
+								<div id="momo-info" class="order-wrapper" style="display: none">
+									<div class="row justify-content-between g-3">
+										<div class="col-md-6 p-0">
+											<div class="qr-card qr-momo">
+												<p class="qr-heading" data-lang-key="donate_wallet_momo_title">Quyên góp qua Ví MoMo</p>
+												<div class="qr-scan-frame">
+													<img src="assets/img/qr-momo.png" alt="QR MoMo" style="width: 100%" />
+													<div class="corner top-left"></div>
+													<div class="corner top-right"></div>
+													<div class="corner bottom-left"></div>
+													<div class="corner bottom-right"></div>
+												</div>
+												<div id="momo-bank-info">
+													<p><span data-lang-key="donate_wallet_holder_name">Tên chủ ví:</span> <strong>NGUYỄN HỮU MINH</strong></p>
+													<p><span data-lang-key="donate_wallet_phone">Số điện thoại:</span> <strong>0818259227</strong></p>
+													<p><span data-lang-key="donate_wallet_memo">Nội dung:</span> <strong>UngHoTreEm - MoMo</strong></p>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div id="order-summary-momo" class="order-summary">
+												<div class="order-head">
+													<span class="order-title" data-lang-key="donate_order_summary_title">Thông tin đơn hàng</span>
+													<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+												</div>
+												<div class="order-body">
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_merchant">Đơn vị chấp nhận thanh toán:</strong><br />
+														<span class="order-body-content">QUỸ HY VỌNG VIỆT MVP</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_amount_numeric">Số tiền thanh toán bằng số:</strong><br />
+														<span id="order-amount-momo" class="order-body-content">1,000 VNĐ</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_amount_text">Số tiền thanh toán bằng chữ:</strong><br />
+														<span id="order-amount-words-momo" class="order-body-content">Một nghìn đồng</span>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="note-method-qr">
+										<p class="note-heading"><strong>Lưu ý khi sử dụng MOMO:</strong></p>
+										<ul class="note-list">
+											<li>Chỉ sử dụng app MoMo để quét mã QR bên trái</li>
+											<li>Vui lòng giữ nguyên nội dung chuyển khoản được cung cấp: UngHoTreEm-MoMo</li>
+											<li>Không thêm, bớt hoặc thay đổi ký tự trong nội dung chuyển khoản</li>
+											<li>Chuyển đúng số tiền hiển thị để hệ thống ghi nhận giao dịch thành công</li>
+											<li>Nếu có lỗi hoặc không xác nhận được giao dịch, liên hệ bộ phận hỗ trợ để kiểm tra</li>
+										</ul>
+									</div>
+								</div>
+
+								<div id="zalopay-info" class="order-wrapper" style="display: none">
+									<div class="row justify-content g-3">
+										<div class="col-md-6 p-0">
+											<div class="qr-card qr-zalo">
+												<p class="qr-heading" data-lang-key="donate_wallet_zalopay_title">Quyên góp qua ZaloPay</p>
+												<div class="qr-scan-frame">
+													<img src="assets/img/qr-zalopay.jpg" alt="QR ZaloPay" style="width: 100%" />
+													<div class="corner top-left"></div>
+													<div class="corner top-right"></div>
+													<div class="corner bottom-left"></div>
+													<div class="corner bottom-right"></div>
+												</div>
+												<div id="zalopay-bank-info">
+													<p><span data-lang-key="donate_wallet_memo">Nội dung:</span> <strong>UngHoTreEm-ZaloPay</strong></p>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div id="order-summary-zalo" class="order-summary">
+												<div class="order-head">
+													<span class="order-title" data-lang-key="donate_order_summary_title">Thông tin đơn hàng</span>
+													<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+												</div>
+												<div class="order-body">
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_merchant">Đơn vị chấp nhận thanh toán:</strong><br />
+														<span class="order-body-content">QUỸ HY VỌNG VIỆT MVP</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_amount_numeric">Số tiền thanh toán bằng số:</strong><br />
+														<span id="order-amount-zalo" class="order-amount order-body-content">1,000 VNĐ</span>
+													</p>
+													<p>
+														<strong class="order-body-heading" data-lang-key="donate_order_amount_text">Số tiền thanh toán bằng chữ:</strong><br />
+														<span id="order-amount-words-zalo" class="order-amount order-body-content">Một nghìn đồng</span>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="note-method-qr">
+										<p class="note-heading"><strong>Lưu ý khi sử dụng ZALOPAY:</strong></p>
+										<ul class="note-list">
+											<li>Chỉ sử dụng app ZaloPay để quét mã QR bên trái</li>
+											<li>Vui lòng giữ nguyên nội dung chuyển khoản: <em>UngHoTreEm-ZaloPay</em></li>
+											<li>Không thay đổi nội dung hoặc số tiền để tránh lỗi ghi nhận giao dịch</li>
+											<li>Trước khi chuyển, hãy kiểm tra kỹ thông tin tài khoản hiện ra sau khi quét mã</li>
+											<li>Nếu giao dịch không được ghi nhận sau vài phút, vui lòng liên hệ bộ phận hỗ trợ</li>
+										</ul>
+									</div>
+								</div>
+
+								<div id="atm-bank-list" class="bank-list" style="display: none">
+									<p class="qr-heading text-center" data-lang-key="donate_atm_select_bank">Vui lòng chọn 1 ngân hàng để quyên góp</p>
+									<div class="banks-grid">
+										<div class="bank-item">
+											<img src="assets/img/vietcombank.jpg" alt="Vietcombank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/agribank_1.jpg" alt="Agribank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/bidv_1.jpg" alt="BIDV" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/bao-viet-bank.jpg" alt="BAOVIET Bank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/ocb.jpg" alt="OCB" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/techcombank.jpg" alt="Techcombank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/viettel-money.jpg" alt="Viettel Money" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/viet-a-bank.jpg" alt="VietABank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/viet-tin-bank.jpg" alt="VietTinBank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/sacombank.jpg" alt="Sacombank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/nam-a-bank.jpg" alt="NamABank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/vnpt-monety.png" alt="VNPT Money" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/vietbank.jpg" alt="VietBank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/eximbank.jpg" alt="Eximbank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/tpbank.jpg" alt="TPBank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/vib.jpg" alt="VIB" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/lpbank.jpg" alt="LPBank" />
+										</div>
+										<div class="bank-item">
+											<img src="assets/img/msb.jpg" alt="MSB" />
+										</div>
+									</div>
+								</div>
+
+								<div id="order-summary-atm" class="order-summary">
+									<div class="order-head">
+										<span class="order-title" data-lang-key="donate_order_summary_title">Thông tin đơn hàng</span>
+										<span class="order-time"> ⏱ <span class="order-timer">15:00</span> </span>
+									</div>
+									<div class="order-body">
+										<p>
+											<strong class="order-body-heading" data-lang-key="donate_order_merchant">Đơn vị chấp nhận thanh toán:</strong><br />
+											<span class="order-body-content">QUỸ HY VỌNG VIỆT MVP</span>
+										</p>
+										<p>
+											<strong class="order-body-heading" data-lang-key="donate_order_amount_numeric">Số tiền thanh toán bằng số:</strong><br />
+											<span id="order-amount-atm" class="order-amount order-body-content">1,000 VNĐ</span>
+										</p>
+										<p>
+											<strong class="order-body-heading" data-lang-key="donate_order_amount_text">Số tiền thanh toán bằng chữ:</strong><br />
+											<span id="order-amount-words-atm" class="order-amount order-body-content">Một nghìn đồng</span>
+										</p>
+									</div>
+								</div>
+
+								<div id="atm-payment-form" style="display: none">
+									<div class="atm-header d-flex align-items-center">
+										<p id="bank-atm-title" class="" data-lang-key="donate_atm_paying_via">Bạn đang thanh toán qua ngân hàng ...</p>
+										<img id="bank-logo" src="" alt="Bank Logo" class="bank-logo" />
+									</div>
+
+									<fieldset>
+										<legend class="legend-heading text-center" data-lang-key="donate_atm_form_title">Thông tin thẻ ATM</legend>
+
+										<label class="" data-lang-key="donate_card_number">Số thẻ (*)</label>
+										<input type="text" class="form-control" required />
+
+										<label class="mt-3" data-lang-key="donate_atm_issue_date">Tháng/Năm phát hành (*)</label>
+										<input type="text" class="form-control" required />
+
+										<label class="mt-3" data-lang-key="donate_atm_cardholder_name">Tên chủ thẻ(*)</label>
+										<input type="text" class="form-control" required />
+
+										<div class="form-check mt-3">
+											<input class="form-check-input" type="checkbox" id="agree-atm" />
+											<label class="form-check-label" for="agree-atm">
+												<span data-lang-key="donate_card_policy">Tôi đã đọc, hiểu rõ và đồng ý với</span>
+												<a href="#">Chính sách bảo vệ và xử lý dữ liệu cá nhân</a>
+											</label>
+										</div>
+
+										<div class="alert alert-info mt-2"><strong data-lang-key="donate_atm_condition">Điều kiện thanh toán:</strong> Đăng ký dịch vụ Internet Banking/SMS OTP cho thẻ của bạn.</div>
+									</fieldset>
+								</div>
+
+								<div style="display: flex; justify-content: center; margin-top: 50px; gap: 10px">
+									<button type="button" class="hero-btn btn-back" data-lang-key="donate_btn_back">Quay Về</button>
+									<button type="button" class="hero-btn btn-next" data-lang-key="donate_btn_confirm">Xác Nhận Quyên Góp</button>
+								</div>
+							</form>
+						</div>
+
+						<div id="step3" class="hidden">
+							<section class="transaction-status">
+								<div class="icon"><i class="fas fa-check"></i></div>
+								<h2 data-lang-key="donate_result_success">QUYÊN GÓP THÀNH CÔNG</h2>
+								<div class="info">
+									<p><strong data-lang-key="donate_result_donor">Người quyên góp:</strong> <span class="transaction-content" id="cf-name">Ẩn danh</span></p>
+									<p><strong data-lang-key="donate_result_email">Email:</strong> <span class="transaction-content" id="cf-email">Không có</span></p>
+									<p><strong data-lang-key="donate_result_project">Quyên góp vào dự án:</strong> <span class="transaction-content" id="cf-project">---</span></p>
+									<p><strong data-lang-key="donate_result_amount">Số tiền quyên góp:</strong> <span class="transaction-content" id="cf-amount">0 VNĐ</span></p>
+									<p><strong data-lang-key="donate_result_code">Mã quyên góp:</strong> <span class="transaction-content" id="cf-code">---</span></p>
+									<p><strong data-lang-key="donate_order_method">Phương thức quyên góp:</strong> <span class="transaction-content" id="cf-method">---</span></p>
+									<p><strong data-lang-key="donate_result_merchant">Tổ chức thụ hưởng:</strong> <span class="transaction-content">Quỹ Hy Vọng Việt MVP</span></p>
+									<p><strong data-lang-key="donate_result_time">Thời gian quyên góp:</strong> <span id="cf-date" class="transaction-content">--/--/---- --:--:--</span></p>
+								</div>
+								<div class="thanks" data-lang-key="donate_result_thankyou">Cảm ơn bạn đã đồng hành cùng chúng tôi ❤️</div>
+								<div class="note" data-lang-key="donate_result_receipt_note">Biên nhận đã gửi qua email. Mọi thắc mắc vui lòng liên hệ hỗ trợ với chúng tôi</div>
+							</section>
+							<div style="display: flex; justify-content: center; margin-top: 50px; gap: 10px">
+								<button type="button" class="hero-btn btn-back" data-lang-key="donate_btn_back">Quay Về</button>
+								<button type="button" class="hero-btn btn-next" data-lang-key="nav_home">Về Trang Chủ</button>
+								<button id="btnExportPdf" class="hero-btn" data-lang-key="donate_btn_export_cert">Xuất Bản Chứng Nhận</button>
+							</div>
+						</div>
+					</div>
+
+					<div id="donate-blockchain" class="donate-tab-content hidden">
+						<div class="step">
+							<div class="sub-step">
+								<div class="circle" id="bc-circle1">1</div>
+								<div class="label" id="bc-label1" data-lang-key="donate_step_info">THÔNG TIN</div>
+							</div>
+							<div class="line" id="bc-line1"></div>
+							<div class="sub-step">
+								<div class="circle" id="bc-circle2">2</div>
+								<div class="label" id="bc-label2" data-lang-key="donate_bc_step_scan">QUÉT MÃ QR</div>
+							</div>
+							<div class="line" id="bc-line2"></div>
+							<div class="sub-step">
+								<div class="circle" id="bc-circle3">3</div>
+								<div class="label" id="bc-label3" data-lang-key="donate_bc_step_confirm">XÁC NHẬN</div>
+							</div>
+						</div>
+
+						<div id="bc-step1" class="tab-content">
+							<label class="form-label" data-lang-key="donate_bc_form_info_heading">NHẬP THÔNG TIN QUYÊN GÓP</label><br />
+							<div class="col-12">
+								<input type="text" id="bc-donor-name" class="form-control input-with-icon donate-input-with-icon-6" placeholder="Nhập họ và tên" data-lang-key="donate_form1_name_placeholder" />
+							</div>
+							<div class="col-12">
+								<input type="email" id="bc-donor-email" class="form-control input-with-icon donate-input-with-icon-5" placeholder="Nhập e-mail" data-lang-key="donate_form1_email_placeholder" />
+							</div>
+							<div class="col-12 select-wrapper">
+								<select required id="bc-donation-project" class="form-select input-with-icon donate-input-with-icon-2">
+									<option value="" selected disabled hidden data-lang-key="donate_form1_project_placeholder">Chọn 1 dự án muốn quyên góp (*)</option>
+								</select>
+							</div>
+
+							<div class="col-12">
+								<label class="form-label" data-lang-key="donate_bc_form_heading">CHỌN TIỀN ĐIỆN TỬ VÀ QUY ĐỔI (*)</label>
+							</div>
+
+							<div class="row gx-3">
+								<div class="col-md-6 custom-gap">
+									<input
+											type="text"
+											id="token-amount"
+											class="placeholder-bold form-control input-with-icon donate-input-with-icon-2"
+											placeholder="0.0000"
+											min="0.0000"
+											step="0.0001"
+											title="Nhập số lượng tiền điện tử, cho phép nhập số thập phân tối đa 4 chữ số"
+									/>
+
+									<div class="select-wrapper">
+										<select id="crypto-token" required class="placeholder-bold form-select input-with-icon donate-input-with-icon-2">
+											<option disabled selected></option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6 mt-md-0 custom-gap">
+									<input
+											type="text"
+											id="converted-amount-display"
+											class="placeholder-bold form-control input-with-icon donate-input-with-icon-2"
+											placeholder="0.00"
+											title="Kết quả quy đổi hiển thị cả số và đơn vị tiền tệ"
+											readonly
+									/>
+
+									<div class="select-wrapper">
+										<select id="currency-unit" class="placeholder-bold form-select input-with-icon donate-input-with-icon-2">
+											<option value="" selected disabled hidden data-lang-key="donate_bc_unit_placeholder">Chọn đơn vị để xem kết quả</option>
+											<option value="VND">VNĐ</option>
+											<option value="USD">USD</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div id="token-equivalent-text"><span data-lang-key="donate_bc_converted_amount">Số tiền quy đổi:</span> 0.0000 ETH ≈ 0 VNĐ</div>
+
+							<div class="col-12 d-flex justify-content-center mt-2">
+								<button id="create-wallet-btn" class="wallet-btn--neon" data-lang-key="donate_bc_create_wallet">Tạo Ví Mới</button>
+							</div>
+							<div class="col-12 note-method-info">
+								<p class="note-heading"><strong data-lang-key="donate_note_heading">Lưu ý:</strong></p>
+								<ul class="note-list">
+									<li data-lang-key="donate_bc_note1">Đảm bảo ví có đủ token (ETH cho gas fee) nếu đã kết nối.</li>
+									<li data-lang-key="donate_bc_note2">Giá quy đổi dựa trên tỷ giá thị trường hiện tại.</li>
+								</ul>
+							</div>
+							<div class="col-12" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px">
+								<button class="hero-btn bc-btn-back" data-lang-key="donate_btn_back">Quay Về</button>
+								<button class="hero-btn bc-btn-next" data-lang-key="donate_btn_next">Tiếp Tục</button>
+							</div>
+						</div>
+
+						<div id="bc-step2" class="hidden">
+							<div class="row m-auto justify-content-between border-dark-subtle" style="max-width: 950px">
+								<div class="col-md-5">
+									<div id="" class="qr-card qr-metamask">
+										<p class="qr-heading" data-lang-key="donate_bc_scan_title">Quét mã QR ví METAMASK</p>
+										<div class="qr-scan-frame">
+											<img id="qr-code-blockchain" src="assets/img/qr-metamask.jpg" alt="QR Code" />
+											<div class="corner top-left"></div>
+											<div class="corner top-right"></div>
+											<div class="corner bottom-left"></div>
+											<div class="corner bottom-right"></div>
+										</div>
+										<div style="text-decoration: none" class="text-center mt-2 qr-download-text" data-lang-key="donate_bc_download_qr">
+											Tải mã thanh toán
+											<img
+													src="assets/img/download_new.png"
+													alt="Download Icon"
+													style="width: 15px; height: 15px; vertical-align: middle; margin-right: 6px; margin-bottom: 4px"
+											/>
+										</div>
+
+										<div id="wallet-info" class="">
+											<p data-lang-key="donate_bc_wallet_address">Địa chỉ ví:</p>
+											<p>
+												<strong>0x51C38ae80a40dFBa021C723<br />D9ebB3a43b78B7A74</strong>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-7">
+									<div class="payment-guide">
+										<h5 class="guide-title" data-lang-key="donate_bc_guide_title">
+											Hướng dẫn thanh toán
+										</h5>
+
+										<div class="bc-step-list">
+											<div class="bc-step-item">
+												<div class="bc-step-number">1</div>
+												<div class="bc-step-text" data-lang-key="donate_bc_guide_step1">Mở ứng dụng ví MetaMask hoặc bất kỳ ví blockchain tương thích nào bạn đang sử dụng</div>
+											</div>
+											<div class="bc-step-item">
+												<div class="bc-step-number">2</div>
+												<div class="bc-step-text" data-lang-key="donate_bc_guide_step2">Chọn tính năng “Quét mã QR” trong ứng dụng ví, tránh nhầm lẫn khi nhập tay</div>
+											</div>
+											<div class="bc-step-item">
+												<div class="bc-step-number">3</div>
+												<div class="bc-step-text" data-lang-key="donate_bc_guide_step3">Quét mã QR ở bên trái để nhận địa chỉ ví và xác nhận thông tin</div>
+											</div>
+											<div class="bc-step-item">
+												<div class="bc-step-number">4</div>
+												<div class="bc-step-text" data-lang-key="donate_bc_guide_step4">Nhập đúng số lượng token theo yêu cầu và thực hiện xác nhận giao dịch</div>
+											</div>
+										</div>
+									</div>
+									<div class="qr-expiration-box mt-3">
+										<p class="qr-expiration-text"><span data-lang-key="donate_bc_qr_expiry">Hiệu lực mã QR</span> <strong id="qr-expiry-time">--:--, --/--/----</strong></p>
+									</div>
+
+									<div class="d-flex justify-content-between align-items-center mt-3">
+										<div class="payment-amount-text"><span data-lang-key="donate_bc_amount_label">Số tiền:</span> <span id="qr-payment-amount">1.500 USDT</span></div>
+										<div class="qr-extra-actions d-flex gap-2">
+											<span class="qr-action" data-lang-key="donate_bc_what_is_metamask">Ví Metamask?</span>
+											<span class="qr-action" data-lang-key="donate_bc_cancel_txn">Hủy giao dịch</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
+								<button type="button" class="hero-btn bc-btn-back" data-lang-key="donate_btn_back">Quay Về</button>
+								<button type="button" class="hero-btn bc-btn-next" data-lang-key="donate_btn_next">Tiếp Tục</button>
+							</div>
+						</div>
+
+						<div id="bc-step3" class="hidden">
+							<section class="transaction-status">
+								<div class="icon"><i class="fas fa-check"></i></div>
+								<h2 data-lang-key="donate_result_success">QUYÊN GÓP THÀNH CÔNG</h2>
+
+								<div class="info">
+									<p>
+										<strong data-lang-key="donate_result_donor">Người quyên góp:</strong>
+										<span class="transaction-content" id="bc-cf-name">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_result_email">Email:</strong>
+										<span class="transaction-content" id="bc-cf-email">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_result_project">Quyên góp vào dự án:</strong>
+										<span class="transaction-content" id="bc-cf-project">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_bc_result_crypto">Tiền điện tử:</strong>
+										<span class="transaction-content" id="bc-cf-crypto">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_bc_result_converted">Số tiền quy đổi:</strong>
+										<span class="transaction-content" id="bc-cf-converted">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_bc_wallet_address">Địa chỉ ví:</strong>
+										<span class="transaction-content" id="bc-cf-address">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_result_code">Mã quyên góp:</strong>
+										<span class="transaction-content" id="bc-cf-txid">[N/A]</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_order_method">Phương thức quyên góp:</strong>
+										<span class="transaction-content" data-lang-key="donate_bc_result_method_value">Blockchain (Ví Metamask)</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_result_merchant">Tổ chức thụ hưởng:</strong>
+										<span class="transaction-content">Quỹ Hy Vọng Việt MVP</span>
+									</p>
+									<p>
+										<strong data-lang-key="donate_bc_result_time">Thời gian:</strong>
+										<span id="bc-cf-date" class="transaction-content">[N/A]</span>
+									</p>
+								</div>
+
+								<div class="thanks" data-lang-key="donate_result_thankyou">Cảm ơn bạn đã đồng hành cùng chúng tôi ❤️</div>
+								<div class="note" data-lang-key="donate_bc_result_note">
+									Theo dõi giao dịch tại:
+									<a href="https://etherscan.io/">Etherscan</a>. Mọi thắc mắc vui lòng liên hệ hỗ trợ.
+								</div>
+							</section>
+
+							<div style="display: flex; justify-content: center; margin-top: 20px; gap: 10px">
+								<button type="button" class="hero-btn bc-btn-back" data-lang-key="donate_btn_back">Quay Về</button>
+								<button type="button" class="hero-btn bc-btn-next" data-lang-key="nav_home">Về Trang Chủ</button>
+							</div>
+						</div>
+
+						<div id="token-price-board" style="margin-top: 60px; margin-left: -96px; margin-right: -96px">
+							<div class="header-row">
+								<h3 class="board-title common-heading" data-lang-key="donate_bc_table_title">Bảng thông tin tiền điện tử</h3>
+								<div id="controls" class="controls">
+									<label class="ctrl-item"> <input type="checkbox" id="toggle30d" /> <span data-lang-key="donate_bc_toggle_30d">30 ngày</span> </label>
+									<input class="ctrl-item" type="text" id="searchToken" placeholder="Tìm kiếm..." data-lang-key="donate_bc_table_search"/>
+									<select class="ctrl-item" id="sortPrice">
+										<option value="" data-lang-key="donate_bc_table_sort">Sắp xếp</option>
+										<option value="asc" data-lang-key="donate_bc_table_sort_asc">Tăng dần</option>
+										<option value="desc" data-lang-key="donate_bc_table_sort_desc">Giảm dần</option>
+									</select>
+								</div>
+							</div>
+
+							<div id="loading" style="text-align: center; padding: 20px; font-weight: 500">Đang tải dữ liệu, chờ chút nhé...</div>
+							<table id="market-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: center; border-collapse: collapse; display: none">
+								<thead>
+								<tr style="background: #f4f4f4">
+									<th title="Số thứ tự">#</th>
+									<th title="Tên tiền điện tử" data-lang-key="donate_bc_th_crypto">Tiền điện tử</th>
+									<th></th>
+									<th title="Giá hiện tại theo tiền USD" data-lang-key="donate_bc_th_price_usd">Giá ($)</th>
+									<th title="Giá hiện tại theo tiền VNĐ" data-lang-key="donate_bc_th_price_vnd">Giá (VNĐ)</th>
+									<th title=" Biến động giá trong 1 giờ qua" data-lang-key="donate_bc_th_1h">1 giờ</th>
+									<th title=" Biến động giá trong 24 giờ qua" data-lang-key="donate_bc_th_24h">24 giờ</th>
+									<th title=" Biến động giá trong 7 ngày qua" data-lang-key="donate_bc_th_7d">7 ngày</th>
+									<th class="col-30d" style="display: none" title=" Biến động giá trong 30 ngày qua" data-lang-key="donate_bc_th_30d">30 ngày</th>
+									<th title="Biểu đồ thể hiện xu hướng tăng/giảm giá tiền điện tử trong 7 ngày qua" data-lang-key="donate_bc_th_chart">Biểu đồ 7 ngày</th>
+								</tr>
+								</thead>
+								<tbody id="market-body"></tbody>
+							</table>
+							<div id="pagination" style="text-align: center; margin-top: 20px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer-section">
+		<div class="container common-container">
+			<div class="row">
+				<div class="col-12 col-md-3 footer-first order-1 order-md-1">
+					<div class="d-flex align-items-center footer-logo-margin">
+						<img class="img-footer" src="../assets/img/logo-mvp.png" alt="Logo MVP" height="40px" />
+						<h3 class="ms-2 mb-0 footer-heading" data-lang-key="footer_slogan">Lan tỏa yêu thương</h3>
+					</div>
+					<p class="footer-content footer-content-first" data-lang-key="footer_desc">Chúng tôi tạo ra một không gian sẻ chia - nơi mỗi hành động nhỏ đều có thể mang lại thay đổi lớn</p>
+				</div>
+				<div class="col-12 col-md-2 footer-padding order-2 order-md-2">
+					<h3 class="footer-heading" data-lang-key="footer_explore_heading">KHÁM PHÁ MVP</h3>
+					<ul class="footer-link list-unstyled">
+						<li><a href="./about.html" class="footer-content link-1" data-lang-key="footer_link_about">Về chúng tôi</a></li>
+						<li><a href="./volunteer.html" class="footer-content link-2" data-lang-key="footer_link_volunteer">Tình nguyện</a></li>
+						<li><a href="./donate.html" class="footer-content link-3" data-lang-key="footer_link_donate">Quyên góp</a></li>
+						<li><a href="./stories.html" class="footer-content link-4" data-lang-key="footer_link_stories">Câu chuyện</a></li>
+					</ul>
+				</div>
+				<div class="col-12 col-md-4 order-4 order-md-3">
+					<h3 class="footer-heading" data-lang-key="footer_partner_heading">ĐỒNG HÀNH CÙNG CHÚNG TÔI</h3>
+					<p class="footer-content" data-lang-key="footer_partner_desc">Mỗi bước chân của bạn là nguồn cảm hứng để chúng tôi lan tỏa điều tốt đẹp mỗi ngày – Xem những tấm lòng đã đồng hành cùng chúng tôi.</p>
+					<a href="donate.html#table-donate" class="footer-btn" data-lang-key="footer_partner_btn">Xem ngay</a>
+				</div>
+				<div class="col-12 col-md-3 footer-padding order-5 order-md-4">
+					<h3 class="footer-heading" data-lang-key="footer_contact_heading">LIÊN HỆ</h3>
+					<ul class="footer-content list-unstyled">
+						<li class="footer-contact"><i class="fas fa-envelope me-2"></i> lienhe@mvp.org</li>
+						<li class="footer-contact"><i class="fas fa-phone me-2"></i> 0123 456 789</li>
+						<li class="footer-contact"><i class="fas fa-map-marker-alt me-2"></i> Trần Đại Nghĩa, Hòa Quý, Đà Nẵng</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom text-center pt-4 border-top order-6">
+				<p class="footer-content mb-1" data-lang-key="footer_copyright">© 2025 MVP. Mỗi hành động nhỏ, một thay đổi lớn</p>
+				<div class="footer-social">
+					<a href="https://www.facebook.com/login" target="_blank" class="me-2"><i class="fab fa-facebook-f"></i></a>
+					<a href="https://www.instagram.com/accounts/login/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+					<a href="https://www.twitter.com/login" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
+					<a href="https://www.tiktok.com/login" target="_blank" class="me-2"><i class="fa-brands fa-tiktok"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<div id="guide-modal" class="modal">
+	<div class="modal-content">
+		<h5>Quét mã QR để thanh toán</h5>
+		<ol class="steps">
+			<li>Mở ứng dụng Vietcombank trên điện thoại</li>
+			<li>Trên ứng dụng chọn tính năng <strong>Quét mã QR</strong></li>
+			<li>Quét mã QR ở trang này và thanh toán</li>
+			<li>Xác nhận thanh toán và đợi kết quả</li>
+		</ol>
+	</div>
+	<span class="close">&times;</span>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<h5 id="helpTitle">Quét mã QR để thanh toán</h5>
+			<p id="helpContent">Nhập đúng 16 chữ số trên mặt trước thẻ</p>
+			<img id="helpImg" src="assets/img/card-example.png" alt="thẻ tín dụng" class="img-fluid" />
+		</div>
+	</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
+
+<a href="https://m.me/ErasmusFade" target="_blank" class="messenger-icon">
+	<i class="fa-brands fa-facebook-messenger"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="../assets/js/aos.js"></script>
+<script src="assets/js/header.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="assets/js/token.js"></script>
+<script src="assets/js/blockchain.js"></script>
+<script src="../assets/js/donate.js"></script>
+<script src="../assets/js/link-modal.js"></script>
+<script src="../assets/js/hero.js"></script>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/messenger.js"></script>
+<script src="../assets/js/donate-validation.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="assets/js/header.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/@pdf-lib/fontkit@0.0.4/dist/fontkit.umd.min.js"></script>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="assets/js/invoice.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../assets/js/modal.js"></script>
+<script src="assets/js/languages.js"></script>
+<script src="../assets/js/language-switcher.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>

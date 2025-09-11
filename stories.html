@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Khám phá câu chuyện cảm hứng từ trẻ em vùng cao và tình nguyện viên MVP. Lan tỏa yêu thương ngay!" />
+	<title>Quỹ Hy Vọng Việt MVP - Hỗ trợ Trẻ em vùng cao</title>
+	<link rel="icon" type="image/x-icon" href="/assets/img/logo-mvp-removebg.png" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bree+Serif&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Quicksand:wght@300..700&display=swap"
+			rel="stylesheet"
+	/>
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+	<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../assets/css/ui/common.css" />
+	<link rel="stylesheet" href="../assets/css/ui/index.css" />
+	<link rel="stylesheet" href="../assets/css/ui/stories.css" />
+	<link rel="stylesheet" href="../assets/css/components/messenger.css" />
+</head>
+<body>
+<div class="page-wrapper">
+	<div class="hero-section">
+		<img class="hero-background" src="../assets/img/kham-pha-nhung-cau-chuyen.webp" alt="Hình ảnh câu chuyện hỗ trợ trẻ em vùng cao Quỹ MVP" />
+		<div class="overlay"></div>
+
+		<div class="bubbles">
+			<div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+		</div>
+		<header class="header">
+			<div>
+				<a href="index.html"><img class="logo" src="../assets/img/logo-mvp.png" alt="Logo Quỹ Hy Vọng Việt MVP" /></a>
+			</div>
+
+			<nav class="navbar">
+				<a style="--i: 1" class="nav-link" href="index.html" data-lang-key="nav_home">Trang chủ</a>
+				<a style="--i: 2" class="nav-link" href="about.html" data-lang-key="nav_about">Về chúng tôi</a>
+				<a style="--i: 3" class="nav-link" href="volunteer.html" data-lang-key="nav_volunteer">Tình nguyện</a>
+				<a style="--i: 4" class="nav-link" href="donate.html" data-lang-key="nav_donate">Quyên góp</a>
+				<a style="--i: 5" class="nav-link active" href="stories.html" data-lang-key="nav_stories">Câu chuyện</a>
+			</nav>
+
+			<div class="right-header">
+				<div class="search">
+					<a href="#" id="searchToggle"><box-icon name="search-alt-2"></box-icon></a>
+					<div class="search-dropdown" id="searchDropdown">
+						<input type="text" id="searchInput" placeholder="Tìm kiếm câu chuyện..." data-lang-key="search_placeholder" />
+						<div id="searchResults" class="search-results"></div>
+					</div>
+				</div>
+
+				<div class="cart">
+					<a href="#" style="position: relative" onclick="toggleCartPopup(event)">
+						<box-icon name="cart"></box-icon>
+						<span id="cart-count" class="cart-count">0</span>
+					</a>
+				</div>
+
+				<div class="language-switcher">
+					<button id="lang-vi" class="lang-btn active">VN</button>
+					<button id="lang-en" class="lang-btn">EN</button>
+				</div>
+
+				<div class="register-login">
+					<a class="register" href="login_register.html" data-lang-key="auth_register">Đăng ký</a>
+					<span class="slash">/</span>
+					<a class="login" href="login_register.html" data-lang-key="auth_login">Đăng nhập</a>
+				</div>
+			</div>
+			<div id="cart-sidebar" class="cart-sidebar">
+				<div class="cart-sidebar-header">
+					<h4 data-lang-key="cart_title">Giỏ hàng của bạn</h4>
+					<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')">×</button>
+				</div>
+				<ul id="cart-items" class="cart-items"></ul>
+				<div class="cart-total">
+					<p><span data-lang-key="cart_total">Tổng cộng:</span> <span id="cart-total">0 VNĐ</span></p>
+					<button class="checkout-btn" data-lang-key="cart_checkout">Thanh toán</button>
+				</div>
+			</div>
+			<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+		</header>
+
+		<section class="home">
+			<div class="home-content">
+				<h1 data-lang-key="hero_title">Chung tay vì trẻ em vùng cao.</h1>
+				<h3 data-lang-key="hero_subtitle">Hành động ngay!</h3>
+				<p data-lang-key="hero_description">Mỗi đóng góp của bạn là bước đệm giúp trẻ em vùng cao vượt qua khó khăn, đến gần hơn với tri thức, cơ hội và một tương lai đầy hy vọng.</p>
+				<a href="#shop" class="hero-btn btn-animation" data-lang-key="hero_button">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+			</div>
+		</section>
+	</div>
+
+	<section id="storiesSection" class="stories-section" data-aos="fade-up">
+		<div class="container common-container stories-container">
+			<h2 class="common-heading stories-heading text-center" data-lang-key="stories_section_heading">Dự án đang hoạt động</h2>
+			<h3 class="common-intro stories-intro" data-lang-key="stories_section_intro">Khám phá những hành trình ý nghĩa, nơi tấm lòng yêu thương và sự sẻ chia đang thắp sáng tương lai cho trẻ em vùng cao.</h3>
+			<div id="storiesList" class="row">
+			</div>
+		</div>
+	</section>
+
+	<div class="fullscreen-loader">
+		<div class="loader"></div>
+	</div>
+
+	<footer class="footer-section">
+		<div class="container common-container">
+			<div class="row">
+				<div class="col-12 col-md-3 footer-first order-1 order-md-1">
+					<div class="d-flex align-items-center footer-logo-margin">
+						<img class="img-footer" src="../assets/img/logo-mvp.png" alt="Logo MVP" height="40px" />
+						<h3 class="ms-2 mb-0 footer-heading" data-lang-key="footer_slogan">Lan tỏa yêu thương</h3>
+					</div>
+					<p class="footer-content footer-content-first" data-lang-key="footer_desc">Chúng tôi tạo ra một không gian sẻ chia - nơi mỗi hành động nhỏ đều có thể mang lại thay đổi lớn.</p>
+				</div>
+				<div class="col-12 col-md-2 footer-padding order-2 order-md-2">
+					<h3 class="footer-heading" data-lang-key="footer_explore_heading">KHÁM PHÁ MVP</h3>
+					<ul class="footer-link list-unstyled">
+						<li><a href="./about.html" class="footer-content link-1" data-lang-key="footer_link_about">Về chúng tôi</a></li>
+						<li><a href="./volunteer.html" class="footer-content link-2" data-lang-key="footer_link_volunteer">Tình nguyện</a></li>
+						<li><a href="./donate.html" class="footer-content link-3" data-lang-key="footer_link_donate">Quyên góp</a></li>
+						<li><a href="./stories.html" class="footer-content link-4" data-lang-key="footer_link_stories">Câu chuyện</a></li>
+					</ul>
+				</div>
+				<div class="col-12 col-md-4 order-4 order-md-3">
+					<h3 class="footer-heading" data-lang-key="footer_partner_heading">ĐỒNG HÀNH CÙNG CHÚNG TÔI</h3>
+					<p class="footer-content" data-lang-key="footer_partner_desc">Mỗi bước chân của bạn là nguồn cảm hứng để chúng tôi lan tỏa điều tốt đẹp mỗi ngày – Xem những tấm lòng đã đồng hành cùng chúng tôi.</p>
+					<a href="donate.html#table-donate" class="footer-btn" data-lang-key="footer_partner_btn">Xem ngay</a>
+				</div>
+				<div class="col-12 col-md-3 footer-padding order-5 order-md-4">
+					<h3 class="footer-heading" data-lang-key="footer_contact_heading">LIÊN HỆ</h3>
+					<ul class="footer-content list-unstyled">
+						<li class="footer-contact"><i class="fas fa-envelope me-2"></i> lienhe@mvp.org</li>
+						<li class="footer-contact"><i class="fas fa-phone me-2"></i> 0123 456 789</li>
+						<li class="footer-contact"><i class="fas fa-map-marker-alt me-2"></i> Trần Đại Nghĩa, Hòa Quý, Đà Nẵng</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom text-center pt-4 border-top order-6">
+				<p class="footer-content mb-1" data-lang-key="footer_copyright">© 2025 MVP. Mỗi hành động nhỏ, một thay đổi lớn</p>
+				<div class="footer-social">
+					<a href="https://www.facebook.com/login" target="_blank" class="me-2"><i class="fab fa-facebook-f"></i></a>
+					<a href="https://www.instagram.com/accounts/login/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+					<a href="https://www.twitter.com/login" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
+					<a href="https://www.tiktok.com/login" target="_blank" class="me-2"><i class="fa-brands fa-tiktok"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<div id="scroll-hint" class="">⬇️ Cuộn xuống để xem các câu chuyện và nhấn vào hình ảnh để xem bài viết gốc</div>
+
+<a href="https://m.me/ErasmusFade" target="_blank" class="messenger-icon">
+	<i class="fa-brands fa-facebook-messenger"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/languages.js"></script>
+<script src="../assets/js/stories.js"></script>
+<script src="../assets/js/language-switcher.js"></script>
+
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/messenger.js"></script>
+<script src="../assets/js/hero.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
