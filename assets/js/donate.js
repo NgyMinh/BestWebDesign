@@ -98,7 +98,7 @@ function wrapText(font, text, fontSize, maxWidth) {
 		}
 
 		// Reset option mặc định trước
-		select.innerHTML = `<option value="" selected disabled hidden>Dự án đóng góp (*)</option>`;
+		select.innerHTML = `<option value="" selected disabled hidden>Chọn 1 dự án muốn quyên góp (*)</option>`;
 
 		// Thêm các option từ dữ liệu dự án
 		window.sharedData.forEach((project, i) => {
@@ -123,7 +123,7 @@ function wrapText(font, text, fontSize, maxWidth) {
 
 				// Khởi tạo lại
 				$select.select2({
-					placeholder: "Dự án đóng góp (*)",
+					placeholder: "Chọn 1 dự án muốn quyên góp (*)",
 					width: "100%",
 					dropdownAutoWidth: true,
 					allowClear: true,

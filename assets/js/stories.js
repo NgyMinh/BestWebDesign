@@ -90,7 +90,7 @@ function showStories() {
         </p>
         ${story.source ? `<a class="link-original" href="${story.source}" style="display:none;">Xem bài gốc</a>` : ""}
       </div>
-      <a href="donate.html#donate" class="common-btn">Quyên góp ngay</a>
+      <a href="donate.html?story_id=${encodeURIComponent(story.title)}#donate" class="common-btn">Quyên góp ngay</a>
     </div>
   </div>
 </div>

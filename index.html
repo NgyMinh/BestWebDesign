@@ -22,6 +22,7 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+
 		<!-- Nhúng boxicons -->
 		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 		<!-- CSS của AOS -->
@@ -131,19 +132,18 @@
 						</div>
 					</div>
 				</div>
-				<!-- Gio hàng -->
+				<!-- Giỏ hàng -->
 				<div id="cart-sidebar" class="cart-sidebar">
 					<div class="cart-sidebar-header">
-						<h4>Giỏ hàng của bạn</h4>
-						<button class="close-btn" onclick="document.getElementById('cart-sidebar').classList.remove('show')">×</button>
+						<h3>Giỏ hàng của bạn</h3>
 					</div>
 					<ul id="cart-items" class="cart-items"></ul>
 					<div class="cart-total">
-						<p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
+						<p>Tổng tiền: <span id="cart-total">0 VNĐ</span></p>
 						<button class="checkout-btn">Thanh toán</button>
 					</div>
 				</div>
-				<div class="cart-overlay" onclick="document.getElementById('cart-sidebar').classList.remove('show')"></div>
+				<div class="cart-overlay" onclick="mởĐóngGiỏHàng(event)"></div>
 			</header>
 
 			<!-- Content -->
@@ -152,31 +152,40 @@
 					<h1 data-lang-key="hero_title">Chung tay vì trẻ em vùng cao.</h1>
 					<h3 data-lang-key="hero_subtitle">Hành động ngay!</h3>
 					<p data-lang-key="hero_description">Mỗi đóng góp là bước đệm giúp trẻ em vùng cao đến gần tri thức, cơ hội và hy vọng</p>
-					<a href="#shop" class="hero-btn btn-animation" data-lang-key="hero_button">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
+					<a href="#shop" class="hero-btn btn-animation">Mua sản phẩm<i class="fa-solid fa-heart-pulse right-header-icon"></i></a>
 				</div>
 			</section>
 
 			<!-- Chatbot AI -->
 			<button class="chatbot-toggler">
-				<span class="material-symbols-outlined">mode_comment</span>
+				<span class="material-symbols-outlined">person_heart</span>
 				<span class="material-symbols-outlined">close</span>
 			</button>
 			<div class="chatbot">
 				<header>
-					<h2>Chatbot</h2>
+					<h2>HopeBot</h2>
 					<span class="close-btn material-symbols-outlined">close</span>
 				</header>
 				<ul class="chatbox">
 					<li class="chat incoming">
 						<span class="material-symbols-outlined">smart_toy</span>
 						<p>
-							Xin chào💕 <br /><a style="color: red"><b>MVP</b></a> có thể giúp gì bạn hôm nay
+							Chào bạn!💕 <br />
+							Mình là <a style="color: red"><b>HopeBot</b></a
+							>, mình có thể giúp gì cho bạn hôm nay?
 						</p>
 					</li>
 				</ul>
 				<div class="chat-input">
-					<textarea placeholder="Enter a message..." required></textarea>
-					<span id="send-btn" class="material-symbols-outlined">send</span>
+					<textarea placeholder="Nhập tin nhắn..."></textarea>
+					<input type="file" id="imageInput" accept="image/*" style="display: none" />
+					<label for="imageInput" class="image-btn" title="Gửi ảnh">
+						<span class="material-symbols-outlined">image</span>
+					</label>
+
+					<button type="submit" class="send-btn">
+						<span class="material-symbols-outlined">send</span>
+					</button>
 				</div>
 			</div>
 
@@ -968,20 +977,29 @@
 			</div>
 		</footer>
 
+		<!-- Modal hóa đơn -->
+		<div id="invoice-modal" class="invoice-modal">
+			<div class="invoice-modal-content">
+				<div id="invoice-content"></div>
+				<button onclick="tảiHóaĐơnPDF()">Tải hóa đơn (PDF)</button>
+			</div>
+		</div>
+
 		<!--  -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
 		<!-- AOS -->
 		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 		<!-- js -->
 		<script src="assets/js/header.js"></script>
-		<script src="../assets/js/link-modal.js"></script>
-		<script src="../assets/js/aos.js"></script>
-		<script src="../assets/js/hero.js"></script>
-		<script src="../assets/js/data.js"></script>
-		<script src="../assets/js/search.js"></script>
-		<script src="../assets/js/messenger.js"></script>
-		<script src="../assets/js/cart.js"></script>
-		<script src="../assets/js/search.js"></script>
+		<script src="/assets/js/link-modal.js"></script>
+		<script src="/assets/js/aos.js"></script>
+		<script src="/assets/js/hero.js"></script>
+		<script src="/assets/js/data.js"></script>
+		<script src="/assets/js/search.js"></script>
+		<script src="/assets/js/messenger.js"></script>
+		<script src="/assets/js/cart.js"></script>
+		<script src="/assets/js/search.js"></script>
 		<script src="assets/js/featured-stories.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

@@ -1,11 +1,12 @@
 const chatInput = document.querySelector(".chat-input textarea");
-const sendChatBtn = document.querySelector(".chat-input span");
+const sendChatBtn = document.querySelector(".send-btn"); // sửa thành button gửi
 const chatbox = document.querySelector(".chatbox");
 const chatbotToggler = document.querySelector(".chatbot-toggler");
 const chatbotCloseBtn = document.querySelector(".close-btn");
 
 let userMessage;
 const inputInitHeight = chatInput.scrollHeight;
+
 const createChatLi = (message, className) => {
 	const chatLi = document.createElement("li");
 	chatLi.classList.add("chat", className);
@@ -19,14 +20,12 @@ const generateResponse = (incomingChatli) => {
 	const messageElement = incomingChatli.querySelector("p");
 
 	fetch("https://bestwebdesign-1.onrender.com/chat", {
-		// sửa thành URL backend trên Render
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ message: userMessage }),
 	})
 		.then(async (res) => {
 			if (!res.ok) {
-				// Nếu server trả lỗi (status 500, 401,…)
 				const errorText = await res.text();
 				throw new Error(errorText || "Server error");
 			}
@@ -34,7 +33,6 @@ const generateResponse = (incomingChatli) => {
 		})
 		.then((data) => {
 			if (data && data.reply) {
-				// ✅ backend Gemini trả về { reply: "..." }
 				messageElement.textContent = data.reply;
 			} else if (data.error) {
 				messageElement.textContent = `Error: ${data.error || "Unknown error"}`;
@@ -42,8 +40,7 @@ const generateResponse = (incomingChatli) => {
 				messageElement.textContent = "No response from server.";
 			}
 		})
-		.catch((error) => {
-			// console.error("❌ Fetch error:", error);
+		.catch(() => {
 			messageElement.classList.add("error");
 			messageElement.textContent = "Oops! Something went wrong. Please try again.";
 		})
@@ -56,13 +53,11 @@ const handleChat = () => {
 	chatInput.value = "";
 	chatInput.style.height = `${inputInitHeight}px`;
 
-	// Append the user's message to the chatbox
 	chatbox.appendChild(createChatLi(userMessage, "outgoing"));
 	chatbox.scrollTo(0, chatbox.scrollHeight);
 
 	setTimeout(() => {
-		// "Thinking"
-		const incomingChatli = createChatLi("Thinking...", "incoming");
+		const incomingChatli = createChatLi("Đang suy nghĩ...", "incoming");
 		chatbox.appendChild(incomingChatli);
 		chatbox.scrollTo(0, chatbox.scrollHeight);
 		generateResponse(incomingChatli);
@@ -70,7 +65,6 @@ const handleChat = () => {
 };
 
 chatInput.addEventListener("input", () => {
-	// adjust the height of the input textare based on its content
 	chatInput.style.height = `${inputInitHeight}px`;
 	chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
@@ -80,6 +74,63 @@ chatInput.addEventListener("keydown", (e) => {
 		e.preventDefault();
 		handleChat();
 	}
+});
+
+// Xử lý gửi ảnh
+const imageInput = document.getElementById("imageInput");
+
+imageInput.addEventListener("change", function (event) {
+	const file = event.target.files[0];
+	if (!file) return;
+
+	const reader = new FileReader();
+	reader.onload = function (e) {
+		const imageBase64 = e.target.result;
+
+		// Hiển thị ảnh người dùng gửi
+		const li = document.createElement("li");
+		li.classList.add("chat", "outgoing");
+
+		const img = document.createElement("img");
+		img.src = imageBase64;
+		img.alt = "Ảnh người dùng gửi";
+		img.style.maxWidth = "200px";
+		img.style.borderRadius = "10px";
+
+		li.appendChild(img);
+		chatbox.appendChild(li);
+		chatbox.scrollTo(0, chatbox.scrollHeight);
+
+		// Hiển thị trạng thái xử lý ảnh
+		const incomingLi = createChatLi("Đang xử lý ảnh...", "incoming");
+		chatbox.appendChild(incomingLi);
+		chatbox.scrollTo(0, chatbox.scrollHeight);
+
+		fetch("https://bestwebdesign-1.onrender.com/image", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ image: imageBase64 }),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.reply) {
+					incomingLi.querySelector("p").textContent = data.reply;
+				} else {
+					incomingLi.querySelector("p").textContent = "Không có phản hồi từ server.";
+				}
+			})
+			.catch(() => {
+				incomingLi.querySelector("p").classList.add("error");
+				incomingLi.querySelector("p").textContent = "Lỗi xử lý ảnh.";
+			})
+			.finally(() => {
+				chatbox.scrollTo(0, chatbox.scrollHeight);
+			});
+	};
+
+	reader.readAsDataURL(file);
 });
 
 chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));

@@ -1,4 +1,48 @@
 @import url("common.css");
+/* Simple */
+/* RESET FOOTER */
+.footer-section,
+.footer-bottom,
+.footer-heading,
+.footer-content,
+.footer-logo-margin,
+.footer-contact,
+.footer-btn,
+.footer-social {
+	display: none !important;
+}
+
+/* SIMPLE FOOTER */
+.footer-simple {
+	background-color: #fff;
+	padding: 25px 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 6px solid var(--color-secondary);
+	font-size: 14px;
+	box-shadow: 0 10px 20px rgba(42, 109, 181, 0.15);
+}
+
+.footer-simple .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 350px;
+}
+
+.footer-simple span {
+	color: #33383c;
+}
+
+.footer-simple .footer-links a {
+	color: #9196a8;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.footer-simple .footer-links a:hover {
+	text-decoration: underline;
+}
 
 /* BLOCKCHAIN */
 /* bc-step2 */
@@ -344,7 +388,7 @@
    Section chính
 ========================= */
 .donate-section {
-	padding: 150px 230px 110px 230px;
+	padding: 150px 230px 50px 230px;
 	margin: auto;
 	background: #f8f8f8;
 }
