@@ -89,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			try {
 				// Sử dụng fetch để gửi yêu cầu POST đến backend
-				const response = await fetch('http://localhost:3000/api/volunteers/register', {
+				const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3000/api/volunteers/register' : '/api/volunteers/register';
+				const response = await fetch(apiUrl, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'

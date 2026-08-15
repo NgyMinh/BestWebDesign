@@ -32,7 +32,7 @@ app.use(
 );
 
 // Serve static files từ thư mục frontend
-app.use(express.static(path.join(__dirname, '../../')));
+app.use(express.static(path.join(__dirname, '../')));
 
 app.use("/api/auth", authRoutes);
 app.use(volunteerRoutes); // <-- 2. SỬ DỤNG ROUTE MỚI

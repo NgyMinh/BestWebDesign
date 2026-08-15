@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const API_BASE = "http://localhost:3000/api/auth"; // backend
+    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? "http://localhost:3000/api/auth" : "/api/auth"; // backend
 
     const signupForm = document.querySelector(".signup form");
     const loginForm = document.querySelector(".login form");
